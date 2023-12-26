@@ -43,7 +43,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
                          `id` int serial NOT NULL PRIMARY KEY,
-                         `name` varchar(100) NOT NULL,
+                         `name_of_user` varchar(100) NOT NULL,
     );
 
 CREATE TABLE `tables` (
