@@ -45,3 +45,8 @@ CREATE TABLE `users` (
                          `id` int serial NOT NULL PRIMARY KEY,
                          `name` varchar(100) NOT NULL,
     );
+
+CREATE TABLE `tables` (
+                         `id` int serial NOT NULL PRIMARY KEY,
+                         `name` varchar(100) NOT NULL,
+    );
