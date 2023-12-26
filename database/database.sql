@@ -40,3 +40,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
     (1, 'ADMIN'),
     (2, 'CLIENT');
+
+CREATE TABLE `users` (
+                         `id` int serial NOT NULL PRIMARY KEY,
+                         `name` varchar(100) NOT NULL,
+    );
