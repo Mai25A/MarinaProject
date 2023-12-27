@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "localhost";
-$database = "marina_project";
+$database = "marina";
 //$username = "team_marina";
 $username = "root";
 //$password = "1123marina";
