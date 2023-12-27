@@ -9,6 +9,9 @@
         height: 450px;
         background-color: #C8D7E6;
     }
+    .address{
+        padding-left: 150px;
+    }
 
     .img_contact img {
         width: 400px;

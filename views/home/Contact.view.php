@@ -2,8 +2,8 @@
 require_once('../../views/css/contact.css.php');
 ?>
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-5">
+    <div class="address row mt-5">
+        <div class="col-4">
             <h6>OPERATION TIME</h6>
             <p>09:00 AM - 07:00 PM</br> Monday - Saturday</p>
         </div>
@@ -11,7 +11,7 @@ require_once('../../views/css/contact.css.php');
             <h6>PHONE NUMBER</h6>
             <p>+84 333 988 406</p>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <h6>EMAIL ADDRESS</h6>
             <p>Marina@gmail.com</p>
         </div>
