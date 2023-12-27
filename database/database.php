@@ -1,9 +1,9 @@
 <?php
 
 $hostname = "localhost";
-$database = "marina_project";
-$username = "team_marina";
-$password = "1123marina";
+$database = "marina";
+$username = "root";
+$password = "";
 
 
 try {
