@@ -96,10 +96,11 @@ require_once('../../views/css/body.css.php');
             <div class="list_img row">
                 <div class="col-4 ">
                 </div>
-                <div class="img_fruits3 col-4 ">
+
+                <div class="img_fruits3 col-4 mt-2">
                     <img src="../../asset/fruit4.png" alt="">
                 </div>
-                <div class="img_fruits4 col-4 ">
+                <div class="img_fruits4 col-4 mt-2">
                     <img src="../../asset/fruit2.png" alt="">
                 </div>
             </div>

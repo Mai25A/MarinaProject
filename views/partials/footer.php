@@ -1,4 +1,4 @@
-<?php require_once('../../views/css/footer.css.php'); ?>
+<?php require_once('../css/footer.css.php'); ?>
 
 <body>
     <div class="mt-5 text-white footer">
