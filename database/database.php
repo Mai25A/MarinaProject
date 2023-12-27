@@ -1,7 +1,6 @@
 <?php
 
-function connect()
-{
+
   $hostname = "localhost";
   $database = "marina";
     //$username = "team_marina";
@@ -18,4 +17,3 @@ function connect()
   } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
   }
-}
