@@ -12,11 +12,11 @@ require_once('../css/login.css.php'); ?>
     <form method="POST" action="login.php">
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required placeholder="Email">
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required placeholder="Password">
         </div>
         <div>
             <input type="checkbox" id="remember" name="remember">Remember password
@@ -26,8 +26,8 @@ require_once('../css/login.css.php'); ?>
         </div>
         <hr>
         <p>Hoặc đăng nhập bằng tài khoản:</p>
-        <button onclick="loginWithGoogle()"><i class="fa fa-google text-info p-2"></i>Google account</button></br>
-        <button onclick="loginWithFacebook()"><i class="fa fa-facebook text-primary p-2"></i>Facebook account</button>
+        <button onclick="loginWithGoogle()"><i class="icon fa fa-google text-info p-2"></i>Google account</button></br>
+        <button onclick="loginWithFacebook()"><i class="icon fa fa-facebook text-primary p-2"></i>Facebook account</button>
         <p><a href="forgot_password.php">Quên mật khẩu?</a></p>
         <p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
     </form>
