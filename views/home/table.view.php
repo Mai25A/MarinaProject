@@ -1,6 +1,6 @@
 <?php
     require_once('../partials/head.php');
-    require_once('../css/table.css.php')
+    require_once('../css/table.css.php');
 ?> 
 
 <body>
@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-md-6 button_con">
                 <div class="col-md-3">
-                    <button type="button" class="btn_type custom-button" aria-label="Close">Normal tables</button>
+                    <button type="button" class="btn_type custom-button normal " aria-label="Close">Normal tables</button>
                 </div>
                 <div class="col-md-3">
-                    <button type="button" class="btn_type custom-button" aria-label="Close">Private rooms</button>
+                    <button type="button" class="btn_type custom-button room" aria-label="Close">Private rooms</button>
                 </div>
             </div>
             <div class="col-md-6 select_cus ">
@@ -24,15 +24,16 @@
                 </select>
             </div>
         </div>
-        <div class="row">
+        <?php foreach($tables as $table): ?>
+            <div class="row">
             <div class="card list-item" style="width: 25rem; margin-top:48px">
                 <div class="image-item">
-                    <img src="../../asset/foods.png" class="card-img-top" alt="...">
+                    <img src="<?=  $table['image']; ?>" class="card-img-top" alt="...">
                 </div>
                 <div class="row card-body align-items-center">
                     <div class="col-md-7">
-                            <h5 class="card-title">Splendid Serenade</h5>
-                            <p class="card-text">Number of tale: No1</p>
+                            <h5 class="card-title"><?= $table['name'] ?></h5>
+                            <p class="card-text">Number of tale: <?=  $table['id'] ?></p>
                             <p class="card-text">Private room for five</p>
                     </div>
                     <div class="col-md-5 card-price">
@@ -42,6 +43,7 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </body>
 <?php
