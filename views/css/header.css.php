@@ -4,10 +4,12 @@
         height: 70vh;
         background-repeat: no-repeat;
         background-size: cover;
-        background-image: url('http://localhost:3000/php_course/MARINA/example/asset/background.jpg');
+        background-image: url('../../asset/background.jpg');
     }
 
     .header {
+        /* background-color: #3399FF; */
+
         background-color: #26577C;
         padding: 10px;
     }

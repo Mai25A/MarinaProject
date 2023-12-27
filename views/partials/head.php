@@ -15,12 +15,12 @@
     <div class="header">
         <nav class="menu">
             <a href="" id="logo">
-                <img class="logo" src="http://localhost:3000/php_course/MARINA/example/asset/Logo.png" alt="logo">
+                <img class="logo" src="../../asset/Logo.png" alt="logo">
             </a>
 
             <ul class=" mt-2 mainMenu">
-                <li><a href="">Home</a></li>
-                <li><a href="">About Us</a></li>
+                <li><a href="../../views/home/Body-Home.view.php">Home</a></li>
+                <li><a href="../../views/home/About.view.php">About Us</a></li>
                 <li><a href="">Service</a>
                     <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
                     <ul class="childMenu">
@@ -28,8 +28,8 @@
                         <li><a href="">Tables</a></li>
                     </ul>
                 </li>
-                <li><a href="../../View/Homepages/Contact.html.php">Contact Us</a></li>
-                <li><a href="">Login</a></li>
+                <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
+                <li><a href="../home/login.view.php">Login</a></li>
             </ul>
         </nav>
     </div>
