@@ -25,7 +25,7 @@
                     <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
                     <ul class="childMenu">
                         <li><a href="">Menu</a></li>
-                        <li><a href="">Tables</a></li>
+                        <li><a href="../../controllers/tables/tables.controller.php">Tables</a></li>
                     </ul>
                 </li>
                 <li><a href="../../views/home/Contact.html.php #ffffff">Contact Us</a></li>

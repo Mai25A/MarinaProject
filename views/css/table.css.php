@@ -22,8 +22,19 @@
         }
         .list-item{
             border-radius: 10px;
+            border: 0;
             height: 370px;
-            box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            cursor: pointer;
+            /* border-bottom: 4px solid blue; */
+            /* box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2); */
+        }
+        .list-item:hover{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            transform: scale(1.01);
+            
+
         }
         .image-item{    
             margin: 10px;
@@ -43,5 +54,9 @@
         }
         .card-price .text-end{
             margin-top: -15px;
+        }
+        .box_products{
+            margin:  0 auto;
+             flex-wrap: wrap;
         }
  </style>
