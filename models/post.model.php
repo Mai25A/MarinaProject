@@ -1,5 +1,4 @@
 <?php
-
 function createPost(string $title, string $description) : bool
 {
     global $connection;
