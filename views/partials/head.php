@@ -9,7 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>MARINA RESTAURANT</title>
 </head>
-<?php require_once('../css/header.css.php'); ?>
+<?php require_once dirname(dirname(__FILE__)).('../css/header.css.php'); ?>
 <body>
 
     <div class="header">
@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
-                <li><a href="../home/login.view.php">Login</a></li>
+                <li><a href="../account/login.view.php">Login</a></li>
             </ul>
         </nav>
     </div>

@@ -1,6 +1,4 @@
-<?php require "views/partials/head.php" ?>
-<?php require "views/partials/nav.php" ?>
-<?php require "views/partials/banner.php" ?>
+<?php require dirname(dirname(__DIR__)) . "/views/partials/head.php"; ?>
 
   <main>
     <div class="p-3">
@@ -10,4 +8,4 @@
     </div>
   </main>
 
-  <?php require "views/partials/footer.php" ?>
+  <?php require dirname(dirname(__DIR__)). "/views/partials/footer.php";?>

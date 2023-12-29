@@ -1,5 +1,7 @@
 <?php 
-require_once('../css/login.css.php'); ?>
+require_once('../css/login.css.php'); 
+require_once('../../database/database.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +11,14 @@ require_once('../css/login.css.php'); ?>
     <title>Form Đăng nhập</title>
 </head>
 <body>
-    <form method="POST" action="login.php">
+    <form method="POST" action="/models/login/login.model.php">
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required placeholder="Email">
+            <input type="email" id="email" class="form-control" name="email" required placeholder="Email">
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Password">
+            <input type="password" id="password" class="form-control" name="password" required placeholder="Password">
         </div>
         <div>
             <input type="checkbox" id="remember" name="remember">Remember password
