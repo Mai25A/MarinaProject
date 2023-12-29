@@ -1,6 +1,6 @@
 <?php
     require_once('../../views/partials/head.php');
-    require_once('../../views/css/table.css.php');
+    require_once('../../views/css/tables/table.css.php');
 ?> 
 
 <body>

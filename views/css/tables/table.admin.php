@@ -9,4 +9,10 @@
     height: 100%;
     object-fit: cover;
   }
+  /* tr {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+  } */
 </style>

@@ -25,12 +25,25 @@
         <option value="normal">Normal Table</option>
         <option value="room">Private room</option>
     </select>
+    <!-- <script>
+      var categorySelect = document.getElementById('category');
+      
+      categorySelect.addEventListener('change', function() {
+        var typeValue = categorySelect.options[categorySelect.selectedIndex].value;
+
+        // Tạo URL mới với tham số type
+        var url = "?type=" + encodeURIComponent(typeValue);
+
+        // Chuyển hướng người dùng đến URL mới
+        window.location.href+url;
+      });
+</script> -->
   </div>
   <div class="form-group" id="seat-group">
     <label for="seats">Number of Seats:</label>
     <select class="form-control" id="seats" name="table_type_id">
       <?php
-        $selectedCategory = $_POST["type"];
+        
         if ($selectedCategory == "normal") {
             echo '<option value="1">Table for 2</option>';
             echo '<option value="2">Table for 5</option>';

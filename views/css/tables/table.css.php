@@ -58,5 +58,6 @@
         .box_products{
             margin:  0 auto;
              flex-wrap: wrap;
+             
         }
  </style>
