@@ -48,6 +48,9 @@
             height: 100%;
             object-fit: cover;
         }
+        .card-title{
+            font-size: 18px;
+        }
         .card-price{
             font-size: large;
             font-weight: bold;

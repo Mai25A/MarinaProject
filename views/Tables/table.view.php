@@ -47,7 +47,7 @@
                 <div class="row card-body align-items-center">
                     <div class="col-md-7">
                             <h5 class="card-title"><?= $table['name'] ?></h5>
-                            <p class="card-text">Number of tale: <?=  $table['id'] ?></p>
+                            <p class="card-text">Number of table: <?=  $table['id'] ?></p>
                             <p class="card-text">
                                     <?php
                                     if ($table['table_type_id'] < 5) {
@@ -59,7 +59,7 @@
                                 </p>
                     </div>
                     <div class="col-md-5 card-price">
-                        <p class="card-text text-end"><?php echo htmlspecialchars($table['price']) ?> VND</p>
+                        <p class="card-text text-end"><?php echo $table['price'] ?> VND</p>
                         <p class="card-text text-center" style="color: red;"><i class="fa fa-heart-o fa-2x""></i></></p>
                     </div>
                 </div>

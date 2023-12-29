@@ -1,35 +1,33 @@
 <?php
-// session_start();
-
-// if (isset($_SESSION['type'])) {
-//     $selectedCategory = $_SESSION['type'];
-// } else {
-//     $selectedCategory = "";
-// }
-// unset($_SESSION['type']);
+$id = $_GET['id'];
 include_once("../../views/partials/head.php");
+include_once("../../models/tables.model.php");
+$table = get_one_table($id);
+// print_r($table);
 ?>
 
-<form action="../../controllers/tables/table.create.controller.php" method="get">
+<form action="../../controllers/tables/table.update.controller.php" method="get">
+    <input type="hidden" name='id' value="<?=$id?>">
+    
   <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" id="name" name="name" value='<?= $table['name'] ?>'>
   </div>
   <div class="form-group">
     <label for="image">Image:</label>
-    <input type="text" class="form-control" id="image" name="image">
+    <input type="text" class="form-control" id="image" name="image" value='<?= $table['image'] ?>'>
   </div>
   <div class="form-group">
     <label for="price">Price:</label>
-    <input type="text" class="form-control" id="price" name="price">
+    <input type="text" class="form-control" id="price" name="price" value="<?= $table['price'] ?>">
   </div>
   <div class="form-group">
-    <label for="description">Description:</label>
-    <textarea class="form-control" id="description" name="description"></textarea>
-  </div>
+  <label for="description">Description:</label>
+  <textarea class="form-control" id="description" name="description"><?= $table['description'] ?></textarea>
+</div>
   <div class="form-group">
     <label for="category">Type:</label>
-    <select class="form-control" id="category" name="type">
+    <select class="form-control" id="category" name="type" value="<?= $table['type'] ?>">
       <option value="normal">Normal Table</option>
       <option value="room">Private room</option>
     </select>
@@ -74,23 +72,6 @@ include_once("../../views/partials/head.php");
     }
   });
 </script>
-  <!-- 
-<script>
-    var urlParams = new URLSearchParams(window.location.search);
-    var typeParam = urlParams.get('type');
-
-
-    if (typeParam) {
-        document.getElementById("category").value = typeParam;
-    }
-
-    // Lắng nghe sự kiện khi người dùng chọn một lựa chọn mới
-    document.getElementById("category").addEventListener("change", function() {
-        var selectedType = this.value;
-
-        // Chuyển hướng đến trang tiếp theo với giá trị "type" mới
-        window.location.href = "table.create.controller.php?type=" + selectedType;
-    });
-</script> -->
+ 
   <button type="submit" class="btn btn-primary">Create</button>
 </form>
