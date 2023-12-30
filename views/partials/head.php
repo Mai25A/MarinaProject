@@ -15,7 +15,7 @@
     <div class="header">
         <nav class="menu">
             <a href="" id="logo">
-                <img class="logo" src="http://localhost:3000/php_course/MARINA/example/asset/Logo.png" alt="logo">
+                <img class="logo" src="../../asset/Logo.png" alt="logo">
             </a>
 
             <ul class=" mt-2 mainMenu">
@@ -25,10 +25,10 @@
                     <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
                     <ul class="childMenu">
                         <li><a href="">Menu</a></li>
-                        <li><a href="">Tables</a></li>
+                        <li><a href="../../controllers/tables/tables.controller.php">Tables</a></li>
                     </ul>
                 </li>
-                <li><a href="../../View/Homepages/Contact.html.php">Contact Us</a></li>
+                <li><a href="../../views/home/Contact.html.php #ffffff">Contact Us</a></li>
                 <li><a href="">Login</a></li>
             </ul>
         </nav>

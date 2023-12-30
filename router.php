@@ -7,6 +7,7 @@ $routes = [
     '/project' => 'controllers/project/project.controller.php',
     '/delete' => 'controllers/post/post.deleteMenu.controller.php',
     '/create' => 'controllers/menu/create.menuManagement.controllers.php',
+    '/admin_table' => 'controllers/tables/table.admin.cotroller.php',
 ];
 
 // if (array_key_exists($uri, $routes)) {
