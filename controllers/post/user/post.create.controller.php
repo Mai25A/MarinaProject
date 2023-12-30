@@ -1,12 +1,21 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Kết nối đến cơ sở dữ liệu
 
-    if (!empty($_POST['name']) and !empty($_POST['phone']) and !empty($_POST['email']) and !empty($_POST['password'])and !empty($_POST['image'])) {
-        require_once(dirname(dirname(__DIR__)) .'../../models/User/post.model.php');
-        createUser($_POST['name'], $_POST['phone'] , $_POST['email'], $_POST['password'], $_POST['image']);
-
-        header('location: /post/user/create');
-    }
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['name']) && !empty($_POST['phone'])
+    && !empty($_POST['email']) && !empty($_POST['password'])&& !empty($_POST['image'])) {
     
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $img = $_POST['image'];
+
+    createUser($_POST);
+    header('Location: post.view.php');
+    exit();
 }
+
+header('Location: post.view.php');
+exit();
+?>

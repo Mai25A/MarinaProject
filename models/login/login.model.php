@@ -1,13 +1,8 @@
 <?php 
 require '../../views/home/Body-Home.view.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pass = test_input($_POST["password"]);
-    $email = test_input($_POST["email"]);
-  }
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+if (isset($_POST['submit'])) {
+    $pass = ($_POST["password"]);
+    $email = ($_POST["email"]);
+    $check = ($_POST['remember']);
   }

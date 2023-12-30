@@ -1,8 +1,9 @@
-<?php require dirname(dirname(__DIR__)) ."../../views/partials/head.php" ?>
-
+<?php
+    require_once dirname(dirname(__DIR__))."../../views/partials/head.php";
+?>
 <div class="card mt-5">
     <div class="card-body">
-        <form action="../../../controllers/post/user/post.create.controller.php" method="post">
+        <form action="../../../models/User/post.model.php" method="post">
             <div class="form-group">
                 <input type="text" placeholder="name" class="form-control" name="name">
             </div>
@@ -23,5 +24,3 @@
         </form>
     </div>
 </div>
-
-<?php require dirname(dirname(__DIR__)) ."../../views/partials/footer.php" ?>

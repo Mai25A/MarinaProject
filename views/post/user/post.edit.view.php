@@ -1,8 +1,8 @@
-<?php require dirname(dirname(__DIR__)) ."../../views/partials/head.php" ?>
+<?php require "./views/partials/head.php" ?>
 
 <div class="card mt-5">
     <div class="card-body">
-        <form action="../../controllers/post/user/post.update.controller.php" method="post">
+        <form action="./post/user/post.update.controller.php" method="post">
             <input type="hidden" value="<?= $post['id'] ?>" name="id">
             <div class="form-group">
                 <input type="text" placeholder="name" class="form-control" name="name" value="<?= $post['name'] ?>">
@@ -25,4 +25,4 @@
     </div>
 </div>
 
-<?php require dirname(dirname(__DIR__)) ."../../views/partials/footer.php" ?>
+<?php require "./views/partials/footer.php" ?>
