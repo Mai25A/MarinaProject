@@ -4,7 +4,7 @@
  */
 function db() {
     $hostname = 'localhost'; // Because MySQL is running on the same computer as the web server
-    $database = 'marina'; // Name of the database you use (you need first to CREATE DATABASE in MySQL)
+    $database = 'demo_db'; // Name of the database you use (you need first to CREATE DATABASE in MySQL)
     $username = 'root'; // Default username to connect to MySQL is root
     $password = ''; // Default password to connect to MySQL is empty
 try {

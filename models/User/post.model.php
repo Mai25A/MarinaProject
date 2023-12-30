@@ -7,7 +7,7 @@ function createUser($value)
 {
     $db = db();
     // Chuẩn bị câu lệnh SQL với các placeholder
-    $stmt = $db->prepare("INSERT INTO marina (name, phone, email, password, image) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO users (name, phone, email, password, image) VALUES (?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $value['name']);
     $stmt->bindParam(2, $value['phone']);
     $stmt->bindParam(3, $value['email']);
@@ -25,7 +25,7 @@ function createUser($value)
 function selectAllUser()
 {
     $db = db();
-    $stmt = $db->prepare("SELECT * FROM marina");
+    $stmt = $db->prepare("SELECT * FROM users");
     return $stmt->fetchAll();
 }
 
@@ -36,7 +36,7 @@ function selectOneUser($id)
 {
     $db = db();
 
-    $stmt = $db->prepare("SELECT * FROM marina WHERE id = ?");
+    $stmt = $db->prepare("SELECT * FROM users WHERE id = ?");
     $stmt->bindParam(1, $id);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -49,7 +49,7 @@ function deleteUserById($id)
 {
     $db = db();
 
-    $stmt = $db->prepare("DELETE FROM marina WHERE id = ?");
+    $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
     $stmt->bindParam(1, $id);
     $stmt->execute();
     return true;
@@ -62,7 +62,7 @@ function updateUser($id, $newname, $newphone, $newemail, $newpassword)
 {
     $db = db();
 
-    $stmt = $db->prepare("UPDATE marina SET name = ?, phone = ?, email = ?, password = ? WHERE id = ?");
+    $stmt = $db->prepare("UPDATE users SET name = ?, phone = ?, email = ?, password = ? WHERE id = ?");
 
     $stmt->bindParam(1, $newname);
     $stmt->bindParam(2, $newphone);
