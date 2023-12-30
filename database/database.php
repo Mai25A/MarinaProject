@@ -1,9 +1,17 @@
 <?php
 
-$hostname = "localhost";
-$database = "marina";
-$username = "marina";
-$password = "marina";
 
-$dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
-$connection = new PDO($dsn, $username, $password);
+  $hostname = "localhost";
+  $database = "marina";
+  $username = "root";
+  $password = "";
+
+
+  try 
+  {
+    $connection = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+        // set the PDO error mode to exception
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+  }

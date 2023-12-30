@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-center main_footer">
             <div class="col-5 mt-3 ms-3">
                 <a href="" id="logo">
-                    <img class="ms-5 footer_logo" src="http://localhost:3000/php_course/MARINA/example/asset/Logo.png" alt="logo">
+                    <img class="ms-5 footer_logo" src="../../asset/Logo.png" alt="logo">
                 </a>
                 <p class="mt-2 ms-5">Your satisfaction is our pleasure</p>
             </div>
