@@ -8,6 +8,8 @@
       <a class="<?= urlIs('/') ? 'active bg-dark text-white' : '' ?> nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       <a class="<?= urlIs('/post') ? 'active bg-dark text-white' : '' ?> nav-link" href="/post">Post</a>
       <a class="<?= urlIs('/project') ? 'active bg-dark text-white' : '' ?> nav-link" href="/project">Project</a>
+      <a class="<?= urlIs('/delete') ? 'active bg-dark text-white' : '' ?> nav-link" href="/menuManagement"></a>
+
     </div>
   </div>
 </nav>
