@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $description = $_POST['description'];
 
         $create = createMenuManagement($name, $image, $price, $description);
+        header("location: menu.admin.controller.php");
 
         if ($create) {
             //Thêm thành công
@@ -23,4 +24,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-require_once("../../views/menu/create.menuManagement.view.php");
+require_once("../../controllers/menu/create.admin.controller.php");
