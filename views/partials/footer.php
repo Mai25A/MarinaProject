@@ -1,4 +1,4 @@
-<?php require_once('../../views/css/footer.css.php'); ?>
+<?php require_once dirname(dirname(__FILE__)).('../css/footer.css.php'); ?>
 
 <body>
     <div class="mt-5 text-white footer">
@@ -26,7 +26,7 @@
         </div>
 
         <div class="d-flex justify-content-between mt-5">
-            <p class="col-9 ms-4">© 2020 Zero Inc. All rights Reserved</p>
+            <p class="col-9 ms-5">© 2020 Zero Inc. All rights Reserved</p>
             <div class=" row col-3 align-items-center icon">
                 <i class="col-2 fa fa-instagram" aria-hidden="true"></i>
                 <i class="col-2 fa fa-facebook"></i>

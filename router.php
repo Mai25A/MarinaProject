@@ -2,17 +2,15 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
-    '/' => 'controllers/home/index.controller.php',
+    '/start-code/' => 'controllers/home/index.controller.php',
+    '/post/user/create' => 'controller/post/user/post.create.controller.php',
+    '/post/user/edit' => 'controller/post/user/post.edit.controller.php',
+    '/post/user/detele' => 'controller/post/usre/post.detele.controller.php'
     '/post' => 'controllers/post/post.controller.php',
     '/project' => 'controllers/project/project.controller.php',
     '/admin_table' => 'controllers/tables/table.admin.cotroller.php',
+    '/' => 'controllers/home/index.controller.php',
 ];
 
-if (array_key_exists($uri, $routes)) {
-    require $routes[$uri];
-} else {
-   http_response_code(404);
-   require 'views/errors/404.php';
-   die();
-}
+
 

@@ -1,6 +1,6 @@
 <?php
-require_once('../../views/partials/head.php');
-require_once('../../views/css/body.css.php');
+require_once ('../../views/partials/head.php');
+require_once ('../../views/css/body.css.php');
 ?>
 
 
@@ -28,14 +28,14 @@ require_once('../../views/css/body.css.php');
         <div class="row List_body1">
             <div class="images_body row mt-5">
                 <div class="Image-1 col-6">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/Image_1.png" alt="">
+                    <img src="../../asset/Image_1.png" alt="">
                 </div>
                 <div class="col-6">
                     <div class="Image-2">
-                        <img src="http://localhost:3000/php_course/MARINA/example/asset/Image_2.png" alt="">
+                        <img src="../../asset/Image_2.png" alt="">
                     </div>
                     <div class="Image-3 mt-2">
-                        <img src="http://localhost:3000/php_course/MARINA/example/asset/Image_3.png" alt="">
+                        <img src="../../asset/Image_3.png" alt="">
                     </div>
                 </div>
             </div>
@@ -49,10 +49,10 @@ require_once('../../views/css/body.css.php');
             </div>
             <div class="list_img row">
                 <div class="img_foods1 col-4">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/foods4.png" alt="">
+                    <img src="../../asset/foods4.png" alt="">
                 </div>
                 <div class="img_foods5 col-4">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/foods5.png" alt="">
+                    <img src="../../asset/foods5.png" alt="">
                 </div>
                 <div class="paragrap_foods col-4">
                     <p><strong>Exquisite Salmon Delicacies</strong></p>
@@ -63,13 +63,13 @@ require_once('../../views/css/body.css.php');
             </div>
             <div class="row">
                 <div class="img_foods1 col-4 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/foods.png" alt="">
+                    <img src="../../asset/foods.png" alt="">
                 </div>
                 <div class="img_foods2 col-4 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/foods2.png" alt="">
+                    <img src="../../asset/foods2.png" alt="">
                 </div>
                 <div class="img_foods3 col-4 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/foods3.png" alt="">
+                    <img src="../../asset/foods3.png" alt="">
                 </div>
             </div>
         </div>
@@ -83,24 +83,25 @@ require_once('../../views/css/body.css.php');
             </div>
             <div class="list_img row">
                 <div class="img_fruits1 col-4">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/fruit1.png" alt="">
+                    <img src="../../asset/fruit1.png" alt="">
                 </div>
                 <div class="img_fruits2 col-4">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/fruits3.jpg" alt="">
+                    <img src="../../asset/fruits3.jpg" alt="">
                 </div>
                 <div class=" paragrap_fruits col-4">
                     <p>Fresh and refreshing fruits - bringing you a colorful and nutritious experience on our website.
                     </p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4 mt-2">
+            <div class="list_img row">
+                <div class="col-4 ">
                 </div>
+
                 <div class="img_fruits3 col-4 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/fruit4.png" alt="">
+                    <img src="../../asset/fruit4.png" alt="">
                 </div>
                 <div class="img_fruits4 col-4 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/fruit2.png" alt="">
+                    <img src="../../asset/fruit2.png" alt="">
                 </div>
             </div>
         </div>
@@ -108,13 +109,13 @@ require_once('../../views/css/body.css.php');
         <div class="List_body_drinks row">
             <div class="tittle_body2 row">
                 <div class="tittle_paragrap4">
-                    <h5>INDULGE IN THE EXQUISITE FLAVORS OF REFRESHING BEVERAGES ON OUR WEBSITE</h5>
+                    <h5>ENJOY THE GREAT TASTE OF BEER AND WINE ON OUR WEBSITE</h5>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class=" img_drink2 col-6 mt-2">
                     <div>
-                        <img src="http://localhost:3000/php_course/MARINA/example/asset/wine1.png" alt="">
+                        <img src="../../asset/wine1.png" alt="">
                     </div>
                     <div>
                         <p>Our website is a great destination for wine lovers, where you can discover exquisite wines
@@ -125,7 +126,7 @@ require_once('../../views/css/body.css.php');
                     </div>
                 </div>
                 <div class="img_drink3 col-6 mt-2">
-                    <img src="http://localhost:3000/php_course/MARINA/example/asset/louis-hansel.jpg" alt="">
+                    <img src="../../asset/louis-hansel.jpg" alt="">
                 </div>
             </div>
         </div>
