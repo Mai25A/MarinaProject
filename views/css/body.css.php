@@ -4,16 +4,20 @@
         justify-content: center;
         margin-top: 100px;
     }
-
+    .images_body{
+        margin-left: 20px
+    }
     .Image-1 img {
         width: 600px;
         height: 500px;
     }
 
     .Image-2 img {
-        margin-left: 50px;
+        margin-right: 100px;
         width: 300px;
         height: 240px;
+        /* margin: 0px 0px 0px -5px; */
+
     }
 
     .Image-3 img {
@@ -43,23 +47,23 @@
     }
 
     .list_img {
-        margin-top: 80px;
+        margin-top: 20px;
     }
 
     .img_foods2 img {
-        margin: 0px 0px 0px -30px;
+        margin: 0px 0px 0px -90px;
     }
 
     .img_foods5 img {
-        margin: 0px 0px 0px -30px;
+        margin: 0px 0px 0px -90px;
     }
 
     .img_foods3 img {
-        margin: 0px 0px 0px -60px;
+        margin: 0px 0px 0px -180px;
     }
 
     .paragrap_foods {
-        margin: 40px 0px 0px -30px;
+        margin: 40px 0px 0px -60px;
     }
 
     .tittle_paragrap4 h5 {
@@ -76,15 +80,15 @@
     }
 
     .img_fruits2 {
-        margin: 0px 0px 0px -30px;
+        margin: 0px 0px 0px -90px;
     }
 
     .img_fruits3 {
-        margin: 0px 0px 0px -30px;
+        margin: 0px 0px 0px -90px;
     }
 
     .img_fruits4 {
-        margin: 0px 0px 0px -30px;
+        margin: 0px 0px 0px -90px;
     }
 
     .paragrap_fruits {

@@ -1,6 +1,6 @@
 <?php
-require_once('../../views/partials/head.php');
-require_once('../../views/css/body.css.php');
+require_once ('../../views/partials/head.php');
+require_once ('../../views/css/body.css.php');
 ?>
 
 
@@ -93,9 +93,10 @@ require_once('../../views/css/body.css.php');
                     </p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4 mt-2">
+            <div class="list_img row">
+                <div class="col-4 ">
                 </div>
+
                 <div class="img_fruits3 col-4 mt-2">
                     <img src="../../asset/fruit4.png" alt="">
                 </div>
@@ -108,7 +109,7 @@ require_once('../../views/css/body.css.php');
         <div class="List_body_drinks row">
             <div class="tittle_body2 row">
                 <div class="tittle_paragrap4">
-                    <h5>INDULGE IN THE EXQUISITE FLAVORS OF REFRESHING BEVERAGES ON OUR WEBSITE</h5>
+                    <h5>ENJOY THE GREAT TASTE OF BEER AND WINE ON OUR WEBSITE</h5>
                 </div>
             </div>
             <div class="row mt-5">

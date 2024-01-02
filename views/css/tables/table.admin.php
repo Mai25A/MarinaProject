@@ -15,4 +15,9 @@
      justify-content: center;
      align-items: center;
   } */
+  .action{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 </style>

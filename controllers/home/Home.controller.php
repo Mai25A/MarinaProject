@@ -1,5 +1,2 @@
 <?php
-
-$heading = "Home Page";
-
-require_once ("../../views/home/Body-Home.php");
+require_once (dirname(dirname(__DIR__)) ."../../views/home/Body-Home.view.php");
