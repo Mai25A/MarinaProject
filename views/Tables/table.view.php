@@ -1,7 +1,6 @@
 <?php
 require_once('../../views/partials/head.php');
 require_once('../../views/css/tables/table.css.php');
-print_r($tables);
 ?>
 
 <body>
@@ -10,65 +9,75 @@ print_r($tables);
             <div class="col-md-6 button_con">
                 <div class="col-md-3">
                     <button type="button" class="btn_type custom-button normal" aria-label="Close"
-                        onclick="redirectToURL('normal')">Normal tables</button>
+                        onclick="redirectToTableType('normal')">Normal tables</button>
                 </div>
-
                 <div class="col-md-3">
                     <button type="button" class="btn_type custom-button room" aria-label="Close"
-                        onclick="redirectToURL('room')">Private rooms</button>
+                        onclick="redirectToTableType('room')">Private rooms</button>
                 </div>
-
                 <script>
-                    function redirectToURL(type) {
-                        var selectElement = document.querySelector('.form-select');
-                        var quantity = selectElement.value;
+                    function redirectToTableType(type) {
+                        var currentUrl = window.location.href;
+                        var parameterPrefix = currentUrl.includes('?') ? '&' : '?';
+                        var newUrl;
+                        if (currentUrl.includes('type=')) {
+                            newUrl = currentUrl.replace(/(type=)[^\&]+/, `$1${encodeURIComponent(type)}`);
+                        } else {
+                            newUrl = currentUrl + parameterPrefix + 'type=' + encodeURIComponent(type);
+                        }
 
-                        var url = '?type=' + encodeURIComponent(type)+ '&number_of_seat=' + encodeURIComponent(quantity);
+                        window.location.href = newUrl;
 
-                        window.location.href = url;
                     }
                 </script>
             </div>
             <div class="col-md-6 select_cus">
-                <?php if (isset($_GET['type'])) {
+                <?php if (isset($_GET['type']) && $_GET['type'] != null) {
+                    echo $_GET['type'];
                     if ($_GET['type'] == 'normal') { ?>
-                        <select class="form-select custom-button" aria-label="Default select example" onchange="redirectToQuantity(this.value)">
+                        <select class="form-select custom-button" aria-label="Default select example"
+                            onchange="redirectToQuantity(this.value)">
                             <option selected>Quantity</option>
-                            <option value="1">2 Customers</option>
-                            <option value="2">5 Customers</option>
-                            <option value="3">10 Customers</option>
-                            <option value="4">15 Customers</option>
+                            <option value="2">2 Customers</option>
+                            <option value="5">5 Customers</option>
+                            <option value="10">10 Customers</option>
+                            <option value="15">15 Customers</option>
                         </select>
                     <?php } else if ($_GET['type'] == 'room') { ?>
-                            <select class="form-select custom-button" aria-label="Default select example" onchange="redirectToQuantity(this.value)">
+                            <select class="form-select custom-button" aria-label="Default select example"
+                                onchange="redirectToQuantity(this.value)">
                                 <option selected>Quantity</option>
-                                <option value="5">10 Customers</option>
-                                <option value="6">15 Customers</option>
-                                <option value="7">20 Customers</option>
+                                <option value="10">10 Customers</option>
+                                <option value="15">15 Customers</option>
+                                <option value="20">20 Customers</option>
                             </select>
                     <?php }
-                } else { ?>
-                    <select class="form-select custom-button" aria-label="Default select example" onchange="redirectToQuantity(this.value)">
+                } else { 
+                    echo "onn";?>
+                    
+                    <select class="form-select custom-button" aria-label="Default select example"
+                        onchange="redirectToQuantity(this.value)">
                         <option selected>Quantity</option>
-                        <option value="1">2 Customers</option>
-                        <option value="2">5 Customers</option>
-                        <option value="3">10 Customers</option>
-                        <option value="4">15 Customers</option>
-                        <option value="5">10 Customers</option>
-                        <option value="6">15 Customers</option>
-                        <option value="7">20 Customers</option>
+                        <option value="2">2 Customers</option>
+                        <option value="5">5 Customers</option>
+                        <option value="10">10 Customers</option>
+                        <option value="15">15 Customers</option>
+                        <option value="20">20 Customers</option>
+                    </select>
                     <?php } ?>
             </div>
             <script>
                 function redirectToQuantity(quantity) {
-                    var selectElement = document.querySelector('.form-select');
-                    var type = "<?php echo isset($_GET['type']) ? $_GET['type'] : ''; ?>";
-
-                    // Xây dựng URL dựa trên loại và giá trị "quantity" được chọn
-                    var url = '?type=' + encodeURIComponent(<?= $_GET['type'];?>) + '&number_of_seat=' + encodeURIComponent(quantity);
-
-                    // Chuyển hướng đến URL
-                    window.location.href = url;
+                    console.log(quantity);
+                    var currentUrl = window.location.href;
+                    var parameterPrefix = currentUrl.includes('?') ? '&' : '?';
+                    var newUrl;
+                    if (currentUrl.includes('number_of_seat=')) {
+                        newUrl = currentUrl.replace(/(number_of_seat=)[^\&]+/, `$1${encodeURIComponent(quantity)}`);
+                    } else {
+                        newUrl = currentUrl + parameterPrefix + 'number_of_seat=' + encodeURIComponent(quantity);
+                    }
+                    window.location.href = newUrl;
                 }
             </script>
         </div>
@@ -102,11 +111,11 @@ print_r($tables);
                                     <?php echo $table['price']; ?> VND
                                 </p>
                                 <p class="card-text text-center" style="color: red;"><i class="fa fa-heart-o fa-2x""></i></></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>

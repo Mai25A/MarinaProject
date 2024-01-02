@@ -100,11 +100,11 @@ function update_table($id, $name, $image, $table_type_id, $price, $description) 
 //     return $types;
 // }
 
-function get_tables_by_quantity($table_type_id){
+function get_tables_by_quantity($number_of_seat){
     global $connection;
-    $sql = "SELECT * from tables join table_types on tables.table_type_id = table_types.id WHERE table_types.id = :table_type_id";
+    $sql = "SELECT * from tables join table_types on tables.table_type_id = table_types.id WHERE table_types.number_of_seat = :number_of_seat";
     $statement = $connection->prepare($sql);
-    $statement->bindParam(':quantity', $table_type_id);
+    $statement->bindParam(':number_of_seat', $number_of_seat);
     $statement->execute();
     $tables = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $tables;
