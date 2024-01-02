@@ -17,6 +17,8 @@
         t.id AS table_id,
         t.name AS table_name,
         t.image AS table_image,
+        t.price AS table_price,
+        t.table_type_id AS tables_type_id,
         bp.id AS booking_products_id
       FROM
         users u
@@ -46,6 +48,7 @@
       t.id AS table_id,
       t.name AS table_name,
       t.image AS table_image,
+      t.price AS table_price,
       bp.id AS booking_products_id
       FROM
         users u
@@ -57,7 +60,7 @@
         b.id = :bookingId;");
         $statement->bindValue(':bookingId', $bookingId);
         $statement->execute();
-        $booking=$statement->fetch(PDO::FETCH_ASSOC);
+        $booking=$statement->fetchAll(PDO::FETCH_ASSOC);
       return $booking;
   }
 

@@ -24,7 +24,7 @@ include("../../views/css/bookings/booking.admin.css.php");
                     </thead>
                     <tbody>
                         <?php foreach ($bookings as $booking): ?>
-                            <tr style="text-align:center;">
+                            <tr class="bs" style="text-align:center;">
                                 <td>
                                     <?= $booking['booking_products_id'] ?>
                                 </td>
@@ -47,7 +47,7 @@ include("../../views/css/bookings/booking.admin.css.php");
                                     <?= $booking['booking_total'] ?>
                                 </td>
                                 <td>
-                                    <a href="booking.admin.detail.controller.php?booking_id=<?= $booking['booking_id'] ?>" class="border-info rounded-pill detail-link" style="color:#26577C">Detail</a>
+                                    <a href="booking.admin.detail.controller.php?booking_id=<?= $booking['booking_id'] ?>">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
