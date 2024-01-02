@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h4>Total Amount
-            <?= $bookings['booking_total']; ?>
+            <?= $bookings[0]['bp_total_amount']; ?>
         </h4>
 
         <div class="row">
@@ -63,7 +63,7 @@
                             <div class="col-md-8">
                                 <p class="card-text">Name: <?= $booking['product_name']; ?></p>
                                 <p class="card-text">Price: <?= $booking['product_price'];?> VND</p>
-                                <p class="card-text">Quantity: <?= $booking['product_quantity']; ?></p>
+                                <p class="card-text">Quantity: <?= $booking['bp_quantity']; ?></p>
                             </div>
                         </div>
                     </div>

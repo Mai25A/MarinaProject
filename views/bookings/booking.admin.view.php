@@ -44,7 +44,7 @@ include("../../views/css/bookings/booking.admin.css.php");
                                     <?= $booking['datetime'] ?>
                                 </td>
                                 <td>
-                                    <?= $booking['booking_total'] ?>
+                                    <?= $booking['bp_total_amount'] ?>
                                 </td>
                                 <td>
                                     <a href="booking.admin.detail.controller.php?booking_id=<?= $booking['booking_id'] ?>">Detail</a>

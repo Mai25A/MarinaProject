@@ -19,7 +19,9 @@
         t.image AS table_image,
         t.price AS table_price,
         t.table_type_id AS tables_type_id,
-        bp.id AS booking_products_id
+        bp.id AS booking_products_id,
+        bp.quantity AS bp_quantity,
+        bp.total_amount AS bp_total_amount
       FROM
         users u
         INNER JOIN bookings b ON u.id = b.user_id
@@ -49,7 +51,9 @@
       t.name AS table_name,
       t.image AS table_image,
       t.price AS table_price,
-      bp.id AS booking_products_id
+      bp.id AS booking_products_id,
+      bp.quantity AS bp_quantity,
+      bp.total_amount AS bp_total_amount
       FROM
         users u
         INNER JOIN bookings b ON u.id = b.user_id
