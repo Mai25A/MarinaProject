@@ -1,16 +1,20 @@
 <?php
 
 require_once ("../../models/tables.model.php");
-// echo $_GET['type'];
-// $type = get_one_table_types(1)
-if(isset($_GET['type'])){
-    $tables = get_type_table($_GET['type']);
-}else{
 
-   $tables = get_all_tables_type();
-    // print_r($tables);
+if (isset($_GET['type'])) {
+    $types = $_GET['type'];
+    $tables = get_type_table($_GET['type']);
+    if (isset($_GET['table_type_id']) && $_GET['table_type_id'] != 'Quantity') {
+        $tables = get_tables_by_quantity($_GET['table_type_id']); 
+    }
+} elseif (isset($_GET['table_type_id']) && $_GET['table_type_id'] != 'Quantity') {
+    $tables = get_tables_by_quantity($_GET['table_type_id']);
+} else {
+    $tables = get_all_tables_type();
 }
-// print_r($types);
+
+
 
 
 require_once "../../views/Tables/table.view.php"; 

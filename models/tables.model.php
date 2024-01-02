@@ -99,3 +99,13 @@ function update_table($id, $name, $image, $table_type_id, $price, $description) 
 //     $types = $statement->fetchAll(PDO::FETCH_ASSOC);
 //     return $types;
 // }
+
+function get_tables_by_quantity($table_type_id){
+    global $connection;
+    $sql = "SELECT * from tables join table_types on tables.table_type_id = table_types.id WHERE table_types.id = :table_type_id";
+    $statement = $connection->prepare($sql);
+    $statement->bindParam(':quantity', $table_type_id);
+    $statement->execute();
+    $tables = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $tables;
+}
