@@ -6,30 +6,30 @@
 </head>
 
 <body>
-  <form>
+  <form action="../../controllers/login/register.controller.php" method="POST">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-3">
           <label for="lname" class="form-label">Name* </label>
-          <input type="text" class="form-control" id="lname" placeholder="full name">
+          <input type="text" class="form-control" id="lname" placeholder="full name" name="name">
         </div>
         <div class="mb-3">
           <label for="lphone" class="form-label">Phone number*</label>
-          <input type="email" class="form-control" id="lphone" placeholder="Phone Number">
+          <input type="phonenumber" class="form-control" id="lphone" placeholder="Phone Number" name="phone">
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword" class="form-label">Email Address*</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Email Address">
+          <label for="exampleInputEmail" class="form-label">Email Address*</label>
+          <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email Address" name="email">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword" class="form-label">Password*</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Email Address">
+          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
         </div>
         <div class="mb-3">
-        <button type="submit" class="btn btn-primary custom-button">Singup</button>
+        <button type="submit" class="btn custom-button">Singup</button>
         <div>
         <div class="haveAcount">
-          <a href="">Already have an account?</a>
+          <a href="" class="color">Already have an account?</a>
         </div>
       </div>
     </div>
