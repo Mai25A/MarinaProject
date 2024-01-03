@@ -1,11 +1,12 @@
 <?php
 require_once('../../views/partials/head.php');
 require_once('../../views/css/tables/table.css.php');
+    print_r($tables);
 ?>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid bg-light">
+        <div class="row p-5">
             <div class="col-md-6 button_con">
                 <div class="col-md-3">
                     <button type="button" class="btn_type custom-button normal" aria-label="Close"
@@ -33,7 +34,6 @@ require_once('../../views/css/tables/table.css.php');
             </div>
             <div class="col-md-6 select_cus">
                 <?php if (isset($_GET['type']) && $_GET['type'] != null) {
-                    echo $_GET['type'];
                     if ($_GET['type'] == 'normal') { ?>
                         <select class="form-select custom-button" aria-label="Default select example"
                             onchange="redirectToQuantity(this.value)">
@@ -52,9 +52,8 @@ require_once('../../views/css/tables/table.css.php');
                                 <option value="20">20 Customers</option>
                             </select>
                     <?php }
-                } else { 
-                    echo "onn";?>
-                    
+                } else { ?>
+
                     <select class="form-select custom-button" aria-label="Default select example"
                         onchange="redirectToQuantity(this.value)">
                         <option selected>Quantity</option>
@@ -64,7 +63,7 @@ require_once('../../views/css/tables/table.css.php');
                         <option value="15">15 Customers</option>
                         <option value="20">20 Customers</option>
                     </select>
-                    <?php } ?>
+                <?php } ?>
             </div>
             <script>
                 function redirectToQuantity(quantity) {
@@ -81,10 +80,11 @@ require_once('../../views/css/tables/table.css.php');
                 }
             </script>
         </div>
-        <div class="container-fluid box_products d-flex gap-5">
+        <div class="container-fluid box_products">
             <?php foreach ($tables as $table): ?>
-                <div class="row ms-1">
-                    <div class="card list-item" style="width: 25rem; margin-top:48px">
+                <!-- <div class="col-md-3 ms-1 list_tble"> -->
+                <a href="../../controllers/tables/table.detail.controller.php?id=<?= $table['id'] ?>">
+                    <div class="card list-item">
                         <div class="image-item">
                             <img src="<?= $table['image']; ?>" class="card-img-top" alt="...">
                         </div>
@@ -110,11 +110,12 @@ require_once('../../views/css/tables/table.css.php');
                                 <p class="card-text text-end">
                                     <?php echo $table['price']; ?> VND
                                 </p>
-                                <p class="card-text text-center" style="color: red;"><i class="fa fa-heart-o fa-2x""></i></></p>
+                                <p class="card-text text-center"><i class="fa fa-heart-o fa-2x""></i></></p>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                <!-- </div> -->
             <?php endforeach; ?>
         </div>
     </div>
