@@ -11,5 +11,14 @@
     }
     .custom-button{
         width: 440px;
+        border-radius: 20px;
+        background-color: 26577C;
+        color:white;
+    }
+    .form-control{
+        border-radius: 20px;
+    }
+    .color{
+        color:black;
     }
 </style>
