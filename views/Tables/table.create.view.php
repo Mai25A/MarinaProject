@@ -49,31 +49,31 @@ include_once("../../views/partials/head.php");
     </select>
   </div>
   <script>
-  // Lắng nghe sự kiện thay đổi của trường "Type"
-  var typeSelect = document.getElementById('category');
-  var seatsGroup = document.getElementById('seat-group');
-  var normalSeatsSelect = document.getElementById('normal-seats');
-  var roomSeatsSelect = document.getElementById('room-seats');
+    // Lắng nghe sự kiện thay đổi của trường "Type"
+    var typeSelect = document.getElementById('category');
+    var seatsGroup = document.getElementById('seat-group');
+    var normalSeatsSelect = document.getElementById('normal-seats');
+    var roomSeatsSelect = document.getElementById('room-seats');
 
-  typeSelect.addEventListener('change', function() {
-    if (typeSelect.value === 'normal') {
-      // Nếu lựa chọn là "Normal Table", hiển thị trường "Number of Seats" cho bàn thông thường
-      seatsGroup.style.display = 'block';
-      normalSeatsSelect.style.display = 'block';
-      roomSeatsSelect.style.display = 'none';
-    } else if (typeSelect.value === 'room') {
-      // Nếu lựa chọn là "Private Room", hiển thị trường "Number of Seats" cho phòng riêng
-      seatsGroup.style.display = 'block';
-      normalSeatsSelect.style.display = 'none';
-      roomSeatsSelect.style.display = 'block';
-    } else {
-      // Nếu không có lựa chọn nào được chọn, ẩn trường "Number of Seats"
-      seatsGroup.style.display = 'none';
-      normalSeatsSelect.style.display = 'none';
-      roomSeatsSelect.style.display = 'none';
-    }
-  });
-</script>
+    typeSelect.addEventListener('change', function () {
+      if (typeSelect.value === 'normal') {
+        // Nếu lựa chọn là "Normal Table", hiển thị trường "Number of Seats" cho bàn thông thường
+        seatsGroup.style.display = 'block';
+        normalSeatsSelect.style.display = 'block';
+        roomSeatsSelect.style.display = 'none';
+      } else if (typeSelect.value === 'room') {
+        // Nếu lựa chọn là "Private Room", hiển thị trường "Number of Seats" cho phòng riêng
+        seatsGroup.style.display = 'block';
+        normalSeatsSelect.style.display = 'none';
+        roomSeatsSelect.style.display = 'block';
+      } else {
+        // Nếu không có lựa chọn nào được chọn, ẩn trường "Number of Seats"
+        seatsGroup.style.display = 'none';
+        normalSeatsSelect.style.display = 'none';
+        roomSeatsSelect.style.display = 'none';
+      }
+    });
+  </script>
   <!-- 
 <script>
     var urlParams = new URLSearchParams(window.location.search);
