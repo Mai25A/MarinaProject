@@ -93,8 +93,16 @@ function delete_table($id)
 function update_table($id, $name, $image, $table_type_id, $price, $description)
 {
     global $connection;
-    if (isset($id)) {
-        $statement = $connection->prepare("UPDATE tables SET name = :name, image = :image, table_type_id = :table_type_id, price = :price, description = :description WHERE id = :id;");
+    
+    // Check if $id is set and valid
+    if (!isset($id) || !is_numeric($id)) {
+        return false;
+    }
+
+    // Validate other input parameters as needed
+    
+    try {
+        $statement = $connection->prepare("UPDATE tables SET name = :name, image = :image, table_type_id = :table_type_id, price = :price, description = :description WHERE id = :id");
         $statement->bindParam(":name", $name);
         $statement->bindParam(":image", $image);
         $statement->bindParam(":table_type_id", $table_type_id);
@@ -102,10 +110,20 @@ function update_table($id, $name, $image, $table_type_id, $price, $description)
         $statement->bindParam(":description", $description);
         $statement->bindParam(":id", $id);
         $statement->execute();
-        return true;
+
+        // Check if any rows were affected
+        if ($statement->rowCount() > 0) {
+            return true;
+        }
+
+        // No rows affected, possibly the ID doesn't exist
+        return false;
+    } catch (PDOException $e) {
+        // Handle the exception as needed
+        return false;
     }
-    return false;
 }
+
 // //Lay 1 type cua 1 table
 // function get_one_type_table($type){
 //     global $connection;
