@@ -9,6 +9,24 @@ function get_all_menu()
     $menu = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $menu;
 }
+function get_one_menu($id)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM products WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    $menu = $statement->fetch(PDO::FETCH_ASSOC);
+    return $menu;
+}
+
+function getMenuByCategory($categoryId)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM products WHERE category_id = :category_id");
+    $statement->bindParam(':category_id', $categoryId);
+    $statement->execute();
+    $menu = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $menu;
+}
 
 function createMenuManagement( $name, $image, $price, $description)
 {

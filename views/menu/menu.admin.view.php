@@ -3,7 +3,6 @@ require_once('../../views/partials/head.php');
 include_once('../../views/css/menu/menu.admin.css.php');
 include('../../controllers/menu/menu.admin.controller.php')
 ?>
-
 <form action="" method="POST">
     <div class="container p-4">
         <div class="d-flex p-2">
@@ -46,5 +45,4 @@ include('../../controllers/menu/menu.admin.controller.php')
         </div>
     </div>
 </form>
-
 <?php require_once('../../views/partials/footer.php'); ?>
