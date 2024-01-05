@@ -1,52 +1,42 @@
 <style>
-    .container-fluid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 50px;
-        margin-top: 10px;
-        padding: 10px; 
+    body {
+        width: 100vw;
+        overflow-x: hidden;
     }
-
+    .container-fluid {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        width: 400px;
-        height: 400px;
         text-align: center;
-        font-family: arial;
+        font-family: Arial, sans-serif;
         border-radius: 10px;
         overflow: hidden;
-        margin-right: 10px;
+        margin-bottom: 20px;
+        width: 450px;
+        height: auto;
     }
-
-    .card:last-child {
-        margin-right: 0;
-    }
-    
     .card-image img {
-        width: 400px;
+        width: 450px;
         height: 300px;
         object-fit: cover;
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
     }
-
     .card-body {
         padding: 10px;
     }
-
     .title {
         display: flex;
-        gap: 30px;
         justify-content: center;
-        font-size: 30px;
-        padding: 30px;
+        font-size: 24px;
+        padding: 20px;
     }
-
     .underline {
         text-decoration: none;
         color: black;
+        transition: color 0.2s;
     }
-
     .underline:hover {
         color: red;
     }
@@ -56,5 +46,6 @@
         color: black;
         font-size: 24px;
         background-color: white;
+        cursor: pointer;
     }
 </style>
