@@ -101,7 +101,7 @@ print_r($tables);
                                 <p class="card-text text-end">
                                     <?php echo $table['price']; ?> VND
                                 </p>
-                                <p class="card-text text-center" style="color: red;"><i class="fa fa-heart-o fa-2x""></i></></p>
+                                <p class="card-text text-center" style="color: red;"><i class="fa fa-heart-o fa-2x"></i></></p>
                     </div>
                 </div>
             </div>
