@@ -79,7 +79,7 @@ require_once('../../views/css/tables/table.css.php');
         </div>
         <div class="row box_products d-flex flex-wrap mt-2">
             <?php foreach ($tables as $table): ?>
-                <div class="card-item-tb col-md-4">
+                <div class="card-item-tb col-md-4 mt-4">
                     <a href="../../controllers/tables/table.detail.controller.php?id=<?= $table['id'] ?>">
                         <div class="card list-item">
                             <div class="image-item">

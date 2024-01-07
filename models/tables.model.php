@@ -39,10 +39,10 @@ function get_one_table($id)
     tp.type,
     tp.number_of_seat
     FROM tables t
-    INNER JOIN table_types tp ON t.table_type_id = tp.id; WHERE t.id = :id");
+    INNER JOIN table_types tp ON t.table_type_id = tp.id WHERE t.id = :id;");
     $statement->execute([':id' => $id]);
-    $tables = $statement->fetch(PDO::FETCH_ASSOC);
-    return $tables;
+    $table = $statement->fetch(PDO::FETCH_ASSOC);
+    return $table;
 }
 function get_type_table($type)
 {
