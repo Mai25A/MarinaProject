@@ -4,8 +4,8 @@
     
   }
   .image {
-    width: 400px;
-    height: 300px;
+    width: 450px;
+    height: 350px;
     border-radius: 10px;
   }
   .right{

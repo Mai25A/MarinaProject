@@ -16,5 +16,4 @@ if (isset($_GET['id_update'])) {
     // echo $id;
     update_table($id,$name,$img,$table_type_id,$price,$description);
     header("Location: table.admin.controller.php");
-
 }

@@ -12,13 +12,13 @@ print_r($table);
             </div>
             <div class="col-lg-7">
                 <div class="row name_price">
-                        <h3 class="col-8">
-                            <?php echo $table['name']; ?>
-                        </h3>
-                        <h4 class="col-4 price">
-                            <?php echo $table['price']; ?> VND
-                        </h4>
-                    
+                    <h3 class="col-8">
+                        <?php echo $table['name']; ?>
+                    </h3>
+                    <h4 class="col-4 price">
+                        <?php echo $table['price']; ?> VND
+                    </h4>
+
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -52,20 +52,22 @@ print_r($table);
                 <div class="row">
                     <div class="col-12">
                         <h4>Description:</h4>
-                        <p><?php echo $table['description']; ?></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <button class="btn btn-primary">Booking now</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-secondary">Choose menu</button>
+                        <p>
+                            <?php echo $table['description']; ?>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="list_menu">
+        <div class="row d-flex justify-content-center bg-primary btn_chosen">
+            <div class="col-6 d-flex justify-content-center">
+                <button class="btn btn-primary">Booking now</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button class="btn btn-secondary">Choose menu</button>
+            </div>
+        </div>
+        <div class="row list_menu">
 
         </div>
     </div>

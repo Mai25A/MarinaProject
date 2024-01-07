@@ -1,8 +1,8 @@
 <?php
 require_once('../../views/partials/head.php');
 require_once('../../views/css/tables/table.css.php');
-print_r($tables);
 ?>
+
 <body>
     <div class="container-fluid tb-container">
         <div class="row">
@@ -110,7 +110,7 @@ print_r($tables);
                                         <?php echo $table['price']; ?> VND
                                     </p>
                                     <p class="card-text text-center"><i class="fa fa-heart-o fa-2x""></i></></p>
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </a>

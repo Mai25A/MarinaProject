@@ -1,79 +1,34 @@
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
+    .mb-3{
+        padding-left: 30px;
+        width: 470px;
+        padding-top: 10px;
+        font-weight: bold;
     }
-
-    form {
-        width: 300px;
-        height: 500px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: white;
-    }
-
-    h2 {
+    .Forgot{
+        padding: 10px;
         text-align: center;
     }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
+    .custom-button{
+        width: 440px;
+        border-radius: 20px;
+        background-color: 26577C;
+        color:white;
     }
-
-    input[type="email"],
-    input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
+    .form-control{
         border-radius: 20px;
     }
 
-    input[type="checkbox"] {
-        margin-right: 5px;
+    .fcolor{
+        color:26577C;
     }
-
-    div.checkbox {
-        margin-bottom: 10px;
+    .rcolor{
+        color:black;
     }
-
-    input[type="submit"] {
-        margin-top: 10px;
-        width: 100%;
-        padding: 8px;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
+    .register{
+        color:26577C;
     }
-
-    hr {
-        margin: 20px 0;
-        border: none;
-        border-top: 1px solid #ccc;
-    }
-
-    p {
+    .Register{
         text-align: center;
-    }
-
-    button {
-        width: 170px;
-        display: flex;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-    }
-
-    a {
-        text-decoration: none;
-        color: #3b5998;
     }
 </style>

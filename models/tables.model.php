@@ -29,7 +29,7 @@ function get_tables()
 function get_one_table($id)
 {
     global $connection;
-    $statement = $connection->prepare("SELECT SELECT t.id,
+    $statement = $connection->prepare("SELECT t.id,
     t.name,
     t.image,
     t.table_type_id,
