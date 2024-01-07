@@ -3,7 +3,6 @@ require_once '../../views/partials/head.php';
 require_once '../../views/css/menu.css.php';
 require_once '../../controllers/menu/menu.controller.php';
 ?>
-
 <div class="container">
     <?php foreach ($menu as $value) {
         if ($value['category_id'] == 3) { ?>
@@ -17,5 +16,4 @@ require_once '../../controllers/menu/menu.controller.php';
     <?php }
     } ?>
 </div>
-
 <?php require_once '../../views/partials/footer.php'; ?>
