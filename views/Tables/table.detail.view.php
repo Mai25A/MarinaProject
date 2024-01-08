@@ -181,18 +181,25 @@ include("../../views/css/tables/table.detail.php");
                 });
             });
             document.addEventListener("DOMContentLoaded", function () {
-                var minusBtn = document.querySelector(".minus-btn");
-                var plusBtn = document.querySelector(".plus-btn");
-                var input = document.querySelector("input[name='quantity']");
+                var minusBtns = document.querySelectorAll(".minus-btn");
+                var plusBtns = document.querySelectorAll(".plus-btn");
+                var inputs = document.querySelectorAll("input[name='quantity']");
 
-                minusBtn.addEventListener("click", function () {
-                    input.value = parseInt(input.value) - 1;
-                    if (input.value < 1) {
-                        input.value = 1;
-                    }
+                minusBtns.forEach(function (minusBtn, index) {
+                    minusBtn.addEventListener("click", function () {
+                        var input = inputs[index];
+                        input.value = parseInt(input.value) - 1;
+                        if (input.value < 1) {
+                            input.value = 1;
+                        }
+                    });
                 });
-                plusBtn.addEventListener("click", function () {
-                    input.value = parseInt(input.value) + 1;
+
+                plusBtns.forEach(function (plusBtn, index) {
+                    plusBtn.addEventListener("click", function () {
+                        var input = inputs[index];
+                        input.value = parseInt(input.value) + 1;
+                    });
                 });
             });
         </script>
