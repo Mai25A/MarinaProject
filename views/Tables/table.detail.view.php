@@ -84,14 +84,14 @@ include("../../views/css/tables/table.detail.php");
                             <div class="col-7">
                                 <h5 class="card-title">
                                     <?php $name = $product['name'];
-                                    $maxLength = 20;
+                                    $maxLength = 10;
                                     if (strlen($name) > $maxLength) {
                                         $name = substr($name, 0, $maxLength) . '...';
                                     }
                                     echo $name; ?>
                                 </h5>
                                 <p class="card-text">
-                                    <? $product['price']; ?> VND
+                                    <?php echo $product['price']; ?> VND
                                 </p>
                             </div>
                             <div class="col-5 check_qty">
@@ -99,10 +99,10 @@ include("../../views/css/tables/table.detail.php");
                                     <input class="form-check-input" name="chosen_dish[]" type="checkbox" value=""
                                         id="checked">
                                 </div>
-                                <div class="d-flex quantity">
-                                    <button class="col-3 minus-btn">-</button>
-                                    <input class="col-3" name="quantity" type="text" value="1" />
-                                    <button class="col-3 plus-btn">+</button>
+                                <div class="d-flex quantity_bx">
+                                    <button class="col-2 minus-btn">-</button>
+                                    <input class="col-4" name="quantity" id="qty" type="number" value="1" />
+                                    <button class="col-2 plus-btn">+</button>
                                 </div>
                             </div>
                         </div>
@@ -170,6 +170,17 @@ include("../../views/css/tables/table.detail.php");
             checkCurrentType();
             updateActiveButton();
             document.addEventListener("DOMContentLoaded", function () {
+                var quantityInput = document.getElementById("qty");
+
+                quantityInput.addEventListener("change", function () {
+                    var value = parseInt(quantityInput.value);
+
+                    if (isNaN(value) || value < 1) {
+                        quantityInput.value = 1;
+                    }
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function () {
                 var minusBtn = document.querySelector(".minus-btn");
                 var plusBtn = document.querySelector(".plus-btn");
                 var input = document.querySelector("input[name='quantity']");
@@ -180,7 +191,6 @@ include("../../views/css/tables/table.detail.php");
                         input.value = 1;
                     }
                 });
-
                 plusBtn.addEventListener("click", function () {
                     input.value = parseInt(input.value) + 1;
                 });
