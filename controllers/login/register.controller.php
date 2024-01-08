@@ -9,6 +9,7 @@ require '../../models/login/register.model.php';
             $password = $_POST['password'];
     
             $save = saveUser($name, $phone, $email, $password);
+            header("location: Body-Home.view.php");
             if ($save) {
                 //Thêm thành công
                 echo "Menu created successfully";

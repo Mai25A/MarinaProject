@@ -36,7 +36,7 @@ include('../../controllers/menu/menu.admin.controller.php')
                             <td><?= $value['category_id'] ?></td>
                             <td>
                                 <a href="../../views/menu/menu.admin.update.view.php?id=<?= $value['id'] ?>" class="btn btn-primary btn-lg"><i class="fa fa-pencil"></i></a>
-                                <a href="../../controllers/menu/menu.delete.controller.php?action=delete&id=<?= $value['id'] ?>" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i></a>
+                                <a href="../../controllers/menu/menu.delete.controller.php?action=delete&id=<?= $value['id'] ?>" class="btn btn-danger btn-lg mt-2"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

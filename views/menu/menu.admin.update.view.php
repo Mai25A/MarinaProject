@@ -6,7 +6,6 @@ $product = getProductById($id);
 ?>
 <form action="../../controllers/menu/menu.update.controller.php" method="post">
 <input type="hidden" name="id" value="<?=$id?>">
-
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" name="name" value="<?= isset($product['name']) ? $product['name'] : '' ?>">

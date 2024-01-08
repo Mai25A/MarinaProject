@@ -1,6 +1,5 @@
 <?php
 include("../../database/database.php");
-
 function get_all_menu()
 {
     global $connection;
@@ -9,15 +8,6 @@ function get_all_menu()
     $menu = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $menu;
 }
-function get_one_menu($id)
-{
-    global $connection;
-    $statement = $connection->prepare("SELECT * FROM products WHERE id = :id");
-    $statement->execute([':id' => $id]);
-    $menu = $statement->fetch(PDO::FETCH_ASSOC);
-    return $menu;
-}
-
 function getMenuByCategory($categoryId)
 {
     global $connection;
@@ -27,12 +17,11 @@ function getMenuByCategory($categoryId)
     $menu = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $menu;
 }
-
-function createMenuManagement( $name, $image, $price, $description)
+function createMenuManagement( $name, $image,$category_id, $price, $description)
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO products (name, image, category_id, price, description) VALUES (?, ?, NULL, ?, ?)");
-    $createMenu = $statement->execute([$name, $image, $price, $description]);
+    $statement = $connection->prepare("INSERT INTO products (name, image, category_id, price, description) VALUES (?, ?, ?, ?, ?)");
+    $createMenu = $statement->execute([$name, $image, $category_id, $price, $description]);
     return $createMenu;
 }
 function delete_dish($id){
@@ -75,5 +64,12 @@ function getProductById($id)
         return $products;
 
 }
-
+function get_one_user($id)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
+}
 ?>
