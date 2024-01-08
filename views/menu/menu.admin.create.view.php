@@ -20,18 +20,14 @@ require '../../views/partials/head.php';
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="seat-group">
                 <label for="category">Category:</label>
-                <textarea class="form-control" id="Category" name="category"></textarea>
-            </div>
-            <!-- <div class="form-group" id="seat-group">
-                <label for="category">Category:</label>
-                <select class="form-control" id="normal-seats" name="category">
+                <select class="form-control" id="normal-seats" name="category_id">
                     <option value="1">Seafood</option>
                     <option value="2">fruits</option>
                     <option value="3">drink</option>
                 </select>
-            </div> -->
+            </div>
             <div class="form-group">
                 <div class="d-flex p-2">
                     <button type="submit" class="btn btn-primary">Add</button>
