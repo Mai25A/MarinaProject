@@ -10,14 +10,12 @@ require '../../models/login/register.model.php';
     
             $save = saveUser($name, $phone, $email, $password);
             if ($save) {
-                //Thêm thành công
-                echo "Menu created successfully";
+                require "../../views/home/Body-Home.view.php";
+                
             } else {
-                //Lỗi khi thêm
                 echo "Failed to create register";
             }
         } else {
-            //Thiếu dữ liệu
             echo "Missing data";
         }
     exit;

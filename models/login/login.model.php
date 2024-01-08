@@ -1,8 +1,25 @@
 <?php 
-require '../../views/home/Body-Home.view.php';
+require_once '../../database/database.php';
 
-if (isset($_POST['submit'])) {
-    $pass = ($_POST["password"]);
-    $email = ($_POST["email"]);
-    $check = ($_POST['remember']);
+function loginUser($email, $password) {
+  global $connection;
+
+  try {
+      $query = "SELECT * FROM users (email, password) VALUES (:email, :password)";
+      $statement = $connection->prepare($query);
+      $statement->bindParam(':email', $email);
+      $statement->bindParam(':password', $password);
+
+      $statement->execute();
+      
+      // Optional: Retrieve the auto-generated ID if needed
+      $lastInsertId = $connection->lastInsertId();
+      
+      // Return the ID if needed
+      return $lastInsertId;
+  } catch(PDOException $e) {
+      echo "Error: " . $e->getMessage();
+      return false; // Return false to indicate failure
   }
+}
+?>

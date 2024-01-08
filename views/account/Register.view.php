@@ -11,25 +11,25 @@
       <div class="modal-content">
         <div class="mb-3">
           <label for="lname" class="form-label">Name* </label>
-          <input type="text" class="form-control" id="lname" placeholder="full name" name="name">
+          <input type="text" class="form-control" id="lname" placeholder="full name" name="name" required>
         </div>
         <div class="mb-3">
           <label for="lphone" class="form-label">Phone number*</label>
-          <input type="phonenumber" class="form-control" id="lphone" placeholder="Phone Number" name="phone">
+          <input type="phonenumber" class="form-control" id="lphone" placeholder="Phone Number" name="phone" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail" class="form-label">Email Address*</label>
-          <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email Address" name="email">
+          <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email Address" name="email" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword" class="form-label">Password*</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
+          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password" required>
         </div>
         <div class="mb-3">
         <button type="submit" class="btn custom-button">Singup</button>
         <div>
         <div class="haveAcount">
-          <a href="" class="color">Already have an account?</a>
+          <a href="../../views/account/Login.view.php" class="color">Already have an account?</a>
         </div>
       </div>
     </div>
