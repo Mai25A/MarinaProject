@@ -5,10 +5,9 @@ include_once("../../models/tables.model.php");
 $table = get_one_table($id);
 // print_r($table);
 ?>
+<form action="../../controllers/tables/table.update.controller.php" method="get" id="tableForm">
+  <input type="hidden" name='id_update' value="<?= $id ?>">
 
-<form action="../../controllers/tables/table.update.controller.php" method="get">
-    <input type="hidden" name='id' value="<?=$id?>">
-    
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name" value='<?= $table['name'] ?>'>
@@ -22,56 +21,58 @@ $table = get_one_table($id);
     <input type="text" class="form-control" id="price" name="price" value="<?= $table['price'] ?>">
   </div>
   <div class="form-group">
-  <label for="description">Description:</label>
-  <textarea class="form-control" id="description" name="description"><?= $table['description'] ?></textarea>
-</div>
+    <label for="description">Description:</label>
+    <textarea class="form-control" id="description" name="description"><?= $table['description'] ?></textarea>
+  </div>
   <div class="form-group">
     <label for="category">Type:</label>
-    <select class="form-control" id="category" name="type" value="<?= $table['type'] ?>">
-      <option value="normal">Normal Table</option>
-      <option value="room">Private room</option>
+    <select class="form-control" id="category" name="type">
+        <option value="normal">Normal Table</option>
+        <option value="room">Private room</option>
     </select>
-  </div>
-  <div class="form-group" id="seat-group" style="display: none;">
-    <label for="seats">Number of Seats:</label>
-    <select class="form-control" id="normal-seats" name="table_type_id" style="display: none;">
-      <option value="1">Table for 2</option>
-      <option value="2">Table for 5</option>
-      <option value="3">Table for 10</option>
-      <option value="4">Table for 15</option>
+</div>
+<div class="form-group" id="seat-group">
+    <label for="normal-seats">Number of Seats:</label>
+    <select class="form-control" id="normal-seats" name="table_type_id">
+        <option  value="1">Table for 2</option>
+        <option value="2">Table for 5</option>
+        <option value="3">Table for 10</option>
+        <option value="4">Table for 15</option>
+        <option value="5" style="display:none">Table for 10 (Room)</option>
+        <option value="6" style="display:none">Table for 15 (Room)</option>
+        <option value="7" style="display:none">Table for 20 (Room)</option>
     </select>
-    <select class="form-control" id="room-seats" name="table_type_id" style="display: none;">
-      <option value="5">Table for 10</option>
-      <option value="6">Table for 15</option>
-      <option value="7">Table for 20</option>
-    </select>
-  </div>
-  <script>
-  // Lắng nghe sự kiện thay đổi của trường "Type"
-  var typeSelect = document.getElementById('category');
-  var seatsGroup = document.getElementById('seat-group');
-  var normalSeatsSelect = document.getElementById('normal-seats');
-  var roomSeatsSelect = document.getElementById('room-seats');
+</div>
+<button type="submit" class="btn btn-primary">Update</button>
 
-  typeSelect.addEventListener('change', function() {
-    if (typeSelect.value === 'normal') {
-      // Nếu lựa chọn là "Normal Table", hiển thị trường "Number of Seats" cho bàn thông thường
-      seatsGroup.style.display = 'block';
-      normalSeatsSelect.style.display = 'block';
-      roomSeatsSelect.style.display = 'none';
-    } else if (typeSelect.value === 'room') {
-      // Nếu lựa chọn là "Private Room", hiển thị trường "Number of Seats" cho phòng riêng
-      seatsGroup.style.display = 'block';
-      normalSeatsSelect.style.display = 'none';
-      roomSeatsSelect.style.display = 'block';
-    } else {
-      // Nếu không có lựa chọn nào được chọn, ẩn trường "Number of Seats"
-      seatsGroup.style.display = 'none';
-      normalSeatsSelect.style.display = 'none';
-      roomSeatsSelect.style.display = 'none';
-    }
-  });
+<script>
+    document.getElementById('category').addEventListener('change', function () {
+        var selectedValue = this.value;
+        var normalSeats = document.getElementById('normal-seats');
+
+        // Reset the options
+        normalSeats.options[2].style.display = 'block'; // Table for 10
+        normalSeats.options[3].style.display = 'block'; // Table for 15
+
+        if (selectedValue === 'normal') {
+            // normalSeats.style.display = 'block';
+            normalSeats.options[0].style.display = 'block'; // Table for 10
+            normalSeats.options[1].style.display = 'block'; // Table for 10
+            normalSeats.options[2].style.display = 'block'; // Table for 10
+            normalSeats.options[3].style.display = 'block';
+            normalSeats.options[4].style.display = 'none'; // Table for 10 (Room)
+            normalSeats.options[5].style.display = 'none'; // Table for 15 (Room)
+            normalSeats.options[6].style.display = 'none'; // Table for 20 (Room)
+        }
+        if (selectedValue === 'room') {
+            // normalSeats.style.display = 'block';
+            normalSeats.options[4].style.display = 'block'; // Table for 10 (Room)
+            normalSeats.options[5].style.display = 'block'; // Table for 15 (Room)
+            normalSeats.options[6].style.display = 'block';
+            normalSeats.options[0].style.display = 'none'; // Table for 10
+            normalSeats.options[1].style.display = 'none'; // Table for 10
+            normalSeats.options[2].style.display = 'none'; // Table for 10
+            normalSeats.options[3].style.display = 'none'; // Table for 15
+        }
+    });
 </script>
- 
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
