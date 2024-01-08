@@ -58,7 +58,7 @@ include_once("../../views/css/tables/table.admin.php");
                                     <a href="../../views/Tables/table.update.view.php?id=<?= $table['id'] ?>" type="submit"
                                         class="btn btn-success"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="../../controllers/tables/table.delete.controller.php?id=<?= $table['id'] ?>"
+                                    <a href="../../controllers/tables/table.delete.controller.php?id_delete=<?= $table['id'] ?>"
                                         class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>
                                 </div>
 

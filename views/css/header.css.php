@@ -14,14 +14,14 @@
         padding: 10px;
     }
 
-    h3 {
+    .img h3 {
         display: flex;
         justify-content: center;
         padding-top: 140px;
         font-size: 60px;
     }
 
-    h3 {  
+    .img h3 {  
         color: red;
         animation: myAnimation 5s infinite;
     }
