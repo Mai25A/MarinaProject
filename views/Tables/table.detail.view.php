@@ -101,7 +101,7 @@ include("../../views/css/tables/table.detail.php");
                                 </div>
                                 <div class="d-flex quantity_bx">
                                     <button class="col-2 minus-btn">-</button>
-                                    <input class="col-4" name="quantity" id="qty" type="number" value="1" />
+                                    <input class="col-4" name="quantity[]" id="qty" type="number" value="1" />
                                     <button class="col-2 plus-btn">+</button>
                                 </div>
                             </div>
@@ -183,7 +183,7 @@ include("../../views/css/tables/table.detail.php");
             document.addEventListener("DOMContentLoaded", function () {
                 var minusBtns = document.querySelectorAll(".minus-btn");
                 var plusBtns = document.querySelectorAll(".plus-btn");
-                var inputs = document.querySelectorAll("input[name='quantity']");
+                var inputs = document.querySelectorAll("input[name='quantity[]");
 
                 minusBtns.forEach(function (minusBtn, index) {
                     minusBtn.addEventListener("click", function () {
