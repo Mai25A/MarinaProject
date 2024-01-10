@@ -78,26 +78,26 @@ include("../../views/css/tables/table.detail.php");
                 <?php foreach ($products as $product): ?>
                     <div class="card-item-dish col-3 mt-4">
                         <div class="menu_image">
-                            <img src="<?php echo $product['image']; ?>" class="card-img-top mt-3" alt="...">
+                            <img src="<?= $product['image']; ?>" class="card-img-top mt-3" alt="...">
                         </div>
                         <div class="row mt-4">
                             <div class="col-7">
                                 <h5 class="card-title">
-                                    <?php $name = $product['name'];
+                                    <?php
+                                    $name = $product['name'];
                                     $maxLength = 10;
-                                    if (strlen($name) > $maxLength) {
-                                        $name = substr($name, 0, $maxLength) . '...';
-                                    }
-                                    echo $name; ?>
+                                    echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
+                                    ?>
                                 </h5>
                                 <p class="card-text">
-                                    <?php echo $product['price']; ?> VND
+                                    <?= $product['price']; ?> VND
                                 </p>
                             </div>
                             <div class="col-5 check_qty">
                                 <div class="form-check">
                                     <input class="form-check-input" name="chosen_dish[]" type="checkbox" value=""
-                                        id="dish_<?= $product['id']; ?>" data-id="<?= $product['id']; ?>">
+                                        id="dish_<?= $product['id']; ?>" data-id="<?= $product['id']; ?>"
+                                        onchange="saveToLocalStorage(this)">
                                 </div>
                                 <div class="d-flex quantity_bx">
                                     <button class="col-2 minus-btn">-</button>
@@ -112,6 +112,48 @@ include("../../views/css/tables/table.detail.php");
         </div>
 
         <script>
+            // Kiểm tra xem một sản phẩm có được chọn hay không
+            function isSelected(productId) {
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+
+                return selectedItems.includes(productId.toString());
+            }
+
+            // Lưu một sản phẩm vào localStorage khi checkbox thay đổi
+            function saveToLocalStorage(checkbox) {
+                const checkboxId = checkbox.dataset.id;
+
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+
+                if (checkbox.checked && !selectedItems.includes(checkboxId)) {
+                    selectedItems.push(checkboxId);
+                } else if (!checkbox.checked) {
+                    const index = selectedItems.indexOf(checkboxId);
+                    if (index > -1) {
+                        selectedItems.splice(index, 1);
+                    }
+                }
+
+                localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+            }
+
+            // Khôi phục trạng thái checked của checkbox khi tải lại trang
+            document.addEventListener('DOMContentLoaded', function () {
+                let checkboxes = document.querySelectorAll('.form-check-input');
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+
+                checkboxes.forEach(function (checkbox) {
+                    const checkboxId = checkbox.dataset.id;
+
+                    if (selectedItems.includes(checkboxId)) {
+                        checkbox.checked = true;
+                    }
+                });
+            });
+
             var currentType = "Seafood"; // Giá trị mặc định là "Seafood"
             function showMenu() {
                 var menu = document.getElementById('menu');
