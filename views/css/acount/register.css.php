@@ -1,5 +1,5 @@
 <style>
-    .mb-3{
+    .mb-2{
         padding-left: 30px;
         width: 470px;
         padding-top: 10px;
