@@ -1,3 +1,5 @@
+<?php require_once '../css/acount/bokingtable.css.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,15 +12,18 @@
 
 <body>
     <div class="container">
+    <div> 
+        <h3>Booking table</h3>
+    </div>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="..." class="img-fluid rounded-start" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 infomation">
                     <div class="card-body">
                         <h5 class="card-title">Passionate Love</h5>
-                        <p class="card-text">Number of table:</p>
+                        <p class="card-text">Number of table:No 2</p>
                         <p class="card-text">Private room for five</p>
                         <p class="card-text">Booking date</p>
                         <p class="card-text">Booking time</p>
@@ -27,6 +32,8 @@
                         <hr>
                     </div>
                     <div class="card-price">
+                        <p class="card-text"></p>
+                        <p class="card-text"></p>
                         <p class="card-text"></p>
                         <p class="card-text"></p>
                         <p class="card-text"></p>
