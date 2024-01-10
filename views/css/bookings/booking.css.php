@@ -34,9 +34,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 4px 4px 4px rgba(170, 170, 170, 0.3),
-            -4px 4px 4px rgba(170, 170, 170, 0.3),
-            0px -6px 4px rgba(170, 170, 170, 0.2);
+        box-shadow: 4px 4px 4px rgba(170, 170, 170, 0.2),
+            -4px 4px 4px rgba(170, 170, 170, 0.2),
+            0px -6px 4px rgba(170, 170, 170, 0.22);
         background-color: white;
         color: black;
         border-radius: 10px;

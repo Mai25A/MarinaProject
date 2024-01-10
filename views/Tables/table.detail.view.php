@@ -97,7 +97,7 @@ include("../../views/css/tables/table.detail.php");
                             <div class="col-5 check_qty">
                                 <div class="form-check">
                                     <input class="form-check-input" name="chosen_dish[]" type="checkbox" value=""
-                                        id="checked">
+                                        id="dish_<?= $product['id']; ?>" data-id="<?= $product['id']; ?>">
                                 </div>
                                 <div class="d-flex quantity_bx">
                                     <button class="col-2 minus-btn">-</button>
@@ -202,6 +202,77 @@ include("../../views/css/tables/table.detail.php");
                     });
                 });
             });
+            //Giuu check va quantity khi reload trang
+            document.addEventListener("DOMContentLoaded", function () {
+                var checkboxes = document.querySelectorAll("input[name='chosen_dish[]']");
+                var quantityInputs = document.querySelectorAll("input[name='quantity[]']");
+
+                // Lấy các giá trị từ local storage khi tải trang
+                restoreValues();
+
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.addEventListener("change", function () {
+                        var isChecked = checkbox.checked;
+                        var quantity = checkbox.dataset.id;
+
+                        // Lưu giá trị checkbox và quantity vào local storage
+                        saveValues(checkbox.id, isChecked, quantity);
+                    });
+                });
+
+                quantityInputs.forEach(function (quantityInput) {
+                    quantityInput.addEventListener("change", function () {
+                        var isChecked = checkboxes[index].checked;
+                        var quantity = quantityInput.dataset.id;
+
+                        // Lưu giá trị checkbox và quantity vào local storage
+                        saveValues(quantityInput.id, isChecked, quantity);
+                    });
+                });
+            });
+
+            // Lưu giá trị checkbox và quantity vào local storage
+            function saveValues(id, isChecked, quantity) {
+                var values = getStoredValues();
+
+                values[id] = {
+                    isChecked: isChecked,
+                    quantity: quantity
+                };
+
+                localStorage.setItem("checkboxQuantityValues", JSON.stringify(values));
+            }
+
+            // Lấy giá trị checkbox và quantity từ local storage và khôi phục lại giá trị
+            function restoreValues() {
+                var values = getStoredValues();
+
+                for (var id in values) {
+                    if (values.hasOwnProperty(id)) {
+                        var value = values[id];
+
+                        var checkbox = document.getElementById(id);
+                        var quantityInput = document.getElementById("quantity_" + id);
+
+                        if (checkbox && quantityInput) {
+                            checkbox.checked = value.isChecked;
+                            quantityInput.value = value.quantity;
+                        }
+                    }
+                }
+            }
+
+            // Lấy giá trị đã lưu từ local storage
+            function getStoredValues() {
+                var storedValues = localStorage.getItem("checkboxQuantityValues");
+
+                if (storedValues) {
+                    return JSON.parse(storedValues);
+                } else {
+                    return {};
+                }
+            }
+
         </script>
     </div>
 </body>

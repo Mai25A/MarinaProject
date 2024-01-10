@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-8">
                                 <p class="card-text">Name: <?= $bookings[0]['table_name']; ?></p>
-                                <p class="card-text">Type: Product Type</p>
+                                <p class="card-text">Table for<?= $bookings[0][''];?></p>
                                 <p class="card-text">Price: <?= $bookings[0]['table_price']; ?> VND</p>
                             </div>
                         </div>

@@ -126,59 +126,57 @@ include("../../views/css/bookings/booking.css.php"); ?>
       <div class="row mt-4">
         <label class="bking_ifor"><strong>Information of your booking:</strong></label>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card shadow mb-3">
+      <div class="row ms-4 mt-4 d-flex gap-5">
+        <div class="col-5 shadow mb-3">
             <h4 class="card-title mt-3 text-center">Table information</h4>
             <hr>
             <div class="card-body">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-4">
                   <img src="<?= $table['image']; ?>" class="card-img" alt="Product Image">
                 </div>
-                <div class="col-md-8">
+                <div class="col-8">
                   <p class="card-text">Name:
                     <?= $table['name']; ?>
                   </p>
-                  <p class="card-text">Type: Product Type</p>
+                  <p class="card-text">Table for
+                    <?php echo $table['number_of_seat']; ?>
+                  </p>
                   <p class="card-text">Price:
                     <?= $table['price']; ?> VND
                   </p>
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="card shadow mb-3">
+        <div class="col-6 shadow mb-3">
             <h4 class="card-title mt-3 text-center">Dishes information</h4>
             <hr>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-4">
-                    <img src="<?= $dish['image']; ?>" class="card-img" alt="Product Image">
-                  </div>
-                  <div class="col-md-8">
-                    <p class="card-text">Name:
-                      <?= $dish['name']; ?>
-                    </p>
-                    <p class="card-text">Price:
-                      <?= $dish['price']; ?> VND
-                    </p>
-                    <p class="card-text">Quantity:
-                      <?= $dish['quantity']; ?>
-                    </p>
-                  </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4">
+                  <img src="<?= $dish['image']; ?>" class="card-img" alt="Product Image">
+                </div>
+                <div class="col-8">
+                  <p class="card-text">Name:
+                    <?= $dish['name']; ?>
+                  </p>
+                  <p class="card-text">Price:
+                    <?= $dish['price']; ?> VND
+                  </p>
+                  <p class="card-text">Quantity:
+                    <?= $dish['quantity']; ?>
+                  </p>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
   <script>
-
+    
   </script>
 </body>
 <?php include('../../views/partials/footer.php'); ?>
