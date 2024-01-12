@@ -35,6 +35,7 @@
     .form-select {
         float: right;
     }
+
     .list-item {
         border-radius: 10px;
         border: 0;
@@ -43,25 +44,24 @@
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 5px;
         cursor: pointer;
     }
+
     .list-item:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 2px 2px 20px 2px;
         transform: scale(1.02);
     }
+
     .box_products {
         display: flex;
         padding-top: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* padding: 30px; */
-        /* width: 2000px !important; */
-
     }
+
     .image-item {
         margin: 10px;
         width: 90%;
         height: 60%;
-        /* background-color: aqua; */
         margin: 0 auto;
         margin-top: 20px;
     }
@@ -72,11 +72,24 @@
         height: 100%;
         object-fit: cover;
     }
-    .card-item-tb .list-item{
+
+    .card-item-tb .list-item {
         width: 26rem;
         margin-bottom: 24px;
     }
-    .card-item-tb a{
+
+    .card-item-tb a {
         text-decoration: none;
+    }
+
+    .card-title h5 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .price_tx{
+        color: red;
+        font-size: 20px;
+        margin-top: -30px;
     }
 </style>

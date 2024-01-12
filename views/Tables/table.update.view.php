@@ -3,7 +3,6 @@ $id = $_GET['id'];
 include_once("../../views/partials/head.php");
 include_once("../../models/tables.model.php");
 $table = get_one_table($id);
-// print_r($table);
 ?>
 <form action="../../controllers/tables/table.update.controller.php" method="get" id="tableForm">
   <input type="hidden" name='id_update' value="<?= $id ?>">

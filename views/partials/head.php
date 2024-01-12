@@ -34,30 +34,7 @@
                 </li>
                 <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
                 <li><a href="../account/login.view.php" id="loginLink">Login</a></li>
-                <li ><a href="">Management</a>
-                    <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px; width:150px"></i>
-                    <ul class="childMenu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/tables/table.admin.controller.php">Tables</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/menu/menu.admin.controller.php">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/bookings/booking.admin.controller.php">Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Revenue</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Available Tables</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/user/post.controller.php">Users</a>
-                        </li>
-                    </ul>
-
-                </li>
+                
                 <!-- <li><a href="../../views/home/Contact.html.php #ffffff">Contact Us</a></li> -->
                 <!-- <li><a href="">Login</a></li> -->
             </ul>

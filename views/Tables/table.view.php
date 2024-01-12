@@ -89,7 +89,11 @@ require_once('../../views/css/tables/table.css.php');
                                 <div class="col-7">
                                     <div class="row">
                                         <h5 class="card-title">
-                                            <?= $table['name']; ?>
+                                            <?php
+                                            $name = $table['name'];
+                                            $maxLength = 15;
+                                            echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
+                                            ?>
                                         </h5>
                                     </div>
                                     <p class="card-text">Number of table:
@@ -107,7 +111,7 @@ require_once('../../views/css/tables/table.css.php');
                                 </div>
                                 <div class="col-5 card-price">
                                     <p class="card-text text-end price_tx">
-                                        <?php echo $table['price']; ?> VND
+                                        <strong><?php echo $table['price']; ?> VND</strong>
                                     </p>
                                     <p class="card-text text-center"><i class="fa fa-heart-o fa-2x""></i></></p>
                                 </div>

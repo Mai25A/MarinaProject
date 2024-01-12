@@ -33,7 +33,7 @@ include("../../views/css/tables/table.detail.php");
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p>Dishes Deposit Amount:</p>
+                        <p>Total price of dishes:</p>
                     </div>
                     <div class="col-6">
                         <p class="dispoint">50000 VND</p>
@@ -41,7 +41,7 @@ include("../../views/css/tables/table.detail.php");
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p>Total Deposit Amount:</p>
+                        <p>Total deposit amount:</p>
                     </div>
                     <div class="col-6">
                         <p class="total_dispoint">200000 VND</p>
@@ -89,7 +89,7 @@ include("../../views/css/tables/table.detail.php");
                                     echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
                                     ?>
                                 </h5>
-                                <p class="card-text">
+                                <p class="card-text price_dish">
                                     <?= $product['price']; ?> VND
                                 </p>
                             </div>
@@ -101,13 +101,14 @@ include("../../views/css/tables/table.detail.php");
                                 </div>
                                 <div class="d-flex quantity_bx">
                                     <button class="col-2 minus-btn">-</button>
-                                    <input class="col-4" name="quantity[]" id="qty" type="number" value="1" />
+                                    <input class="form-control col-4" name="quantity[]" id="quantity_<?= $product['id']; ?>"
+                                        type="number" value="1" size="4" />
                                     <button class="col-2 plus-btn">+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endforeach; ?>v
             </div>
         </div>
 
@@ -120,12 +121,16 @@ include("../../views/css/tables/table.detail.php");
                 return selectedItems.includes(productId.toString());
             }
 
-            // Lưu một sản phẩm vào localStorage khi checkbox thay đổi
+
             function saveToLocalStorage(checkbox) {
                 const checkboxId = checkbox.dataset.id;
-
+                const quantityInput = document.getElementById("quantity_" + checkboxId);
+                const priceElement = document.querySelector(('.price_dish') + checkboxId);
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+
+                // Lấy mảng 2 chiều từ local storage (nếu có)
+                let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
 
                 if (checkbox.checked && !selectedItems.includes(checkboxId)) {
                     selectedItems.push(checkboxId);
@@ -133,13 +138,36 @@ include("../../views/css/tables/table.detail.php");
                     const index = selectedItems.indexOf(checkboxId);
                     if (index > -1) {
                         selectedItems.splice(index, 1);
+                        // Xóa thông tin số lượng khi checkbox bị giải chọn
+                        deleteQuantityValue(quantityValues, checkboxId);
+                    }
+                }
+
+                // Tìm index của checkboxId trong mảng quantityValues
+                const valueIndex = quantityValues.findIndex(item => item[0] === checkboxId);
+
+                // Nếu checkbox được chọn, cập nhật hoặc thêm mới thông tin số lượng
+                if (checkbox.checked) {
+                    if (valueIndex !== -1) {
+                        // Cập nhật số lượng và thêm index vào mảng con
+                        quantityValues[valueIndex][1] = quantityInput.value;
+                        quantityValues[valueIndex][2] = selectedItems.indexOf(checkboxId);
+                    } else {
+                        // Thêm mới thông tin số lượng và index vào mảng con
+                        quantityValues.push([checkboxId, quantityInput.value, selectedItems.indexOf(checkboxId)]);
                     }
                 }
 
                 localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
             }
 
-            // Khôi phục trạng thái checked của checkbox khi tải lại trang
+            function deleteQuantityValue(array, checkboxId) {
+                const index = array.findIndex(item => item[0] === checkboxId);
+                if (index !== -1) {
+                    array.splice(index, 1);
+                }
+            }
             document.addEventListener('DOMContentLoaded', function () {
                 let checkboxes = document.querySelectorAll('.form-check-input');
                 let savedArray = localStorage.getItem('selectedItems');
@@ -147,12 +175,22 @@ include("../../views/css/tables/table.detail.php");
 
                 checkboxes.forEach(function (checkbox) {
                     const checkboxId = checkbox.dataset.id;
+                    const quantityInput = document.getElementById("quantity_" + checkboxId);
 
                     if (selectedItems.includes(checkboxId)) {
                         checkbox.checked = true;
+
+                        // Khôi phục giá trị quantity từ local storage và cập nhật cho mỗi checkbox đã được chọn
+                        let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
+                        const valueIndex = quantityValues.findIndex(item => item[0] === checkboxId);
+
+                        if (valueIndex !== -1) {
+                            quantityInput.value = quantityValues[valueIndex][1];
+                        }
                     }
                 });
             });
+
 
             var currentType = "Seafood"; // Giá trị mặc định là "Seafood"
             function showMenu() {
@@ -244,76 +282,45 @@ include("../../views/css/tables/table.detail.php");
                     });
                 });
             });
-            //Giuu check va quantity khi reload trang
-            document.addEventListener("DOMContentLoaded", function () {
-                var checkboxes = document.querySelectorAll("input[name='chosen_dish[]']");
-                var quantityInputs = document.querySelectorAll("input[name='quantity[]']");
 
-                // Lấy các giá trị từ local storage khi tải trang
-                restoreValues();
 
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.addEventListener("change", function () {
-                        var isChecked = checkbox.checked;
-                        var quantity = checkbox.dataset.id;
 
-                        // Lưu giá trị checkbox và quantity vào local storage
-                        saveValues(checkbox.id, isChecked, quantity);
-                    });
-                });
+            document.addEventListener('DOMContentLoaded', function () {
+    // ... (Các hàm và sự kiện khác đã có ở trên)
 
-                quantityInputs.forEach(function (quantityInput) {
-                    quantityInput.addEventListener("change", function () {
-                        var isChecked = checkboxes[index].checked;
-                        var quantity = quantityInput.dataset.id;
+    function calculateTotal() {
+        let total = 0;
+        let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
 
-                        // Lưu giá trị checkbox và quantity vào local storage
-                        saveValues(quantityInput.id, isChecked, quantity);
-                    });
-                });
-            });
+        quantityValues.forEach(function (item) {
+            const checkboxId = item[0];
+            const quantity = parseInt(item[1]);
+            const priceElement = document.querySelector('.price_dish_' + checkboxId);
 
-            // Lưu giá trị checkbox và quantity vào local storage
-            function saveValues(id, isChecked, quantity) {
-                var values = getStoredValues();
-
-                values[id] = {
-                    isChecked: isChecked,
-                    quantity: quantity
-                };
-
-                localStorage.setItem("checkboxQuantityValues", JSON.stringify(values));
+            if (priceElement) {
+                const price = parseFloat(priceElement.innerText.replace(' VND', ''));
+                total += quantity * price;
             }
+        });
 
-            // Lấy giá trị checkbox và quantity từ local storage và khôi phục lại giá trị
-            function restoreValues() {
-                var values = getStoredValues();
+        // Hiển thị tổng giá trị
+        const totalDispointElement = document.querySelector('.dispoint');
+        if (totalDispointElement) {
+            totalDispointElement.innerText = total.toFixed(2) + ' VND';
+        }
+    }
 
-                for (var id in values) {
-                    if (values.hasOwnProperty(id)) {
-                        var value = values[id];
+    // Gọi hàm tính tổng khi tải trang
+    calculateTotal();
 
-                        var checkbox = document.getElementById(id);
-                        var quantityInput = document.getElementById("quantity_" + id);
-
-                        if (checkbox && quantityInput) {
-                            checkbox.checked = value.isChecked;
-                            quantityInput.value = value.quantity;
-                        }
-                    }
-                }
-            }
-
-            // Lấy giá trị đã lưu từ local storage
-            function getStoredValues() {
-                var storedValues = localStorage.getItem("checkboxQuantityValues");
-
-                if (storedValues) {
-                    return JSON.parse(storedValues);
-                } else {
-                    return {};
-                }
-            }
+    // Thêm sự kiện cho checkbox để cập nhật tổng khi có sự thay đổi
+    let checkboxes = document.querySelectorAll('.form-check-input');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            calculateTotal();
+        });
+    });
+});
 
         </script>
     </div>
