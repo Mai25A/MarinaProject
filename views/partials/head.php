@@ -16,13 +16,13 @@
 
 <body>
     <header>
-    
+
         <div class="header">
             <nav class="menu">
                 <a href="" id="logo">
                     <img class="logo" src="../../asset/Logo.png" alt="logo">
                 </a>
-        
+
                 <ul class=" mt-2 mainMenu">
                     <li><a href="../../views/home/Body-Home.view.php">Home</a></li>
                     <li><a href="../../views/home/About.view.php">About Us</a></li>
@@ -34,7 +34,22 @@
                         </ul>
                     </li>
                     <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
+                    <?php require '../../models/login/login.model.php';
+                    $name = $_COOKIE['User'];
+
+                    if (isset($name)) {
+                        $users = get_user_by_name($name);
+
+                        ?>
+                        <li><a href="" id=""><?=$users['name'] ?></a><img style="z-index : 29" src="<?=$users['image']?>" alt=""></li>
+                        
+
+
+                    <?php } else { ?>
                         <li><a href="../account/Login.view.php" id="loginLink">Login</a></li>
+
+
+                    <?php } ?>
                     </button>
                 </ul>
             </nav>
@@ -42,4 +57,3 @@
         <div class="img">
             <h3>MARINA</h3>
         </div>
-       
