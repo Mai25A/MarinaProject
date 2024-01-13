@@ -3,7 +3,6 @@ require_once('../../views/partials/head.php');
 include_once('../../views/css/menu/menu.admin.css.php');
 include('../../controllers/menu/menu.admin.controller.php')
 ?>
-
 <form action="" method="POST">
     <div class="container p-4">
         <div class="d-flex p-2">
@@ -37,7 +36,7 @@ include('../../controllers/menu/menu.admin.controller.php')
                             <td><?= $value['category_id'] ?></td>
                             <td>
                                 <a href="../../views/menu/menu.admin.update.view.php?id=<?= $value['id'] ?>" class="btn btn-primary btn-lg"><i class="fa fa-pencil"></i></a>
-                                <a href="../../controllers/menu/menu.delete.controller.php?action=delete&id=<?= $value['id'] ?>" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i></a>
+                                <a href="../../controllers/menu/menu.delete.controller.php?action=delete&id=<?= $value['id'] ?>" class="btn btn-danger btn-lg mt-2"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -46,5 +45,4 @@ include('../../controllers/menu/menu.admin.controller.php')
         </div>
     </div>
 </form>
-
 <?php require_once('../../views/partials/footer.php'); ?>

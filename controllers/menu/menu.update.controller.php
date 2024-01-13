@@ -1,6 +1,5 @@
 <?php
 include '../../models/menu.model.php';
-
 if (isset($_POST['id'])) {
     $name = $_POST['name'];
     $image = $_POST['image'];
@@ -8,8 +7,9 @@ if (isset($_POST['id'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
     $id = urldecode($_POST['id']);
-    
     // Thực hiện cập nhật thông tin sản phẩm trong cơ sở dữ liệu
     updateMenuManagement($id ,$name, $image,$category_id, $price, $description);
+    header("location: menu.admin.controller.php");
     exit();
 }
+require "../../views/menu/menu.admin.update.view.php";

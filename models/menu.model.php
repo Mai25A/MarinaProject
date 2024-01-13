@@ -1,6 +1,5 @@
 <?php
 include("../../database/database.php");
-
 function get_all_menu()
 {
     global $connection;
@@ -19,17 +18,18 @@ function getMenuByCategory($categoryId)
     return $menu;
 }
 
-function createMenuManagement( $name, $image, $price, $description)
+function createMenuManagement( $name, $image,$category_id, $price, $description)
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO products (name, image, category_id, price, description) VALUES (?, ?, NULL, ?, ?)");
-    $createMenu = $statement->execute([$name, $image, $price, $description]);
+    $statement = $connection->prepare("INSERT INTO products (name, image, category_id, price, description) VALUES (?, ?, ?, ?, ?)");
+    $createMenu = $statement->execute([$name, $image, $category_id, $price, $description]);
     return $createMenu;
 }
-function delete_dish($id){
+function delete_dish($id)
+{
     global $connection;
-    $statement=$connection->prepare("DELETE from products where id=:id;");
-    $statement->bindParam(":id",$id);
+    $statement = $connection->prepare("DELETE from products where id=:id;");
+    $statement->bindParam(":id", $id);
     $statement->execute();
     return $statement;
 }
@@ -59,12 +59,29 @@ function updateMenuManagement($id, $name, $image, $category_id, $price, $descrip
 }
 function getProductById($id)
 {
-        global $connection;
-        $statement = $connection->prepare("SELECT * FROM products WHERE id = :id");
-        $statement->execute([':id' => $id]);
-        $products = $statement->fetch(PDO::FETCH_ASSOC);
-        return $products;
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM products WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    $products = $statement->fetch(PDO::FETCH_ASSOC);
+    return $products;
 
 }
-
+function get_dishes_by_type($type_menu)
+{
+    global $connection;
+    $st = $connection->prepare("SELECT pd.id,pd.name,pd.image,pd.category_id,pd.price,pd.description,pd.quantity, mc.id AS type_menu_id, mc.name AS type_name
+    from products pd join menu_categories mc on pd.category_id = mc.id where mc.name = :type_menu ;");
+    $st->bindParam(":type_menu",$type_menu);
+    $st->execute();
+    $products = $st->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
+}
+function get_one_user($id)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
+}
 ?>
