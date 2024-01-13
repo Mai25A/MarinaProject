@@ -12,3 +12,4 @@ if (isset($_POST['id'])) {
     header("location: menu.admin.controller.php");
     exit();
 }
+require "../../views/menu/menu.admin.update.view.php";

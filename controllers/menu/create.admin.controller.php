@@ -22,4 +22,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Missing data";
     }
 }
-require_once("../../controllers/menu/create.admin.controller.php");
+require_once("../../views/menu/menu.admin.create.view.php");
