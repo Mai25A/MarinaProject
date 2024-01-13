@@ -41,7 +41,7 @@
                         $users = get_user_by_name($name);
 
                         ?>
-                        <li><a href="" id=""><?=$users['name'] ?></a><img style="z-index : 29" src="<?=$users['image']?>" alt=""></li>
+                        <li><a href="../../views/account/profile.detail.view.php" id=""><?=$users['name'] ?></a><img style="z-index : 29" src="<?=$users['image']?>" alt=""></li>
                         
 
 
