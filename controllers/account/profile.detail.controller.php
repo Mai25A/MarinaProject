@@ -7,4 +7,6 @@ if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
     $user = get_one_user($id);
 }
-require "../../views/account/profile.detail.view.php";
+
+include '../../views/account/profile.detail.view.php';
+
