@@ -4,7 +4,7 @@ require_once ('../../views/css/body.css.php');
 ?>
 
 
-<body>
+    
     <div class="body container">
         <div class="row List_body">
             <div class="tittle_body1 row mt-5">
@@ -31,7 +31,7 @@ require_once ('../../views/css/body.css.php');
                     <img src="../../asset/Image_1.png" alt="">
                 </div>
                 <div class="col-6">
-                    <div class="Image-2">
+                    <div class="Image-2 ms-5">
                         <img src="../../asset/Image_2.png" alt="">
                     </div>
                     <div class="Image-3 mt-2">
@@ -51,7 +51,7 @@ require_once ('../../views/css/body.css.php');
                 <div class="img_foods1 col-4">
                     <img src="../../asset/foods4.png" alt="">
                 </div>
-                <div class="img_foods5 col-4">
+                <div class="img_foods5 col-4  ms-4">
                     <img src="../../asset/foods5.png" alt="">
                 </div>
                 <div class="paragrap_foods col-4">
@@ -133,6 +133,7 @@ require_once ('../../views/css/body.css.php');
 
 
     </div>
+
 </body>
 
 <?php require "../../views/partials/footer.php"; ?>
