@@ -76,6 +76,17 @@ function get_dishes_by_type($type_menu)
     $products = $st->fetchAll(PDO::FETCH_ASSOC);
     return $products;
 }
+
+function get_dish_by_id($id)
+{
+    global $connection;
+    $st = $connection->prepare("SELECT pd.id,pd.name,pd.image,pd.category_id,pd.price,pd.description,pd.quantity, mc.id AS type_menu_id, mc.name AS type_name
+    from products pd join menu_categories mc on pd.category_id = mc.id where pd.id = :dish_id;");
+    $st->bindParam(":dish_id",$id);
+    $st->execute();
+    $products = $st->fetch(PDO::FETCH_ASSOC);
+    return $products;
+}
 function get_one_user($id)
 {
     global $connection;

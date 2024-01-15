@@ -2,7 +2,7 @@
 include_once("../../views/partials/head.php");
 include_once("../../views/css/tables/table.admin.php");
 ?>
-<div class="container">
+<div class="container mt-4">
     <form action="#" method="post">
         <div class="btn_create">
 
@@ -56,7 +56,7 @@ include_once("../../views/css/tables/table.admin.php");
                                 <div class="action">
 
                                     <a href="../../views/Tables/table.update.view.php?id=<?= $table['id'] ?>" type="submit"
-                                        class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
 
                                     <a href="../../controllers/tables/table.delete.controller.php?id_delete=<?= $table['id'] ?>"
                                         class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>

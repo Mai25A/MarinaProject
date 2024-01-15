@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-4">
         <h4>Total Amount
             <?= $bookings[0]['bp_total_amount']; ?>
         </h4>
@@ -27,51 +27,60 @@
                     value="<?= $bookings[0]['datetime']; ?>">
             </div>
         </div>
-
-        <p>Information of booking:</p>
-
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <h4 class="card-title">Table information</h4>
+            <div class="row mt-4">
+                <label class="bking_ifor"><strong>Information of your booking:</strong></label>
+            </div>
+            <div class="row ms-4 mt-4 d-flex gap-5">
+                <div class="col-5 shadow mb-3">
+                    <h4 class="card-title mt-3 text-center">Table information</h4>
                     <hr>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-4">
                                 <img src="<?= $bookings[0]['table_image']; ?>" class="card-img" alt="Product Image">
                             </div>
-                            <div class="col-md-8">
-                                <p class="card-text">Name: <?= $bookings[0]['table_name']; ?></p>
-                                <p class="card-text">Type: Product Type</p>
-                                <p class="card-text">Price: <?= $bookings[0]['table_price']; ?> VND</p>
+                            <div class="col-8">
+                                <p class="card-text">Name:
+                                    <?= $bookings[0]['table_name']; ?>
+                                </p>
+                                <p class="card-text">Table for
+                                    <?= $bookings[0]['table_id']; ?>
+                                </p>
+                                <p class="card-text">Price:
+                                    <?= $bookings[0]['table_price']; ?> VND
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <h4 class="card-title">Dishes information</h4>
+                <div class="col-6 shadow mb-3">
+                    <h4 class="card-title mt-3 text-center">Dishes information</h4>
                     <hr>
                     <?php foreach ($bookings as $booking): ?>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="<?= $booking['product_image']; ?>" class="card-img" alt="Product Image">
-                            </div>
-                            <div class="col-md-8">
-                                <p class="card-text">Name: <?= $booking['product_name']; ?></p>
-                                <p class="card-text">Price: <?= $booking['product_price'];?> VND</p>
-                                <p class="card-text">Quantity: <?= $booking['bp_quantity']; ?></p>
+                        <div class="card-body mt-4">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="<?= $booking['product_image']; ?>" class="card-img" alt="Product Image">
+                                </div>
+                                <div class="col-8">
+                                    <p class="card-text">Name:
+                                        <?= $booking['product_name']; ?>
+                                    </p>
+                                    <p class="card-text">Price:
+                                        <?= $booking['product_price']; ?> VND
+                                    </p>
+                                    <p class="card-text">Quantity:
+                                        <?= $booking['bp_quantity']; ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 
