@@ -89,7 +89,7 @@ include("../../views/css/tables/table.detail.php");
                                     echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
                                     ?>
                                 </h5>
-                                <p class="card-text price_dish">
+                                <p class="card-text price_dish" id="di" data-price="<?= $product['price']; ?>">
                                     <?= $product['price']; ?> VND
                                 </p>
                             </div>
@@ -108,7 +108,7 @@ include("../../views/css/tables/table.detail.php");
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>v
+                <?php endforeach; ?>
             </div>
         </div>
 
@@ -152,6 +152,7 @@ include("../../views/css/tables/table.detail.php");
                         // Cập nhật số lượng và thêm index vào mảng con
                         quantityValues[valueIndex][1] = quantityInput.value;
                         quantityValues[valueIndex][2] = selectedItems.indexOf(checkboxId);
+
                     } else {
                         // Thêm mới thông tin số lượng và index vào mảng con
                         quantityValues.push([checkboxId, quantityInput.value, selectedItems.indexOf(checkboxId)]);
@@ -210,13 +211,9 @@ include("../../views/css/tables/table.detail.php");
             function redirectToURL(type) {
                 var currentURL = new URL(window.location.href);
                 var searchParams = currentURL.searchParams;
-                // Đặt giá trị mới cho type_menu
                 searchParams.set('type_menu', type);
-                // Xóa các tham số type_menu cũ khỏi URL
                 searchParams.delete('type_menu');
-                // Thêm tham số type_menu mới vào URL
                 searchParams.append('type_menu', type);
-                // Cập nhật URL với các tham số mới
                 window.location.href = currentURL.toString();
             }
             // Cập nhật trạng thái active của các nút
@@ -282,46 +279,6 @@ include("../../views/css/tables/table.detail.php");
                     });
                 });
             });
-
-
-
-            document.addEventListener('DOMContentLoaded', function () {
-    // ... (Các hàm và sự kiện khác đã có ở trên)
-
-    function calculateTotal() {
-        let total = 0;
-        let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
-
-        quantityValues.forEach(function (item) {
-            const checkboxId = item[0];
-            const quantity = parseInt(item[1]);
-            const priceElement = document.querySelector('.price_dish_' + checkboxId);
-
-            if (priceElement) {
-                const price = parseFloat(priceElement.innerText.replace(' VND', ''));
-                total += quantity * price;
-            }
-        });
-
-        // Hiển thị tổng giá trị
-        const totalDispointElement = document.querySelector('.dispoint');
-        if (totalDispointElement) {
-            totalDispointElement.innerText = total.toFixed(2) + ' VND';
-        }
-    }
-
-    // Gọi hàm tính tổng khi tải trang
-    calculateTotal();
-
-    // Thêm sự kiện cho checkbox để cập nhật tổng khi có sự thay đổi
-    let checkboxes = document.querySelectorAll('.form-check-input');
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            calculateTotal();
-        });
-    });
-});
-
         </script>
     </div>
 </body>

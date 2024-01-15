@@ -2,6 +2,7 @@
 include("../../models/bookings.model.php");
 include('../../models/tables.model.php');
 include('../../models/menu.model.php');
+
 if(isset($_GET['table_id'])){
     $table = get_one_table($_GET['table_id']);
     if(isset($_GET['dishes_id'])){
