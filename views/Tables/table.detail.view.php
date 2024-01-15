@@ -36,7 +36,7 @@ include("../../views/css/tables/table.detail.php");
                         <p>Total price of dishes:</p>
                     </div>
                     <div class="col-6">
-                        <p class="dispoint">50000 VND</p>
+                        <p style="color:red;" class="dispoint"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -44,7 +44,7 @@ include("../../views/css/tables/table.detail.php");
                         <p>Total deposit amount:</p>
                     </div>
                     <div class="col-6">
-                        <p class="total_dispoint">200000 VND</p>
+                        <p style="color:red;" class="total_dispoint"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +89,8 @@ include("../../views/css/tables/table.detail.php");
                                     echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
                                     ?>
                                 </h5>
-                                <p class="card-text price_dish" id="dish" data-price="<?= $product['price']; ?>">
+                                <p class="card-text price_dish_<?= $product['id']; ?>" id="dish"
+                                    data-price="<?= $product['price']; ?>">
                                     <?= $product['price']; ?> VND
                                 </p>
                             </div>
@@ -125,8 +126,8 @@ include("../../views/css/tables/table.detail.php");
             function saveToLocalStorage(checkbox) {
                 const checkboxId = checkbox.dataset.id;
                 const quantityInput = document.getElementById("quantity_" + checkboxId);
-                const priceElement = document.querySelector('.price_dish[data-price][data-id="' + checkboxId + '"]');
-                const price = priceElement.getAttribute('data-price');
+                const priceElement = document.querySelector(('.price_dish_') + checkboxId);
+                const price = priceElement.dataset.price;
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
 
@@ -153,17 +154,20 @@ include("../../views/css/tables/table.detail.php");
                         // Cập nhật số lượng và thêm index vào mảng con
                         quantityValues[valueIndex][1] = quantityInput.value;
                         quantityValues[valueIndex][2] = price;
-                        quantityValues[valueIndex][3] = selectedItems.indexOf(checkboxId);
 
                     } else {
                         // Thêm mới thông tin số lượng và index vào mảng con
-                        quantityValues.push([checkboxId, quantityInput.value,price, selectedItems.indexOf(checkboxId)]);
+                        quantityValues.push([checkboxId, quantityInput.value, price]);
                     }
                 }
 
                 localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
                 localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
-                localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
+
+                const totalPriceElement = document.querySelector('.dispoint');
+                const total = calculateTotalPrice();
+                totalPriceElement.textContent = total.toFixed(0) + ' VND';
+
             }
 
             function deleteQuantityValue(array, checkboxId) {
@@ -173,6 +177,11 @@ include("../../views/css/tables/table.detail.php");
                 }
             }
             document.addEventListener('DOMContentLoaded', function () {
+                updateTotalDispoint();
+                const total = calculateTotalPrice();
+                const totalPriceElement = document.querySelector('.dispoint');
+                totalPriceElement.textContent = total.toFixed(0) + ' VND';
+
                 let checkboxes = document.querySelectorAll('.form-check-input');
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
@@ -194,8 +203,39 @@ include("../../views/css/tables/table.detail.php");
                     }
                 });
             });
+            function calculateTotalPrice() {
+                let total = 0;
 
+                // Lấy mảng 2 chiều từ local storage (nếu có)
+                let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
 
+                quantityValues.forEach(function (item) {
+                    const quantity = parseFloat(item[1]);
+                    const price = parseFloat(item[2]);
+                    const subtotal = quantity * price;
+                    total += subtotal;
+                    updateTotalDispoint();
+                });
+                const dispoint = total * 0.3;
+                localStorage.setItem('dispoint', dispoint);
+                return total;
+            };
+
+            function updateTotalDispoint() {
+                // Lấy giá trị dispoint từ local storage
+                const dispointAmount = parseFloat(localStorage.getItem('dispoint'));
+
+                // Lấy giá trị price từ đoạn mã PHP
+                const priceElement = document.querySelector('.price');
+                const priceAmount = parseFloat(priceElement.textContent);
+
+                // Tính toán giá trị total_dispoint
+                const totalDispoint = dispointAmount + priceAmount;
+
+                // Cập nhật giá trị total_dispoint vào phần tử HTML
+                const totalDispointElement = document.querySelector('.total_dispoint');
+                totalDispointElement.textContent = totalDispoint.toFixed(0) + ' VND';
+            }
             var currentType = "Seafood"; // Giá trị mặc định là "Seafood"
             function showMenu() {
                 var menu = document.getElementById('menu');
