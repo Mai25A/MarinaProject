@@ -1,4 +1,7 @@
 <style>
+    header{
+        position: relative;
+    }
     .img {
         width: 99vw;
         height: 70vh;
@@ -12,6 +15,23 @@
 
         background-color: #26577C;
         padding: 10px;
+    }
+    #loginModal{
+        position: absolute;
+        width: 500px;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #loginModal{
+        display: none;
+        pointer-events: none;
+        opacity: 0;
+    }
+    .show{
+        display: block !important;
+        pointer-events: all !important;
+        opacity: 1 !important;
     }
 
     .img h3 {

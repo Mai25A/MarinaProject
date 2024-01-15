@@ -13,7 +13,7 @@ require_once('../css/acount/register.css.php');
       <div class="modal-content">
         <div class="mb-2">
           <label for="lname" class="form-label">Name* </label>
-          <input type="text" class="form-control" id="lname" placeholder="full name" name="name">
+          <input type="text" class="form-control" id="lname" placeholder="full name" name="name" required>
         </div>
         <div class="mb-2">
           <label for="lphone" class="form-label">Phone number*</label>

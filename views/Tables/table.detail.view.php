@@ -89,7 +89,7 @@ include("../../views/css/tables/table.detail.php");
                                     echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
                                     ?>
                                 </h5>
-                                <p class="card-text price_dish" id="di" data-price="<?= $product['price']; ?>">
+                                <p class="card-text price_dish" id="dish" data-price="<?= $product['price']; ?>">
                                     <?= $product['price']; ?> VND
                                 </p>
                             </div>
@@ -125,7 +125,8 @@ include("../../views/css/tables/table.detail.php");
             function saveToLocalStorage(checkbox) {
                 const checkboxId = checkbox.dataset.id;
                 const quantityInput = document.getElementById("quantity_" + checkboxId);
-                const priceElement = document.querySelector(('.price_dish') + checkboxId);
+                const priceElement = document.querySelector('.price_dish[data-price][data-id="' + checkboxId + '"]');
+                const price = priceElement.getAttribute('data-price');
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
 
@@ -151,15 +152,17 @@ include("../../views/css/tables/table.detail.php");
                     if (valueIndex !== -1) {
                         // Cập nhật số lượng và thêm index vào mảng con
                         quantityValues[valueIndex][1] = quantityInput.value;
-                        quantityValues[valueIndex][2] = selectedItems.indexOf(checkboxId);
+                        quantityValues[valueIndex][2] = price;
+                        quantityValues[valueIndex][3] = selectedItems.indexOf(checkboxId);
 
                     } else {
                         // Thêm mới thông tin số lượng và index vào mảng con
-                        quantityValues.push([checkboxId, quantityInput.value, selectedItems.indexOf(checkboxId)]);
+                        quantityValues.push([checkboxId, quantityInput.value,price, selectedItems.indexOf(checkboxId)]);
                     }
                 }
 
                 localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
                 localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
             }
 

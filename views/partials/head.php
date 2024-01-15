@@ -15,32 +15,45 @@
 <?php require_once dirname(dirname(__FILE__)) . ('../css/header.css.php'); ?>
 
 <body>
+    <header>
 
-    <div class="header">
-        <nav class="menu">
-            <a href="" id="logo">
-                <img class="logo" src="../../asset/Logo.png" alt="logo">
-            </a>
+        <div class="header">
+            <nav class="menu">
+                <a href="" id="logo">
+                    <img class="logo" src="../../asset/Logo.png" alt="logo">
+                </a>
 
-            <ul class=" mt-2 mainMenu">
-                <li><a href="../../views/home/Body-Home.view.php">Home</a></li>
-                <li><a href="../../views/home/About.view.php">About Us</a></li>
-                <li><a href="">Service</a>
-                    <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
-                    <ul class="childMenu">
-                        <li><a href="../../controllers/menu/menu.controller.php">Menu</a></li>
-                        <li><a href="../../controllers/tables/tables.controller.php">Tables</a></li>
-                    </ul>
-                </li>
-                <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
-                <li><a href="../account/login.view.php" id="loginLink">Login</a></li>
-                
-                <!-- <li><a href="../../views/home/Contact.html.php #ffffff">Contact Us</a></li> -->
-                <!-- <li><a href="">Login</a></li> -->
-            </ul>
-        </nav>
-    </div>
-    <div class="img">
-        <h3>MARINA</h3>
-    </div>
-</body>
+                <ul class=" mt-2 mainMenu">
+                    <li><a href="../../views/home/Body-Home.view.php">Home</a></li>
+                    <li><a href="../../views/home/About.view.php">About Us</a></li>
+                    <li><a href="">Service</a>
+                        <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
+                        <ul class="childMenu">
+                            <li><a href="">Menu</a></li>
+                            <li><a href="../../controllers/tables/tables.controller.php">Tables</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
+                    <?php require '../../models/login/login.model.php';
+                    $name = $_COOKIE['User'];
+
+                    if (isset($name)) {
+                        $users = get_user_by_name($name);
+
+                        ?>
+                        <li><a href="../../views/account/profile.detail.view.php" id=""><?=$users['name'] ?></a><img style="z-index : 29" src="<?=$users['image']?>" alt=""></li>
+                        
+
+
+                    <?php } else { ?>
+                        <li><a href="../account/Login.view.php" id="loginLink">Login</a></li>
+
+
+                    <?php } ?>
+                    </button>
+                </ul>
+            </nav>
+        </div>
+        <div class="img">
+            <h3>MARINA</h3>
+        </div>
