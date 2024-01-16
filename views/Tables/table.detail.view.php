@@ -59,7 +59,9 @@ include("../../views/css/tables/table.detail.php");
         </div>
         <div class="row d-flex justify-content-center btn_chosen mt-4">
             <div class="col-3">
-                <button type="submit" class="btn btn-danger">Booking now</button>
+                <a
+                    href="../../controllers/bookings/booking.controller.php?table_id=<?= htmlspecialchars($table['id']); ?>"><button
+                        type="submit" id="bookingButton" class="btn btn-danger">Booking now</button></a>
             </div>
             <div class="col-3">
                 <button class="btn btn_menu" onclick="showMenu()">Choose Dishes</button>
@@ -121,13 +123,14 @@ include("../../views/css/tables/table.detail.php");
 
                 return selectedItems.includes(productId.toString());
             }
-
+            // let globalQuantityInputValue;
 
             function saveToLocalStorage(checkbox) {
                 const checkboxId = checkbox.dataset.id;
                 const quantityInput = document.getElementById("quantity_" + checkboxId);
                 const priceElement = document.querySelector(('.price_dish_') + checkboxId);
                 const price = priceElement.dataset.price;
+                // globalQuantityInputValue = quantityInput.value;
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
 
@@ -167,6 +170,7 @@ include("../../views/css/tables/table.detail.php");
                 const totalPriceElement = document.querySelector('.dispoint');
                 const total = calculateTotalPrice();
                 totalPriceElement.textContent = total.toFixed(0) + ' VND';
+                // redirectToBookingPage(globalQuantityInputValue);
 
             }
 
@@ -205,8 +209,6 @@ include("../../views/css/tables/table.detail.php");
             });
             function calculateTotalPrice() {
                 let total = 0;
-
-                // Lấy mảng 2 chiều từ local storage (nếu có)
                 let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
 
                 quantityValues.forEach(function (item) {
@@ -214,29 +216,43 @@ include("../../views/css/tables/table.detail.php");
                     const price = parseFloat(item[2]);
                     const subtotal = quantity * price;
                     total += subtotal;
-                    updateTotalDispoint();
                 });
+
                 const dispoint = total * 0.3;
                 localStorage.setItem('dispoint', dispoint);
+                updateTotalDispoint();
                 return total;
             };
 
             function updateTotalDispoint() {
-                // Lấy giá trị dispoint từ local storage
                 const dispointAmount = parseFloat(localStorage.getItem('dispoint'));
-
-                // Lấy giá trị price từ đoạn mã PHP
                 const priceElement = document.querySelector('.price');
                 const priceAmount = parseFloat(priceElement.textContent);
-
-                // Tính toán giá trị total_dispoint
                 const totalDispoint = dispointAmount + priceAmount;
-
-                // Cập nhật giá trị total_dispoint vào phần tử HTML
                 const totalDispointElement = document.querySelector('.total_dispoint');
+                localStorage.setItem("total_dispoint", totalDispoint.toFixed(0));
                 totalDispointElement.textContent = totalDispoint.toFixed(0) + ' VND';
             }
-            var currentType = "Seafood"; // Giá trị mặc định là "Seafood"
+
+            // Load total_dispoint from localStorage on page load
+            window.onload = function () {
+                const totalDispointElement = document.querySelector('.total_dispoint');
+                const storedTotalDispoint = localStorage.getItem("total_dispoint");
+                if (storedTotalDispoint) {
+                    totalDispointElement.textContent = storedTotalDispoint + ' VND';
+                }
+            };
+
+            // Call calculateTotalPrice to initialize the values
+            calculateTotalPrice();
+
+
+            // const bookingButton = document.getElementById("bookingButton");
+            // bookingButton.addEventListener("click", function () {
+            //     saveToLocalStorage();
+            //     redirectToBookingPage();
+            // });
+            var currentType = "Seafood";
             function showMenu() {
                 var menu = document.getElementById('menu');
                 var seafoodButton = document.getElementById('seafoodButton');
@@ -248,7 +264,6 @@ include("../../views/css/tables/table.detail.php");
                     menu.style.display = 'none';
                     seafoodButton.classList.remove('active');
                 }
-                // Gọi hàm redirectToURL khi chọn menu để cập nhật giá trị và gửi lên URL
                 redirectToURL(currentType);
             }
             function redirectToURL(type) {
@@ -259,16 +274,13 @@ include("../../views/css/tables/table.detail.php");
                 searchParams.append('type_menu', type);
                 window.location.href = currentURL.toString();
             }
-            // Cập nhật trạng thái active của các nút
             function updateActiveButton() {
                 var seafoodButton = document.getElementById('seafoodButton');
                 var fruitsButton = document.getElementById('fruitsButton');
                 var drinksButton = document.getElementById('drinksButton');
-                // Xóa lớp active khỏi tất cả các nút
                 seafoodButton.classList.remove('active');
                 fruitsButton.classList.remove('active');
                 drinksButton.classList.remove('active');
-                // Thêm lớp active vào nút hiện tại
                 if (currentType === "Seafood") {
                     seafoodButton.classList.add('active');
                 } else if (currentType === "Fruits") {
@@ -277,7 +289,6 @@ include("../../views/css/tables/table.detail.php");
                     drinksButton.classList.add('active');
                 }
             }
-            // Kiểm tra URL hiện tại để cập nhật giá trị hiện tại của type_menu
             function checkCurrentType() {
                 var currentURL = new URL(window.location.href);
                 var typeParam = currentURL.searchParams.get('type_menu');
@@ -286,7 +297,6 @@ include("../../views/css/tables/table.detail.php");
                     currentType = typeParam;
                 }
             }
-            // Gọi các hàm để cập nhật trạng thái ban đầu
             checkCurrentType();
             updateActiveButton();
             document.addEventListener("DOMContentLoaded", function () {
@@ -314,7 +324,6 @@ include("../../views/css/tables/table.detail.php");
                         }
                     });
                 });
-
                 plusBtns.forEach(function (plusBtn, index) {
                     plusBtn.addEventListener("click", function () {
                         var input = inputs[index];

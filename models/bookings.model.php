@@ -1,8 +1,9 @@
 <?php
-    include("../../database/database.php");
-    function get_all_bookings(){
-        global $connection;
-        $statement=$connection->prepare("SELECT
+include("../../database/database.php");
+function get_all_bookings()
+{
+  global $connection;
+  $statement = $connection->prepare("SELECT
         u.id AS user_id,
         u.name AS user_name,
         u.email AS user_email,
@@ -28,14 +29,15 @@
         INNER JOIN booking_products bp ON b.id = bp.booking_id
         INNER JOIN products p ON bp.product_id = p.id
         INNER JOIN tables t ON b.table_id = t.id;");
-        $statement->execute();
-        $bookings=$statement->fetchAll(PDO::FETCH_ASSOC);
-        return $bookings;
-    }
+  $statement->execute();
+  $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+  return $bookings;
+}
 
-    function get_booking_by_id($bookingId){
-      global $connection;
-      $statement=$connection->prepare("SELECT
+function get_booking_by_id($bookingId)
+{
+  global $connection;
+  $statement = $connection->prepare("SELECT
       u.id AS user_id,
       u.name AS user_name,
       u.email AS user_email,
@@ -62,12 +64,18 @@
         INNER JOIN tables t ON b.table_id = t.id
       WHERE
         b.id = :bookingId;");
-        $statement->bindValue(':bookingId', $bookingId);
-        $statement->execute();
-        $booking=$statement->fetchAll(PDO::FETCH_ASSOC);
-      return $booking;
-  }
-
-
-
+  $statement->bindValue(':bookingId', $bookingId);
+  $statement->execute();
+  $booking = $statement->fetchAll(PDO::FETCH_ASSOC);
+  return $booking;
+}
+function get_usser_by_name($name)
+{
+  global $connection;
+  $statement = $connection->prepare("SELECT * FROM users where name = :name");
+  $statement->bindParam(":name", $name);
+  $statement->execute();
+  $result = $statement->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
 ?>
