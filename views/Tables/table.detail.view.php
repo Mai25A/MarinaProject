@@ -114,29 +114,20 @@ include("../../views/css/tables/table.detail.php");
                 <?php endforeach; ?>
             </div>
         </div>
-
         <script>
-            // Kiểm tra xem một sản phẩm có được chọn hay không
             function isSelected(productId) {
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
-
                 return selectedItems.includes(productId.toString());
             }
-            // let globalQuantityInputValue;
-
             function saveToLocalStorage(checkbox) {
                 const checkboxId = checkbox.dataset.id;
                 const quantityInput = document.getElementById("quantity_" + checkboxId);
                 const priceElement = document.querySelector(('.price_dish_') + checkboxId);
                 const price = priceElement.dataset.price;
-                // globalQuantityInputValue = quantityInput.value;
                 let savedArray = localStorage.getItem('selectedItems');
                 let selectedItems = savedArray ? JSON.parse(savedArray) : [];
-
-                // Lấy mảng 2 chiều từ local storage (nếu có)
                 let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
-
                 if (checkbox.checked && !selectedItems.includes(checkboxId)) {
                     selectedItems.push(checkboxId);
                 } else if (!checkbox.checked) {
@@ -147,31 +138,21 @@ include("../../views/css/tables/table.detail.php");
                         deleteQuantityValue(quantityValues, checkboxId);
                     }
                 }
-
-                // Tìm index của checkboxId trong mảng quantityValues
                 const valueIndex = quantityValues.findIndex(item => item[0] === checkboxId);
-
-                // Nếu checkbox được chọn, cập nhật hoặc thêm mới thông tin số lượng
                 if (checkbox.checked) {
                     if (valueIndex !== -1) {
-                        // Cập nhật số lượng và thêm index vào mảng con
                         quantityValues[valueIndex][1] = quantityInput.value;
                         quantityValues[valueIndex][2] = price;
 
                     } else {
-                        // Thêm mới thông tin số lượng và index vào mảng con
                         quantityValues.push([checkboxId, quantityInput.value, price]);
                     }
                 }
-
                 localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
                 localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
-
                 const totalPriceElement = document.querySelector('.dispoint');
                 const total = calculateTotalPrice();
                 totalPriceElement.textContent = total.toFixed(0) + ' VND';
-                // redirectToBookingPage(globalQuantityInputValue);
-
             }
 
             function deleteQuantityValue(array, checkboxId) {
@@ -242,16 +223,7 @@ include("../../views/css/tables/table.detail.php");
                     totalDispointElement.textContent = storedTotalDispoint + ' VND';
                 }
             };
-
-            // Call calculateTotalPrice to initialize the values
             calculateTotalPrice();
-
-
-            // const bookingButton = document.getElementById("bookingButton");
-            // bookingButton.addEventListener("click", function () {
-            //     saveToLocalStorage();
-            //     redirectToBookingPage();
-            // });
             var currentType = "Seafood";
             function showMenu() {
                 var menu = document.getElementById('menu');

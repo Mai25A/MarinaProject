@@ -8,7 +8,7 @@ include("../../views/css/bookings/booking.css.php"); ?>
       <h1>For bookings of 16 or more guests please give us a call directly on <b>+84(0) 33982406</b></h1>
     </div>
     <div class="row mt-4">
-      <div class="col-6 d-flex">
+      <div class="col-6 d-flex total_bkig">
         <h4 class="col-6" style="color:#26577C;">Total amount:</h4>
         <input type="text" id="total_dispoint" value="" class="col-5 text-danger"></input>
       </div>
@@ -26,23 +26,24 @@ include("../../views/css/bookings/booking.css.php"); ?>
           <div class="row mb-3">
             <div class="col-6">
               <label for="fullName">Full Name</label>
-              <input type="text" class="form-control grayed-out" id="fullName" placeholder="Enter your full name"
+              <input type="text" class="form-control grayed-out" id="fullName" value="<?php echo $user['name'] ?>"
                 readonly>
             </div>
             <div class="col-6">
               <label for="email">Email</label>
-              <input type="email" class="form-control grayed-out" id="email" placeholder="Enter your email" readonly>
+              <input type="email" class="form-control grayed-out" id="email" value="<?php echo $user['email'] ?>"
+                readonly>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-6">
               <label for="phoneNumber">Phone Number</label>
-              <input type="text" class="form-control grayed-out" id="phoneNumber" placeholder="Enter your phone number"
+              <input type="text" class="form-control grayed-out" id="phoneNumber" value="<?php echo $user['phone'] ?>"
                 readonly>
             </div>
             <div class="col-6">
               <label for="date">Select Date</label>
-              <input type="date" class="form-control date" id="date" placeholder="Enter a datetime">
+              <input type="date" class="form-control date" name="date" id="date" placeholder="Enter a datetime">
             </div>
           </div>
         </div>
@@ -51,8 +52,8 @@ include("../../views/css/bookings/booking.css.php"); ?>
             <label class="bking_ifor" style="padding-left: 10px;"><strong>Select Time</strong></label>
           </div>
           <div class="row d-flex mb-3 justify-content-center">
-            <div class="col-8 d-flex flex-column justify-content-end mt-2  time_pick">
-              <div class="row d-flex gap-4 line1">
+            <div class="col-9 d-flex flex-column justify-content-end mt-2  time_pick">
+              <div class="row d-flex gap-4 mt-2 line1">
                 <div class="col-2">
                   <input type="radio" class="btn-check time-label" name="time" id="time1" value="9" autocomplete="off">
                   <label class="btn" for="time1">9:00</label>
@@ -70,7 +71,7 @@ include("../../views/css/bookings/booking.css.php"); ?>
                   <label class="btn" for="time4">12:00</label>
                 </div>
               </div>
-              <div class="row d-flex gap-4 line2 mt-2">
+              <div class="row d-flex gap-4 line2 mt-3">
                 <div class="col-2">
                   <input type="radio" class="btn-check time-label" name="time" id="time5" value="13" autocomplete="off">
                   <label class="btn" for="time5">13:00</label>
@@ -88,7 +89,7 @@ include("../../views/css/bookings/booking.css.php"); ?>
                   <label class="btn" for="time8">16:00</label>
                 </div>
               </div>
-              <div class="row d-flex gap-4 line3 mt-2">
+              <div class="row d-flex gap-4 line3 mt-3">
                 <div class="col-2">
                   <input type="radio" class="btn-check time-label" name="time" id="time9" value="17" autocomplete="off">
                   <label class="btn" for="time9">17:00</label>
@@ -153,33 +154,35 @@ include("../../views/css/bookings/booking.css.php"); ?>
             </div>
           </div>
         </div>
-
         <div class="col-6  shadow mb-3">
           <h4 class="card-title mt-3 text-center">Dishes information</h4>
           <hr>
           <div class="card-body">
-            <?php if (isset($dish)) { ?>
-              <div class="row">
-                <div class="col-4">
-                  <img src="<?= $dish['image']; ?>" class="card-img" alt="Product Image">
-                </div>
-                <div class="col-8">
-                  <p class="card-text">Name:
-                    <?= $dish['name']; ?>
-                  </p>
-                  <p class="card-text">Price:
-                    <?= $dish['price']; ?> VND
-                  </p>
-                  <p class="card-text">Quantity:
-                    <?= $dish['quantity']; ?>
-                  </p>
-                </div>
+            <?php foreach ($decodedValues as $product) {
+            
+              $result = get_dish_by_id($product[0]);
+
+
+             ?>
+            <div class="row">
+              <div class="col-4">
+                <img src="<?= $result['image']; ?>" class="card-img" alt="Product Image">
               </div>
-            <?php }else{
-              ?>
-              <p class="fs-4 text-center" ><strong>No items selected</strong></p>
-              <?php
-            } ?>
+              <div class="col-8">
+                <p class="card-text">Name:
+                  <?= $result['name']; ?>
+                </p>
+                <p class="card-text">Price:
+                  <?= $result['price']; ?> VND
+                </p>
+                <p class="card-text">Quantity:
+                  <?= $product[1]; ?>
+                </p>
+              </div>
+            </div>
+            <?php }
+            ?>
+
           </div>
         </div>
       </div>
@@ -187,6 +190,25 @@ include("../../views/css/bookings/booking.css.php"); ?>
   </div>
   <script>
 
+    // Lấy giá trị của key "checkboxQuantityValues" từ local storage
+    const checkboxQuantityValues = localStorage.getItem('checkboxQuantityValues');
+
+    // Kiểm tra nếu có giá trị của key "checkboxQuantityValues" thì chuyển đổi thành mảng số
+    let quantityValues = [];
+    if (checkboxQuantityValues) {
+      quantityValues = JSON.parse(checkboxQuantityValues);
+
+      // Chuyển đổi các giá trị thành số
+      quantityValues = quantityValues.map(item => [Number(item[0]), Number(item[1]), Number(item[2])]);
+    }
+
+    // Gửi giá trị đã chuyển đổi lên URL
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('checkboxQuantityValues', JSON.stringify(quantityValues));
+
+    // Thay đổi URL với giá trị mới của key "checkboxQuantityValues"
+    const newUrl = window.location.pathname + '?' + urlParams.toString();
+    window.history.replaceState({}, '', newUrl);
   </script>
 </body>
 <?php include('../../views/partials/footer.php'); ?>

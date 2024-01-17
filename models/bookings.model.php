@@ -69,13 +69,16 @@ function get_booking_by_id($bookingId)
   $booking = $statement->fetchAll(PDO::FETCH_ASSOC);
   return $booking;
 }
-function get_usser_by_name($name)
-{
+function add_to_booking($user_id,$datetime,$total,$table_id){
   global $connection;
-  $statement = $connection->prepare("SELECT * FROM users where name = :name");
-  $statement->bindParam(":name", $name);
-  $statement->execute();
-  $result = $statement->fetch(PDO::FETCH_ASSOC);
-  return $result;
+  $sttm = $connection->prepare('INSERT INTO bookings VALUE (:expert_id, :date_time, :total, :table_id)');
+
+
 }
+function add_to_bookings_product($bookingId,$product_id,$quantity, $total_amount){
+        global $connection;
+        $sttm = $connection->prepare("INSERT INTO booking_products VALUE ()");
+}
+
+
 ?>

@@ -36,7 +36,7 @@
         align-items: center;
         box-shadow: 4px 4px 4px rgba(170, 170, 170, 0.2),
             -4px 4px 4px rgba(170, 170, 170, 0.2),
-            0px -6px 4px rgba(170, 170, 170, 0.22);
+            0px -4px 4px rgba(170, 170, 170, 0.22);
         background-color: white;
         color: black;
         border-radius: 10px;
@@ -69,5 +69,12 @@
     }
     .bking_ifor{
         color: #C3AF45;
+    }
+    .total_bkig input{
+        border: none;
+        outline: none;
+        font-size: 27px;
+        font-weight: bold;
+        margin: -20px -50px;
     }
 </style>

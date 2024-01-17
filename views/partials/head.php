@@ -35,14 +35,16 @@
                     </li>
                     <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
                     <?php require '../../models/login/login.model.php';
-                    $name = $_COOKIE['User'];
 
-                    if (isset($name)) {
+                    if (isset($_COOKIE['User'])) {
+                        $name = $_COOKIE['User'];
                         $users = get_user_by_name($name);
 
                         ?>
-                        <li><a href="../../views/account/profile.detail.view.php" id=""><?=$users['name'] ?></a><img style="z-index : 29" src="<?=$users['image']?>" alt=""></li>
-                        
+                        <li><a href="../../views/account/profile.detail.view.php" id="">
+                                <?= $users['name'] ?>
+                            </a><img style="z-index : 29" src="<?= $users['image'] ?>" alt=""></li>
+
 
 
                     <?php } else { ?>
