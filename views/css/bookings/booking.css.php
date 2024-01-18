@@ -77,4 +77,7 @@
         font-weight: bold;
         margin: -20px -50px;
     }
+    .table_box{
+        height: 250px;
+    }
 </style>

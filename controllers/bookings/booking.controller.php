@@ -3,15 +3,13 @@ include("../../models/bookings.model.php");
 include('../../models/tables.model.php');
 include('../../models/menu.model.php');
 include('../../models/post.user.model.php');
-
+include("../../views/partials/head.php");
+include("../../views/css/bookings/booking.css.php"); 
 if (isset($_COOKIE['User'])) {
     $name = $_COOKIE['User'];
     $user = get_usser_by_name($name);
     if (isset($_GET['table_id'])) {
         $table = get_one_table($_GET['table_id']);
-        if (isset($_GET['dishes_id'])) {
-            $dish = get_dish_by_id($_GET['dishes_id']);
-        }
     }
 }
 elseif (isset($_SESSION['user_id'])) {
@@ -19,9 +17,6 @@ elseif (isset($_SESSION['user_id'])) {
     $user = getUserById($id);
     if (isset($_GET['table_id'])) {
         $table = get_one_table($_GET['table_id']);
-        if (isset($_GET['dishes_id'])) {
-            $dish = get_dish_by_id($_GET['dishes_id']);
-        }
     }
 }
 $checkboxQuantityValues = $_GET['checkboxQuantityValues'];

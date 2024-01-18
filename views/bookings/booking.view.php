@@ -1,24 +1,7 @@
-<?php
-include("../../views/partials/head.php");
-include("../../views/css/bookings/booking.css.php"); ?>
-
 <body>
   <div class="container mt-4">
     <div class="row message">
       <h1>For bookings of 16 or more guests please give us a call directly on <b>+84(0) 33982406</b></h1>
-    </div>
-    <div class="row mt-4">
-      <div class="col-6 d-flex total_bkig">
-        <h4 class="col-6" style="color:#26577C;">Total amount:</h4>
-        <input type="text" id="total_dispoint" value="" class="col-5 text-danger"></input>
-      </div>
-      <script>
-        var total_dispoint = localStorage.getItem("total_dispoint");
-        document.getElementById('total_dispoint').value = total_dispoint;
-      </script>
-      <div class="col-6 butn">
-        <button class="btn bg-danger booking_now">Booking now </button>
-      </div>
     </div>
     <div class="row">
       <div class="col-7 mt-5 ifor_check">
@@ -132,7 +115,7 @@ include("../../views/css/bookings/booking.css.php"); ?>
         <label class="bking_ifor"><strong>Information of your booking:</strong></label>
       </div>
       <div class="row ms-4 mt-4 d-flex gap-5">
-        <div class="col-5 shadow mb-3">
+        <div class="col-5 table_box shadow mb-3">
           <h4 class="card-title mt-3 text-center">Table information</h4>
           <hr>
           <div class="card-body">
@@ -154,37 +137,45 @@ include("../../views/css/bookings/booking.css.php"); ?>
             </div>
           </div>
         </div>
-        <div class="col-6  shadow mb-3">
+        <div class="col-6 shadow mb-3">
           <h4 class="card-title mt-3 text-center">Dishes information</h4>
           <hr>
-          <div class="card-body">
+          <div class="card-body" style="max-height: 170px; overflow-y: scroll;">
             <?php foreach ($decodedValues as $product) {
-            
               $result = get_dish_by_id($product[0]);
-
-
-             ?>
-            <div class="row">
-              <div class="col-4">
-                <img src="<?= $result['image']; ?>" class="card-img" alt="Product Image">
+              ?>
+              <div class="row">
+                <div class="col-4">
+                  <img src="<?= $result['image']; ?>" class="card-img" alt="Product Image">
+                </div>
+                <div class="col-8">
+                  <p class="card-text">Name:
+                    <?= $result['name']; ?>
+                  </p>
+                  <p class="card-text">Price:
+                    <?= $result['price']; ?> VND
+                  </p>
+                  <p class="card-text">Quantity:
+                    <?= $product[1]; ?>
+                  </p>
+                </div>
               </div>
-              <div class="col-8">
-                <p class="card-text">Name:
-                  <?= $result['name']; ?>
-                </p>
-                <p class="card-text">Price:
-                  <?= $result['price']; ?> VND
-                </p>
-                <p class="card-text">Quantity:
-                  <?= $product[1]; ?>
-                </p>
-              </div>
-            </div>
-            <?php }
-            ?>
-
+            <?php } ?>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-6 d-flex total_bkig">
+        <h4 class="col-6" style="color:#26577C;">Total amount:</h4>
+        <input type="text" id="total_dispoint" value="" class="col-5 text-danger"></input>
+      </div>
+      <script>
+        var total_dispoint = localStorage.getItem("total_dispoint");
+        document.getElementById('total_dispoint').value = total_dispoint;
+      </script>
+      <div class="col-6 butn">
+        <a href="<?php echo ('../../controllers/bookings/init_payment.php')?>"><button class="btn bg-danger booking_now">Booking now </button></a>
       </div>
     </div>
   </div>

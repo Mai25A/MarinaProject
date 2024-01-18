@@ -69,16 +69,22 @@ function get_booking_by_id($bookingId)
   $booking = $statement->fetchAll(PDO::FETCH_ASSOC);
   return $booking;
 }
-function add_to_booking($user_id,$datetime,$total,$table_id){
+function add_to_booking($user_id, $datetime, $total, $table_id) {
   global $connection;
-  $sttm = $connection->prepare('INSERT INTO bookings VALUE (:expert_id, :date_time, :total, :table_id)');
-
-
+  $sttm = $connection->prepare('INSERT INTO bookings (user_id, date_time, total, table_id) VALUES (:user_id, :datetime, :total, :table_id)');
+  $sttm->bindParam(':user_id', $user_id);
+  $sttm->bindParam(':datetime', $datetime);
+  $sttm->bindParam(':total', $total);
+  $sttm->bindParam(':table_id', $table_id);
+  $sttm->execute();
 }
-function add_to_bookings_product($bookingId,$product_id,$quantity, $total_amount){
-        global $connection;
-        $sttm = $connection->prepare("INSERT INTO booking_products VALUE ()");
+
+function add_to_bookings_product($bookingId, $product_id, $quantity, $total_amount) {
+  global $connection;
+  $sttm = $connection->prepare("INSERT INTO booking_products (booking_id, product_id, quantity, total_amount) VALUES (:booking_id, :product_id, :quantity, :total_amount)");
+  $sttm->bindParam(':booking_id', $bookingId);
+  $sttm->bindParam(':product_id', $product_id);
+  $sttm->bindParam(':quantity', $quantity);
+  $sttm->bindParam(':total_amount', $total_amount);
+  $sttm->execute();
 }
-
-
-?>
