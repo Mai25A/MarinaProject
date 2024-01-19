@@ -10,4 +10,5 @@ if (!isset($_SESSION['user_id'])) {
 // Lấy user_id từ session
 $user_id = $_SESSION['user_id'];
 $tables = get_tables_by_user_id($user_id);
-require_once '../../views/account/bookingtable.view.php';
+
+require '../../views/account/bookingtable.view.php';

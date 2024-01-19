@@ -90,6 +90,7 @@
         border: 1px solid #26577C;
         border-left: none;
         border-right: none;
+        display: flex;
         font-size: 15px;
         width: 100px;
         height: 25px;
