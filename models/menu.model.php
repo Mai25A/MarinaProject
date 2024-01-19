@@ -95,4 +95,23 @@ function get_one_user($id)
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     return $user;
 }
+function updateInfoProfile($id, $email, $name, $phone){
+    global $connection;
+    if ($id) {
+        $statement = $connection->prepare('UPDATE users SET email = :email, name = :name, phone = :phone WHERE id = :id');
+        $statement->bindParam(":email", $email);
+        $statement->bindParam(":name", $name);
+        $statement->bindParam(":phone", $phone);
+        $statement->bindParam(":id", $id);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            $errorInfo = $statement->errorInfo();
+            echo "Lỗi khi cập nhật: " . $errorInfo[2];
+            return false;
+        }
+    }
+    return false;
+}
 ?>

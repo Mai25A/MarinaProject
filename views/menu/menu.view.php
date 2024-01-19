@@ -9,7 +9,7 @@ require_once '../../controllers/menu/menu.controller.php';
         <button class="underline button" onclick="redirectToURL(2)">Fruits</button>
         <button class="underline button" onclick="redirectToURL(3)">Drinks</button>
     </div>
-    <div class="row">
+    <div class="row card_menu">
         <?php $counter = 0; ?>
         <?php foreach ($menuByCategory as $value) { ?>
             <div class="col-md-4">

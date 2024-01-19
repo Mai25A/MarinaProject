@@ -7,8 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //     // Kiểm tra xem email và password có rỗng hay không
     if (!empty($email) && !empty($password)) {
-        echo $password;
-        echo $email;
         $loggedIn = loginUser($email, $password);
 
         if ($loggedIn) {
