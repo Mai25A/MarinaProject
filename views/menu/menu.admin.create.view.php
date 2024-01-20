@@ -1,7 +1,7 @@
 <?php require_once "/PHP_project/MarinaProject/views/partials/link.php";  ?>
 <div class="card mt-5">
     <div class="card-body">
-        <form action="../../controllers/menu/create.admin.controller.php" method="post">
+        <form method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name">

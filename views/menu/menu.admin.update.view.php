@@ -1,10 +1,9 @@
 <?php 
 $id = $_GET['id'];
-include '../../models/menu.model.php';
-require_once "../partials/link.php";  
+require_once "views/partials/link.php";  
 $product = getProductById($id);
 ?>
-<form action="../../controllers/menu/menu.update.controller.php" method="post">
+<form action="/menu/update" method="post">
 <input type="hidden" name="id" value="<?=$id?>">
     <div class="form-group">
         <label for="name">Name:</label>

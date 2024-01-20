@@ -1,11 +1,11 @@
 <?php
-require_once '../../views/css/acount/profile.detail.css.php';
-require '../../models/login/login.model.php';
-require_once "../../views/partials/link.php";
+require_once 'views/css/acount/profile.detail.css.php';
+require 'models/login/login.model.php';
+require_once "views/partials/link.php";
 
-if (isset($_SESSION['user'])) {
-    $name = $_SESSION['user'];
-    $user = get_user_by_name($name);
+if (isset($_SESSION['user_id'])) {
+    $id = $_SESSION['user_id'];
+    $user = get_user_by_name($id);
 }
 ?>
 
@@ -14,7 +14,7 @@ if (isset($_SESSION['user'])) {
         <div class="card mt-4 mb-4">
             <div class="row bg-behind">
                 <div class="image-user text-center mt-4">
-                    <img src="<?= $users['image'] ?>" alt="avatar">
+                    <img src="<?= $user['image'] ?>" alt="avatar">
                     <i class="bi bi-pencil-square"></i>
                     <h1>
                         <?= isset($user['name']) ? $user['name'] : '' ?>
@@ -34,7 +34,7 @@ if (isset($_SESSION['user'])) {
                             <a href="#" class="list-group-item list-group-item-action">
                                 <i class="bi bi-heart"></i><span class="ms-2">Favourite tables</span>
                             </a>
-                            <a href="../../controllers/login/logout.controller.php"
+                            <a href="/logout"
                                 class="list-group-item list-group-item-action">
                                 <i class="bi bi-box-arrow-left"></i><span class="ms-2">Logout</span>
                             </a>

@@ -1,5 +1,5 @@
-<?php require_once ('../../views/partials/head.php');
-require_once ('../../views/css/contact.css.php');
+<?php require_once ('views/partials/head.php');
+require_once ('views/css/contact.css.php');
 ?>
 <div class="container">
     <div class="address row mt-5">
@@ -68,4 +68,4 @@ require_once ('../../views/css/contact.css.php');
     </div>
 </div>
 
-<?php require "../../views/partials/footer.php"; ?>
+<?php require "views/partials/footer.php"; ?>

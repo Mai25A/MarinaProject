@@ -54,11 +54,11 @@ function loginUser($email, $password)
 //   return $user;
 // }
   
-function get_user_by_name($name) {
+function get_user_by_name($id) {
     global $connection;
     $query = "SELECT * FROM users WHERE name = :name";
     $statement = $connection->prepare($query);
-    $statement->bindParam(':name', $name);
+    $statement->bindParam(':id', $id);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     return $user;

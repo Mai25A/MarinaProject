@@ -1,4 +1,5 @@
 <?php
+session_start();
 // $userData = $_SESSION['user_data'];
 require_once('/PHP_project/MarinaProject/views/css/header.css.php');
 require_once "/PHP_project/MarinaProject/views/partials/link.php";
@@ -14,28 +15,27 @@ require_once "/PHP_project/MarinaProject/views/partials/link.php";
                 </a>
 
                 <ul class=" mt-2 mainMenu">
-                    <li><a href="../../controllers/web/home.controller.php">Home</a></li>
-                    <li><a href="../../controllers/web/about.controller.php">About Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
                     <li><a href="">Service</a>
                         <i class="fa fa-chevron-down" style="color: #ffffff; font-size:10px;"></i>
                         <ul class="childMenu">
-                            <li><a href="../../controllers/menu/menu.controller.php">Menu</a></li>
-                            <li><a href="../../controllers/tables/tables.controller.php">Tables</a></li>
+                            <li><a href="/menu/web">Menu</a></li>
+                            <li><a href="/tables/web">Tables</a></li>
                         </ul>
                     </li>
-                    <li><a href="../../controllers/web/contact.controller.php">Contact Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
                     <?php require_once "/PHP_project/MarinaProject/models/login/login.model.php";
                     if (isset($_SESSION['user'])) {
                         ?>
-                        <li><a href="../../controllers/account/profile.detail.controller.php" id="">
+                        <li><a href="/profile" id="">
                                 <?= $_SESSION['user']['name'] ?>
                             </a>
-                            <img style="z-index : 29" src="<?= $_SESSION['user']['image'] ?>" alt="anh">
                         </li>
                         <?php
                     } else {
                         ?>
-                        <li><a href="../../controllers/login/login.controller.php" id="loginLink">Login</a></li>
+                        <li><a href="/login" id="loginLink">Login</a></li>
                         <?php
                     }
                     ?>

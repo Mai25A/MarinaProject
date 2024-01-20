@@ -1,5 +1,5 @@
 <?php
-include("../../database/database.php");
+include("database/database.php");
 function get_all_tables_type()
 {
     global $connection;

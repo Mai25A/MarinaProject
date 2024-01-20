@@ -1,4 +1,4 @@
-<?php require_once '../css/acount/bokingtable.css.php'?>
+<?php require_once 'css/acount/bokingtable.css.php'?>
 
 <!DOCTYPE html>
 <html lang="en">

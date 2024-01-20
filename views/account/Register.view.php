@@ -8,7 +8,7 @@ require_once('/PHP_project/MarinaProject/views/css/acount/register.css.php');
 </head>
 
 <body>
-  <form action="" method="POST">
+  <form action="/register" method="POST">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-2">

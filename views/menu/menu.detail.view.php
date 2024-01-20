@@ -1,6 +1,6 @@
 <?php
-    require_once('../../controllers/menu/menu.detail.controller.php');
-    require_once('../../views/css/menu/menu.detail.css.php')
+    require_once('controllers/menu/menu.detail.controller.php');
+    require_once('views/css/menu/menu.detail.css.php')
 ?>
 <body>
     <form>

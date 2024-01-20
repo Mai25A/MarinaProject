@@ -1,11 +1,12 @@
 <?php
-require_once("../../views/partials/link.php");
-require_once('../../views/css/login.css.php'); 
+require_once("views/partials/link.php");
+// require_once "views/partials/head.php";
+require_once('views/css/login.css.php'); 
 ?>
 </head>
 
 <body>
-  <form action="../../controllers/login/login.controller.php" method="post">
+  <form action="/login" method="post">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-3">
@@ -38,12 +39,13 @@ require_once('../../views/css/login.css.php');
               <a href="" class="fcolor">Forgot Password?</a>
             </div>
             <div class="Register">
-              <a href="../../controllers/login/register.controller.php" class="rcolor">Don’t have a account? <span
+              <a href="/register" class="rcolor">Don’t have a account? <span
                   class="register">Register</span></a>
             </div>
           </div>
         </div>
   </form>
+
   <script>
     // JavaScript to toggle password visibility
     const passwordInput = document.getElementById('exampleInputPassword');
@@ -55,3 +57,4 @@ require_once('../../views/css/login.css.php');
       togglePasswordButton.classList.toggle('fa-eye-slash');
     });
   </script>
+ 

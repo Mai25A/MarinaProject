@@ -5,14 +5,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<?php require_once "../../views/partials/sidebav.php";
-include_once('../../views/css/menu/menu.admin.css.php');
-include('../../controllers/menu/menu.admin.controller.php');
+<?php require_once "views/partials/sidebav.php";
+include_once('views/css/menu/menu.admin.css.php');
+include('controllers/menu/menu.admin.controller.php');
     ?>
 
 <div class="container p-4 mr-4">
     <div class="d-flex justify-content-start p-2">
-        <a href="../../views/menu/menu.admin.create.view.php" class="btn btn-primary">Add</a>
+        <a href="/menu/create" class="btn btn-primary">Add</a>
     </div>
     <table class="table table-hover">
         <thead>
@@ -50,10 +50,10 @@ include('../../controllers/menu/menu.admin.controller.php');
                         <?= $value['category_id'] ?>
                     </td>
                     <td>
-                        <a href="../../views/menu/menu.admin.update.view.php?id=<?= $value['id'] ?>"
+                        <a href="/menu/update?id=<?= $value['id'] ?>"
                             class="btn btn-success"><i class="fa fa-pencil"></i></a>
 
-                        <a href="../../controllers/menu/menu.delete.controller.php?action=delete&id=<?= $value['id'] ?>"
+                        <a href="/menu/delete?action=delete&id=<?= $value['id'] ?>"
                             class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>

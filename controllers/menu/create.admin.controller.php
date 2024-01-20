@@ -1,5 +1,5 @@
 <?php
-require_once("../../models/menu.model.php");
+require_once("models/menu.model.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['image']) && !empty($_POST['category_id']) && !empty($_POST['price']) && !empty($_POST['description'])) {
         $name = $_POST['name'];
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $price = $_POST['price'];
         $description = $_POST['description'];
         $create = createMenuManagement($name, $image,$category_id, $price, $description);
-        header("location: menu.admin.controller.php");
+        header("location: /menu");
 
         if ($create) {
             //Thêm thành công
@@ -22,4 +22,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Missing data";
     }
 }
-require_once("../../views/menu/menu.admin.create.view.php");
+require_once("views/menu/menu.admin.create.view.php");

@@ -1,8 +1,8 @@
 <?php
-require_once '../../views/partials/head.php';
-require_once '../../views/partials/link.php';
-require_once '../../views/css/menu/menu.css.php';
-require_once '../../controllers/menu/menu.controller.php';
+require_once 'views/partials/head.php';
+require_once 'views/partials/link.php';
+require_once 'views/css/menu/menu.css.php';
+require_once 'controllers/menu/menu.controller.php';
 ?>
 <div class="container-fluid">
     <div class="title">
@@ -14,7 +14,7 @@ require_once '../../controllers/menu/menu.controller.php';
         <?php $counter = 0; ?>
         <?php foreach ($menuByCategory as $value) { ?>
             <div class="col-md-4">
-                <a href="../../controllers/menu/menu.detail.controller.php?id=<?= $value['id'] ?>">
+                <a href="/menu/detail?id=<?= $value['id'] ?>">
                     <div class="card">
                         <div class="card-image">
                             <img src="<?= $value['image'] ?>" alt="Product Image">
@@ -34,7 +34,7 @@ require_once '../../controllers/menu/menu.controller.php';
         <?php } ?>
     </div>
 </div>
-<?php require_once '../../views/partials/footer.php'; ?>
+<?php require_once 'views/partials/footer.php'; ?>
 <script>
     function redirectToURL(categoryId) {
         window.location.href = 'menu.view.php?type=' + categoryId;

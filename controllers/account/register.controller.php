@@ -1,7 +1,6 @@
 <?php
-session_start(); // Bắt đầu phiên
 
-require '../../models/login/register.model.php';
+require 'models/login/register.model.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['phone']) && !empty($_POST['email']) && !empty($_POST['password'])) {
@@ -13,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $save = saveUser($name, $phone, $email, $password);
         if ($save) {
             $_SESSION['user_id'] = $save; // Lưu trữ ID người dùng vào biến phiên
-            header("Location: ../../views/home/Body-Home.view.php"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
+            header("Location: views/home/Body-Home.view.php"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
             exit;
         } else {
             echo "Failed to create register";
@@ -22,4 +21,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Missing data";
     }
 }
-require '../../views/account/profile.detail.view.php';
+require 'views/account/profile.detail.view.php';

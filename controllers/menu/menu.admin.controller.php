@@ -1,5 +1,5 @@
 <?php
-require_once ("../../models/menu.model.php");
+require_once ("models/menu.model.php");
 $menu = get_all_menu();
-require_once "../../views/menu/menu.admin.view.php";
+require_once "views/menu/menu.admin.view.php";
 ?>

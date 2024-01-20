@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../models/login/login.model.php';
+require 'models/login/login.model.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
@@ -13,24 +13,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = getUser($email);
             $_SESSION['user']= $user[0];
             if ( $_SESSION['user']['role_id']==1) {
-                header("Location: /controllers/web/sidebav.controller.php");
+                header("Location: controllers/web/sidebav.controller.php");
                 exit();
             } else {
-                header("Location: /controllers/web/home.controller.php");
+                header("Location: controllers/web/home.controller.php");
                 exit();
             }
         } else {
             // Hiển thị thông báo lỗi và chuyển hướng trở lại trang đăng nhập
-            echo "<script>alert('please login again'); window.location.href = '../../controllers/login/login.controller.php';</script>";
+            echo "<script>alert('please login again'); window.location.href = 'controllers/login/login.controller.php';</script>";
             exit();
         }
     } else {
         // Chuyển hướng trở lại trang đăng nhập nếu thông tin đăng nhập không hợp lệ
-        header("Location: ../../controllers/login/login.controller.php");
+        header("Location: controllers/login/login.controller.php");
         exit();
     }
 }
-require_once "../../views/account/login.view.php"; 
+require_once "views/account/login.view.php"; 
             // Kiểm tra xem $userData có phải là mảng và không phải là giá trị boolean không
             // if (is_array($userData)) {
             //     $cookie_name = "User";

@@ -1,17 +1,8 @@
 <?php
-// session_start();
-
-// if (isset($_SESSION['type'])) {
-//     $selectedCategory = $_SESSION['type'];
-// } else {
-//     $selectedCategory = "";
-// }
-// unset($_SESSION['type']);
-require_once "../partials/link.php";
-
+require_once "views/partials/link.php";
 ?>
 
-<form action="../../controllers/tables/table.create.controller.php" method="get">
+<form action="/tables/create" method="POST">
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name">

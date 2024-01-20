@@ -1,7 +1,4 @@
 <?php
-session_start();
-// $userData = $_SESSION['user_data'];
-
 require_once ('/PHP_project/MarinaProject/views/partials/head.php');
 require_once ('/PHP_project/MarinaProject/views/css/body.css.php');
 ?>

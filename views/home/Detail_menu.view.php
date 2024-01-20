@@ -1,6 +1,6 @@
 <?php
-    require_once('../../views/partials/head.php');
-    require_once('../css/detail_menu.css.php');
+    require_once('views/partials/head.php');
+    require_once('css/detail_menu.css.php');
 ?>
 <body>
     <form>
@@ -19,4 +19,4 @@
     </form>
 </body>
 
-<?php require_once('../../views/partials/footer.php'); ?>
+<?php require_once('views/partials/footer.php'); ?>

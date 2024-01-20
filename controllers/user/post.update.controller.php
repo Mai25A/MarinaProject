@@ -1,5 +1,5 @@
 <?php
-include_once("../../models/post.user.model.php");
+include_once("models/post.user.model.php");
 
 if(($_SERVER['REQUEST_METHOD'] == 'POST')){
     if (isset($_POST['id'])) {
@@ -11,9 +11,9 @@ if(($_SERVER['REQUEST_METHOD'] == 'POST')){
         $image = $_POST['image'];
         updateUser($id,$name,$phone,$email,$password,$image);
     
-        header('location: post.admin.controller.php');
+        header('location: /user');
         exit();
         
     }
 }
-include_once("../../views/user/post.update.view.php");
+include_once("views/user/post.update.view.php");

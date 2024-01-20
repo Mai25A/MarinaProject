@@ -1,6 +1,6 @@
 <?php
-include_once("../../views/partials/head.php");
-include("../../views/css/bookings/booking.admin.css.php");
+include_once("views/partials/head.php");
+include("views/css/bookings/booking.admin.css.php");
 ?>
 <div class="container">
     <form action="#" method="post">
@@ -47,7 +47,7 @@ include("../../views/css/bookings/booking.admin.css.php");
                                     <?= $booking['bp_total_amount'] ?>
                                 </td>
                                 <td>
-                                    <a href="booking.admin.detail.controller.php?booking_id=<?= $booking['booking_id'] ?>">Detail</a>
+                                    <a href="/bookings?booking_id=<?= $booking['booking_id'] ?>">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

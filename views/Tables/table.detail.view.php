@@ -1,7 +1,7 @@
 <?php
-include("../../views/css/tables/table.detail.php");
-require_once('../../views/partials/head.php');
-require_once('../../views/partials/link.php');
+include("views/css/tables/table.detail.php");
+require_once('views/partials/head.php');
+require_once('views/partials/link.php');
 ?>
 
 <body>

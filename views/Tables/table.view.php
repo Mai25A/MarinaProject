@@ -1,7 +1,7 @@
 <?php
-require_once('../../views/partials/head.php');
-require_once('../../views/partials/link.php');
-require_once('../../views/css/tables/table.css.php');
+require_once('views/partials/head.php');
+require_once('views/partials/link.php');
+require_once('views/css/tables/table.css.php');
 ?>
 
 <body>
@@ -81,7 +81,7 @@ require_once('../../views/css/tables/table.css.php');
         <div class="row box_products d-flex flex-wrap mt-2">
             <?php foreach ($tables as $table): ?>
                 <div class="card-item-tb col-md-4 mt-4">
-                    <a href="../../controllers/tables/table.detail.php?id=<?= $table['id'] ?>">
+                    <a href="/tables/detail?id=<?= $table['id'] ?>">
                         <div class="card list-item">
                             <div class="image-item">
                                 <img src="<?= $table['image']; ?>" class="card-img-top" alt="...">
@@ -121,5 +121,5 @@ require_once('../../views/css/tables/table.css.php');
     </div>
 </body>
 <?php
-require_once('../../views/partials/footer.php');
+require_once('views/partials/footer.php');
 ?>

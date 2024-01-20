@@ -1,16 +1,17 @@
 <?php
-include_once("../../models/post.user.model.php");
+include_once("models/post.user.model.php");
 
-    
-    $name = $_GET['name'];
-    $phone = $_GET['phone'];
-    $email = $_GET['email'];
-    $password = $_GET['password'];
-    $image = $_GET['image'];
+if(($_SERVER['REQUEST_METHOD'] == 'POST')){
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $image = $_POST['image'];
 
     createUser($name, $phone, $email, $password, $image);
-    header('Location: post.admin.controller.php');
+    header('Location: /user');
     exit();
+}
 
-
+include_once("views/user/post.create.view.php");
 ?>

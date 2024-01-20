@@ -1,11 +1,11 @@
 <?php
-include_once("../../views/css/tables/table.admin.php");
-require_once "../../views/partials/sidebav.php";
-require_once "../../controllers/tables/table.admin.controller.php";
+include_once("views/css/tables/table.admin.php");
+require_once "views/partials/sidebav.php";
+require_once "controllers/tables/table.admin.controller.php";
 ?>
 <div class="container p-4 mr-4">
     <div class="d-flex justify-content-start p-2">
-        <a href="../../views/Tables/table.create.view.php" class="btn btn-primary">Add</a>
+        <a href="/tables/create" class="btn btn-primary">Add</a>
     </div>
     <table class="table table-striped">
         <thead>
@@ -53,10 +53,10 @@ require_once "../../controllers/tables/table.admin.controller.php";
                     <td>
                         <div class="action">
 
-                            <a href="../../views/Tables/table.update.view.php?id=<?= $table['id'] ?>" 
+                            <a href="/tables/update?id=<?= $table['id'] ?>" 
                                 class="btn btn-success"><i class="fa fa-pencil"></i></a>
 
-                            <a href="../../controllers/tables/table.delete.controller.php?id_delete=<?= $table['id'] ?>"
+                            <a href="/tables/delete?id_delete=<?= $table['id'] ?>"
                                 class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>
                         </div>
 

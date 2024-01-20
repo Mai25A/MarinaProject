@@ -1,5 +1,5 @@
 <?php
-require_once '../../database/database.php';
+require_once 'database/database.php';
 
 function saveUser($name, $phone, $email, $password) {
     global $connection;

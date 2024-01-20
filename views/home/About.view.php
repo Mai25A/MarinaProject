@@ -1,5 +1,5 @@
-<?php require_once ('../../views/partials/head.php'); 
-    require_once ("../../views/css/about.css.php");
+<?php require_once ('views/partials/head.php'); 
+    require_once ("views/css/about.css.php");
 ?>
 
 
@@ -48,4 +48,4 @@
 </div>
 
 
-<?php require  "../../views/partials/footer.php"; ?>
+<?php require  "views/partials/footer.php"; ?>

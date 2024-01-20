@@ -1,5 +1,5 @@
 <?php
-require_once ("../../models/tables.model.php");
+require_once ("models/tables.model.php");
 if (isset($_GET['type'])) {
     $types = $_GET['type'];
     $tables = get_type_table($_GET['type']);
@@ -8,4 +8,4 @@ if (isset($_GET['type'])) {
 } else {
     $tables = get_all_tables_type();
 }
-require_once "../../views/Tables/table.view.php"; 
+require_once "views/Tables/table.view.php"; 

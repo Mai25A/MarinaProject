@@ -1,10 +1,10 @@
-<?php require_once "../../views/partials/sidebav.php";
-require_once "../../views/partials/link.php";
+<?php require_once "views/partials/sidebav.php";
+require_once "views/partials/link.php";
 ?>
 
 <div class="container p-4 mr-4">
     <div class="d-flex justify-content-start p-2">
-        <a href="../../views/user/post.create.view.php" class="btn btn-primary">Add</a>
+        <a href="/user/create" class="btn btn-primary">Add</a>
     </div>
     <table class="table table-hover">
         <thead>
@@ -38,10 +38,10 @@ require_once "../../views/partials/link.php";
                     </td>
                     <td>
                         <div class="action">
-                            <a href="../../views/user/post.update.view.php?id=<?= $user['id']; ?>"
+                            <a href="/user/update?id=<?= $user['id']; ?>"
                                 class="btn btn-success"><i class="fa fa-pencil"></i></a>
                                 
-                            <a href="../../controllers/user/post.delete.controller.php?id=<?= $user['id']; ?>"
+                            <a href="/user/delete?id=<?= $user['id']; ?>"
                                 class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>
                         </div>
                     </td>

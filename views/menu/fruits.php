@@ -1,6 +1,6 @@
 <?php
-require_once '../../views/css/menu.css.php';
-require_once '../../controllers/menu/menu.controller.php';
+require_once 'views/css/menu.css.php';
+require_once 'controllers/menu/menu.controller.php';
 ?>
 <div class="container">
     <?php foreach ($menu as $value) {
