@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cookie_name = "User";
             $cookie_value = ($userData['name']);
             // echo $cookie_value;
-            setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+            setcookie($cookie_name, $cookie_value, time() + (86400*30), "/"); // 86400 = 1 day
 
             header("Location: ../../views/home/Body-Home.view.php");
             exit();

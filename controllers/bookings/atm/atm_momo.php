@@ -1,5 +1,23 @@
 <?php
-// header('Content-type: text/html; charset=utf-8');
+session_start();
+header('Content-type: text/html; charset=utf-8');
+
+if (isset($_GET['date'])) {
+    $date = $_GET['date'];
+    $user_id = $_GET['user_id'];
+    $time = $_GET['time'];
+    $table_id = $_GET['table_id'];
+    $total_dispoint = $_GET['total_dispoint'];
+
+    // Store values in session variables
+    $_SESSION['date_session'] = $date;
+    $_SESSION['user_id_session'] = $user_id;
+    $_SESSION['time_session'] = $time;
+    $_SESSION['table_id_session'] = $table_id;
+    $_SESSION['total_dispoint_session'] = $total_dispoint;
+
+}
+
 
 function execPostRequest($url, $data)
 {
@@ -28,10 +46,10 @@ $partnerCode = 'MOMOBKUN20180529';
 $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
-$amount = "90000";
+$amount = "10000";
 $orderId = time() ."";
-$redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-$ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+$redirectUrl = "http://localhost:3000/views/home/Body-Home.view.php";
+$ipnUrl = "http://localhost:3000/";
 $extraData = "";
 
 
@@ -47,7 +65,7 @@ if (!empty($_POST)) {
     $extraData = $_POST["extraData"];
 
     $requestId = time() . "";
-    $requestType = "captureWallet";
+    $requestType = "payWithATM";
     $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
     //before sign HMAC SHA256 signature
     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
@@ -87,16 +105,17 @@ if (!empty($_POST)) {
 </head>
 <body>
 <div class="container">
+
     <div class="row">
         <div class="col-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Initial payment/Khởi tạo thanh toán</h3>
+                    <h3 class="panel-title">Initial payment/Khởi tạo thanh toán ATM qua MoMo</h3>
                 </div>
                 <div class="panel-body">
                     <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
-                          action="init_payment.php">
-                        <div class="row hidden">
+                          action="atm_momo.php">
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">PartnerCode</label>
@@ -137,13 +156,10 @@ if (!empty($_POST)) {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">Amount</label>
+                                    <label for="fxRate" class="col-form-label">ExtraData</label>
                                     <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="amount" value="" id="total_amount" class="form-control"/>
-                                        <script>
-                                            var total_dispoint = localStorage.getItem("total_dispoint");
-                                            document.getElementById('total_amount').value = total_dispoint;
-                                        </script>
+                                        <input type='text' type="text" name="extraData" value="<?php echo $extraData?>"
+                                               class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -158,16 +174,19 @@ if (!empty($_POST)) {
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-4 hidden">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">ExtraData</label>
+                                    <label for="fxRate" class="col-form-label">Amount</label>
                                     <div class='input-group date' id='fxRate'>
-                                        <input type='text' type="text" name="extraData" value="<?php echo $extraData?>"
-                                               class="form-control"/>
+                                    <input type='text' name="amount" value="" id="total_amount" class="form-control"/>
+                                        <script>
+                                            var total_dispoint = localStorage.getItem("total_dispoint");
+                                            document.getElementById('total_amount').value = total_dispoint;
+                                        </script>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 hidden">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">IpnUrl</label>
                                     <div class='input-group date' id='fxRate'>
@@ -176,7 +195,7 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 hidden">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">RedirectUrl</label>
                                     <div class='input-group date' id='fxRate'>
