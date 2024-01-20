@@ -1,7 +1,6 @@
-<?php print_r($bookings); 
+<?php
 include('../../views/css/bookings/booing.admin.detail.php');?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
 <body>
     <div class="container mt-4">
         <h4>Total Amount

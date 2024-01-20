@@ -2,13 +2,14 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
+
+
 if (isset($_GET['date'])) {
     $date = $_GET['date'];
     $user_id = $_GET['user_id'];
     $time = $_GET['time'];
     $table_id = $_GET['table_id'];
     $total_dispoint = $_GET['total_dispoint'];
-
     // Store values in session variables
     $_SESSION['date_session'] = $date;
     $_SESSION['user_id_session'] = $user_id;
@@ -48,7 +49,7 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $amount = "10000";
 $orderId = time() ."";
-$redirectUrl = "http://localhost:3000/views/home/Body-Home.view.php";
+$redirectUrl = "http://localhost:3000/controllers/home/home.controller.php";
 $ipnUrl = "http://localhost:3000/";
 $extraData = "";
 
@@ -57,7 +58,7 @@ if (!empty($_POST)) {
     $partnerCode = $_POST["partnerCode"];
     $accessKey = $_POST["accessKey"];
     $serectkey = $_POST["secretKey"];
-    $orderId = $_POST["orderId"]; // Mã đơn hàng
+    $orderId = $_POST["orderId"];
     $orderInfo = $_POST["orderInfo"];
     $amount = $_POST["amount"];
     $ipnUrl = $_POST["ipnUrl"];
@@ -102,21 +103,41 @@ if (!empty($_POST)) {
     <link rel="stylesheet"
           href="./statics/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"/>
     <!-- CSS -->
+    <style>
+         .d-none{
+            display: none;
+         }
+         .container{
+            /* background-color: aqua !important; */
+            margin-top: 20vh;
+         }
+         input{
+            width:  73vw !important;
+         }
+         .sb{
+            border-radius: 30px !important;
+            padding: 15px;
+         }
+         .title{
+            height: 100px;
+            display: flex !important;
+            justify-content: center;
+         }
+    </style>
 </head>
 <body>
 <div class="container">
-
     <div class="row">
         <div class="col-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Initial payment/Khởi tạo thanh toán ATM qua MoMo</h3>
+                <div class="bg-primary title">
+                    <h3>Initiate ATM payment via MoMo</h3>
                 </div>
                 <div class="panel-body">
                     <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
                           action="atm_momo.php">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">PartnerCode</label>
                                     <div class='input-group date' id='fxRate'>
@@ -125,16 +146,17 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">AccessKey</label>
+                                    <label for="fxRate" class="col-form-label d-none">AccessKey</label>
+                                   
                                     <div class='input-group date' id='fxRate'>
                                         <input type='text' name="accessKey" value="<?php echo $accessKey;?>"
-                                               class="form-control"/>
+                                               class="form-control d-none"/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">SecretKey</label>
                                     <div class='input-group date' id='fxRate'>
@@ -148,13 +170,14 @@ if (!empty($_POST)) {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">OrderId</label>
-                                    <div class='input-group date' id='fxRate'>
+                                    <div class='input-group date ' id='fxRate'>
                                         <input type='text' name="orderId" value="<?php echo $orderId; ?>"
                                                class="form-control"/>
+                                               
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">ExtraData</label>
                                     <div class='input-group date' id='fxRate'>
@@ -163,7 +186,7 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">OrderInfo</label>
                                     <div class='input-group date' id='fxRate'>
@@ -186,7 +209,7 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">IpnUrl</label>
                                     <div class='input-group date' id='fxRate'>
@@ -195,7 +218,7 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <div class="form-group">
                                     <label for="fxRate" class="col-form-label">RedirectUrl</label>
                                     <div class='input-group date' id='fxRate'>
@@ -208,7 +231,7 @@ if (!empty($_POST)) {
 
                         <p>
                         <div style="margin-top: 1em;">
-                            <button type="submit" class="btn btn-primary btn-block">Start MoMo payment....</button>
+                            <button type="submit" class="btn btn-primary sb btn-block">Start MoMo payment....</button>
                         </div>
                         </p>
                     </form>
@@ -222,3 +245,4 @@ if (!empty($_POST)) {
 <script type="text/javascript" src="./statics/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./statics/moment/min/moment.min.js"></script>
 </html>
+ 

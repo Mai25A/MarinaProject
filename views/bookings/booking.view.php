@@ -28,7 +28,8 @@
               </div>
               <div class="col-6">
                 <label for="date">Select Date</label>
-                <input type="date" class="form-control date" name="date" id="date" placeholder="Enter a datetime">
+                <input type="date" class="form-control date" name="date" id="date" placeholder="Enter a datetime"
+                  value="<?php echo date('Y-m-d'); ?>">
               </div>
             </div>
           </div>

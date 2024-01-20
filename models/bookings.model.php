@@ -69,12 +69,13 @@ function get_booking_by_id($bookingId)
 }
 function add_to_booking($user_id, $datetime, $total, $table_id) {
   global $connection;
-  $sttm = $connection->prepare('INSERT INTO bookings (user_id, date_time, total, table_id) VALUES (:user_id, :datetime, :total, :table_id)');
+  $sttm = $connection->prepare('INSERT INTO bookings (user_id, datetime, total, table_id) VALUES (:user_id, :datetime, :total, :table_id)');
   $sttm->bindParam(':user_id', $user_id);
   $sttm->bindParam(':datetime', $datetime);
   $sttm->bindParam(':total', $total);
   $sttm->bindParam(':table_id', $table_id);
   $sttm->execute();
+  return true;
 }
 
 function add_to_bookings_product($bookingId, $product_id, $quantity) {
@@ -84,4 +85,17 @@ function add_to_bookings_product($bookingId, $product_id, $quantity) {
   $sttm->bindParam(':product_id', $product_id);
   $sttm->bindParam(':quantity', $quantity);
   $sttm->execute();
+  return true;
+}
+
+function get_id_booking(){
+  global $connection;
+  $sttm = $connection->prepare("SELECT bookings.id FROM bookings ORDER BY bookings.id DESC LIMIT 1;");
+  $sttm->execute();
+  $result = $sttm->fetch(PDO::FETCH_ASSOC);
+  if ($result) {
+      return $result['id'];
+  } else {
+      return null;
+  }
 }

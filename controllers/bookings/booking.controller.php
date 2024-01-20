@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../models/bookings.model.php");
 include('../../models/tables.model.php');
 include('../../models/menu.model.php');
@@ -21,4 +22,6 @@ elseif (isset($_SESSION['user_id'])) {
 }
 $checkboxQuantityValues = $_GET['checkboxQuantityValues'];
 $decodedValues = json_decode($checkboxQuantityValues, true);
+$_SESSION['checkbox_quantities'] = $decodedValues;
+
 include("../../views/bookings/booking.view.php");
