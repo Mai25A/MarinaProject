@@ -44,25 +44,14 @@ function loginUser($email, $password)
         return false; // Return false to indicate processing failure
     }
 }
-// function getname($email){
-//   global $connection;
-//   $query = "SELECT users.id,users.role_id FROM users WHERE email = :email";
-//   $statement = $connection->prepare($query);
-//   $statement->bindParam(':email', $email);
-//   $statement->execute();
-//   $user = $statement->fetch(PDO::FETCH_ASSOC);
-//   return $user;
-// }
   
-function get_user_by_name($id) {
+function get_user_by_id($id) {
     global $connection;
-    $query = "SELECT * FROM users WHERE name = :name";
+    $query = "SELECT * FROM users WHERE id = :id";
     $statement = $connection->prepare($query);
     $statement->bindParam(':id', $id);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     return $user;
 }
-
-
 ?>

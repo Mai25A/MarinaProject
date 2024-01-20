@@ -1,8 +1,8 @@
 <?php
 include 'models/login/register.model.php';
 
-if (isset($_SESSION['user_id'])) {
-    $id = $_SESSION['user_id'];
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
     $user = get_one_user($id);
 }
 
