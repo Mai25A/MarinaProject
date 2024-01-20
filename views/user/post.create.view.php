@@ -1,6 +1,5 @@
 <?php
-    require_once "../../views/partials/head.php";
-    require_once "../css/user/create.css.php";
+    require_once "../../views/css/user/create.css.php";
 ?>
 <div class="contain card mt-5">
     <div class="card-body">
@@ -25,4 +24,3 @@
         </form>
     </div>
 </div>
-<?php require_once('../partials/footer.php'); ?>

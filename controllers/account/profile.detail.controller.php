@@ -1,5 +1,5 @@
 <?php
-include '../../models/menu.model.php';
+include '../../models/login/register.model.php';
 
 session_start();
 

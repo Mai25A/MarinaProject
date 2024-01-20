@@ -1,0 +1,70 @@
+
+<?php require_once "/PHP_project/MarinaProject/views/css/sidebav.css.php";
+require_once "/PHP_project/MarinaProject/views/partials/link.php";
+?>
+
+<div class="left-side-menu">
+    <div class="slimscroll-menu">
+        <div id="sidebar-menu">
+            <ul class="metismenu" id="side-menu">
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../controllers/user/post.controller.php">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span> CUSTOMERS  </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="../../views/user/post.create.view.php">Create</a></li>
+                        <li><a href="../../controllers/user/post.admin.controller.php">List</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../../controllers/tables/table.controller.php">
+                        <i class="mdi mdi-hotel"></i>
+                        <span> TABLES  </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="../../views/Tables/table.create.view.php">Create</a></li>
+                        <li><a href="../../controllers/tables/table.admin.controller.php">List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../../controllers/menu/menu.admin.controller.php">
+                        <i class="mdi mdi-comment"></i>
+                        <span> MENU  </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="../../views/menu/menu.admin.create.view.php">Create</a></li>
+                        <li><a href="../../controllers/menu/menu.admin.controller.php">List</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="mdi mdi-pencil-box-multiple"></i>BOOKINGS </a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="mdi mdi-paypal"></i>REVENUE </a>
+                </li>
+
+
+                <li>
+                    <a href="#"><i class="mdi mdi-heart"></i>CHECK IN</a>
+                </li>
+                <li>
+                    <a href="../../controllers/login/logout.controller.php"><i class="mdi mdi-heart"></i>LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<?php require_once "/PHP_project/MarinaProject/views/js/sidebav.js.php"; ?>

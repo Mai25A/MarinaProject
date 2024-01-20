@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $save = saveUser($name, $phone, $email, $password);
         if ($save) {
             $_SESSION['user_id'] = $save; // Lưu trữ ID người dùng vào biến phiên
-            header("Location: profile.detail.controller.php"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
+            header("Location: ../../views/home/Body-Home.view.php"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
             exit;
         } else {
             echo "Failed to create register";

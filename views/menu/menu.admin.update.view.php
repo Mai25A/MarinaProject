@@ -1,7 +1,7 @@
 <?php 
 $id = $_GET['id'];
-include'../../views/partials/head.php';
 include '../../models/menu.model.php';
+require_once "../partials/link.php";  
 $product = getProductById($id);
 ?>
 <form action="../../controllers/menu/menu.update.controller.php" method="post">
@@ -32,4 +32,3 @@ $product = getProductById($id);
         </div>
     </div>
 </form>
-<?php include '../../views/partials/footer.php';?>

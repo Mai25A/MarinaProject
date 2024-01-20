@@ -1,8 +1,10 @@
 <?php
-require_once ('../../views/partials/head.php');
-require_once ('../../views/css/body.css.php');
-?>
+session_start();
+// $userData = $_SESSION['user_data'];
 
+require_once ('/PHP_project/MarinaProject/views/partials/head.php');
+require_once ('/PHP_project/MarinaProject/views/css/body.css.php');
+?>
 
     
     <div class="body container">
@@ -136,4 +138,4 @@ require_once ('../../views/css/body.css.php');
 
 </body>
 
-<?php require "../../views/partials/footer.php"; ?>
+<?php require "/PHP_project/MarinaProject/views/partials/footer.php"; ?>

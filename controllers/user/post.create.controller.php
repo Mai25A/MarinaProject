@@ -9,6 +9,8 @@ include_once("../../models/post.user.model.php");
     $image = $_GET['image'];
 
     createUser($name, $phone, $email, $password, $image);
-    header('Location: post.controller.php');
+    header('Location: post.admin.controller.php');
     exit();
 
+
+?>

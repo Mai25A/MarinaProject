@@ -1,5 +1,6 @@
 <?php
 require_once '../../views/partials/head.php';
+require_once '../../views/partials/link.php';
 require_once '../../views/css/menu/menu.css.php';
 require_once '../../controllers/menu/menu.controller.php';
 ?>

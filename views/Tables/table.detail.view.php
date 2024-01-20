@@ -1,6 +1,7 @@
 <?php
-include("../../views/partials/head.php");
 include("../../views/css/tables/table.detail.php");
+require_once('../../views/partials/head.php');
+require_once('../../views/partials/link.php');
 ?>
 
 <body>
@@ -66,7 +67,7 @@ include("../../views/css/tables/table.detail.php");
             </div>
         </div>
         <div class="menu_on_table" id="menu" <?php if (!isset($_GET['type_menu'])) { ?>style="display: none;" <?php ;
-        } ?>">
+        } ?>>
             <div class="row menu_title d-flex justify-content-center mt-5">
                 <div class="row col-8">
                     <button class="col-4 button" onclick="redirectToURL('seafood')" id="seafoodButton">Seafood</button>
@@ -205,6 +206,3 @@ include("../../views/css/tables/table.detail.php");
         </script>
     </div>
 </body>
-<?php
-include("../../views/partials/footer.php");
-?>

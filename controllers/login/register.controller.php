@@ -20,3 +20,5 @@ require '../../models/login/register.model.php';
         }
     exit;
     }
+    require_once "../../views/account/register.view.php"; 
+?>

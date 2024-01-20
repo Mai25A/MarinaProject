@@ -38,7 +38,7 @@
         display: flex;
         justify-content: center;
         padding-top: 140px;
-        font-size: 60px;
+        font-size: 100px;
     }
 
     .img h3 {  
@@ -82,7 +82,7 @@
         display: flex;
         padding: 0;
         padding-right: 200px;
-        size: 20px;
+        size: 25px;
     }
 
     .mainMenu li {
@@ -106,9 +106,15 @@
         top: 100%;
         left: 0;
     }
+    .mainMenu li a:hover{
+        color:red;
+        text-decoration: none;
+    }
+    
 
     .mainMenu li:hover .childMenu {
         display: block;
+        color: brown;
     }
 
     .childMenu a {

@@ -11,9 +11,9 @@ if(($_SERVER['REQUEST_METHOD'] == 'POST')){
         $image = $_POST['image'];
         updateUser($id,$name,$phone,$email,$password,$image);
     
-        header('location: post.controller.php');
+        header('location: post.admin.controller.php');
         exit();
         
     }
-}else 
+}
 include_once("../../views/user/post.update.view.php");

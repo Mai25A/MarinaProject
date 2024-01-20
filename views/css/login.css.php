@@ -6,7 +6,7 @@
         font-weight: bold;
     }
     input.form-control{
-        width: 400px;
+        width: 440px;
     }
     .Forgot{
         padding: 10px;

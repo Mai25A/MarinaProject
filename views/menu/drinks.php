@@ -1,5 +1,4 @@
 <?php
-require_once '../../views/partials/head.php';
 require_once '../../views/css/menu.css.php';
 require_once '../../controllers/menu/menu.controller.php';
 ?>
@@ -16,4 +15,3 @@ require_once '../../controllers/menu/menu.controller.php';
     <?php }
     } ?>
 </div>
-<?php require_once '../../views/partials/footer.php'; ?>

@@ -1,8 +1,8 @@
 <?php 
 $id = $_GET['id'];
-require_once(dirname(__DIR__).'/partials/head.php'); 
+include_once("../../models/post.user.model.php");
 require_once('../../database/database.php');
-require_once dirname(__DIR__)."./css/user/update.css.php";
+require_once "../../views/css/user/update.css.php";
 $users = getUserById($id);
 ?>
 
@@ -29,5 +29,3 @@ $users = getUserById($id);
         </div>
     </form>
 </div>
-
-<?php require_once(dirname(__DIR__).'/partials/footer.php');  ?>

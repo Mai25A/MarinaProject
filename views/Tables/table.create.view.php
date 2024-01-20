@@ -7,7 +7,8 @@
 //     $selectedCategory = "";
 // }
 // unset($_SESSION['type']);
-include_once("../../views/partials/head.php");
+require_once "../partials/link.php";
+
 ?>
 
 <form action="../../controllers/tables/table.create.controller.php" method="get">
@@ -48,7 +49,64 @@ include_once("../../views/partials/head.php");
       <option value="7">Table for 20</option>
     </select>
   </div>
-  <script>
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<style>
+    form {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 5rem; /* Adjusted margin for spacing */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+   button .btn{
+    display: flex;
+    justify-content: center;
+   }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    select.form-control {
+        padding: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Additional styling for labels and spacing */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+</style>
+<script>
     // Lắng nghe sự kiện thay đổi của trường "Type"
     var typeSelect = document.getElementById('category');
     var seatsGroup = document.getElementById('seat-group');
@@ -74,23 +132,21 @@ include_once("../../views/partials/head.php");
       }
     });
   </script>
-  <!-- 
+<!-- 
 <script>
-    var urlParams = new URLSearchParams(window.location.search);
-    var typeParam = urlParams.get('type');
+  var urlParams = new URLSearchParams(window.location.search);
+  var typeParam = urlParams.get('type');
 
 
-    if (typeParam) {
-        document.getElementById("category").value = typeParam;
-    }
+  if (typeParam) {
+      document.getElementById("category").value = typeParam;
+  }
 
-    // Lắng nghe sự kiện khi người dùng chọn một lựa chọn mới
-    document.getElementById("category").addEventListener("change", function() {
-        var selectedType = this.value;
+  // Lắng nghe sự kiện khi người dùng chọn một lựa chọn mới
+  document.getElementById("category").addEventListener("change", function() {
+      var selectedType = this.value;
 
-        // Chuyển hướng đến trang tiếp theo với giá trị "type" mới
-        window.location.href = "table.create.controller.php?type=" + selectedType;
-    });
+      // Chuyển hướng đến trang tiếp theo với giá trị "type" mới
+      window.location.href = "table.create.controller.php?type=" + selectedType;
+  });
 </script> -->
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>

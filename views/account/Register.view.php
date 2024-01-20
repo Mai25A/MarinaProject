@@ -3,12 +3,12 @@
 <?php
 session_start();
 
-require_once('../css/acount/register.css.php');
+require_once('/PHP_project/MarinaProject/views/css/acount/register.css.php');
 ?>
 </head>
 
 <body>
-  <form action="../../controllers/account/register.controller.php" method="POST">
+  <form action="" method="POST">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-2">
@@ -28,7 +28,7 @@ require_once('../css/acount/register.css.php');
           <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
         </div>
         <div class="mb-2">
-        <button type="submit" class="btn custom-button">Singup</button>
+        <button type="submit" class="btn custom-button">Sing up</button>
         <div>
         <div class="haveAcount">
           <a href="" class="color">Already have an account?</a>

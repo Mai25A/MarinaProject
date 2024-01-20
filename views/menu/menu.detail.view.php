@@ -1,5 +1,4 @@
 <?php
-    require_once('../../views/partials/head.php');
     require_once('../../controllers/menu/menu.detail.controller.php');
     require_once('../../views/css/menu/menu.detail.css.php')
 ?>
@@ -19,4 +18,3 @@
         </div>
     </form>
 </body>
-<?php require_once('../../views/partials/footer.php'); ?>

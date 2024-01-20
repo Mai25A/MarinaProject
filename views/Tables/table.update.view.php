@@ -1,7 +1,7 @@
 <?php
 $id = $_GET['id'];
-include_once("../../views/partials/head.php");
 include_once("../../models/tables.model.php");
+require_once "../partials/link.php";
 $table = get_one_table($id);
 // print_r($table);
 ?>

@@ -6,7 +6,7 @@
     .contact_form {
         border-radius: 10px;
         width: 100%;
-        height: 450px;
+        height: 500px;
         background-color: #C8D7E6;
     }
     .address{
