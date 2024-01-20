@@ -21,13 +21,4 @@ elseif (isset($_SESSION['user_id'])) {
 }
 $checkboxQuantityValues = $_GET['checkboxQuantityValues'];
 $decodedValues = json_decode($checkboxQuantityValues, true);
-print_r($decodedValues);
-// if(count($decodedValues)>0){
-//     $check = true;
-// }else{
-//     $check= false;
-// }
-
-
-
 include("../../views/bookings/booking.view.php");

@@ -21,8 +21,7 @@ function get_all_bookings()
         t.price AS table_price,
         t.table_type_id AS tables_type_id,
         bp.id AS booking_products_id,
-        bp.quantity AS bp_quantity,
-        bp.total_amount AS bp_total_amount
+        bp.quantity AS bp_quantity
       FROM
         users u
         INNER JOIN bookings b ON u.id = b.user_id
@@ -54,8 +53,7 @@ function get_booking_by_id($bookingId)
       t.image AS table_image,
       t.price AS table_price,
       bp.id AS booking_products_id,
-      bp.quantity AS bp_quantity,
-      bp.total_amount AS bp_total_amount
+      bp.quantity AS bp_quantity
       FROM
         users u
         INNER JOIN bookings b ON u.id = b.user_id
@@ -79,12 +77,11 @@ function add_to_booking($user_id, $datetime, $total, $table_id) {
   $sttm->execute();
 }
 
-function add_to_bookings_product($bookingId, $product_id, $quantity, $total_amount) {
+function add_to_bookings_product($bookingId, $product_id, $quantity) {
   global $connection;
-  $sttm = $connection->prepare("INSERT INTO booking_products (booking_id, product_id, quantity, total_amount) VALUES (:booking_id, :product_id, :quantity, :total_amount)");
+  $sttm = $connection->prepare("INSERT INTO booking_products (booking_id, product_id, quantitY) VALUES (:booking_id, :product_id, :quantity)");
   $sttm->bindParam(':booking_id', $bookingId);
   $sttm->bindParam(':product_id', $product_id);
   $sttm->bindParam(':quantity', $quantity);
-  $sttm->bindParam(':total_amount', $total_amount);
   $sttm->execute();
 }

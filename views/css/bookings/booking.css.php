@@ -80,4 +80,14 @@
     .table_box{
         height: 250px;
     }
+    .img_bx {
+        width: 250px;
+        height: 100px;
+    }
+
+    .img_bx img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>

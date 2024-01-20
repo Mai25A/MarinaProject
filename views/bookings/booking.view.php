@@ -5,7 +5,6 @@
         <h1>For bookings of 16 or more guests please give us a call directly on <b>+84(0) 33982406</b></h1>
       </div>
       <div class="row">
-
         <div class="col-7 mt-5 ifor_check">
           <div class="row infor">
             <div class="row mb-3">
@@ -21,7 +20,6 @@
                   readonly>
               </div>
             </div>
-
             <div class="row mb-3">
               <div class="col-6">
                 <label for="phoneNumber">Phone Number</label>
@@ -135,10 +133,10 @@
             <div class="card-body">
               <div class="row">
                 <input type="hidden" name="table_id" value="<?= $table['id']; ?>">
-                <div class="col-4">
+                <div class="col-5 img_bx">
                   <img src="<?= $table['image']; ?>" class="card-img" alt="Product Image">
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                   <p class="card-text">Name:
                     <?= $table['name']; ?>
                   </p>
@@ -160,7 +158,7 @@
                 $result = get_dish_by_id($product[0]);
                 ?>
                 <div class="row mt-1">
-                  <div class="col-4">
+                  <div class="col-4 img_bx">
                     <img src="<?= $result['image']; ?>" class="card-img" alt="Product Image">
                   </div>
                   <div class="col-8">
@@ -190,25 +188,19 @@
           document.getElementById('total_dispoint').value = total_dispoint;
         </script>
         <div class="col-6 butn">
-          
-            <button type="submit" onclick="return validateForm();" class="btn bg-danger booking_now">Booking now </button>
+          <button type="submit" onclick="return validateForm();" class="btn bg-danger booking_now">Booking now </button>
         </div>
       </div>
     </form>
   </div>
   <script>
     function validateForm() {
-      
       var dateInput = document.getElementById('date');
       var timeInputs = document.getElementsByClassName('time-label');
-
-      // Kiểm tra xem ngày đã được chọn hay chưa
       if (dateInput.value === '') {
         alert('Please select a date.');
-        return false; // Ngăn không cho chuyển trang
+        return false;
       }
-
-      // Kiểm tra xem thời gian đã được chọn hay chưa
       var selectedTime = false;
       for (var i = 0; i < timeInputs.length; i++) {
         if (timeInputs[i].checked) {
@@ -218,30 +210,18 @@
       }
       if (!selectedTime) {
         alert('Please select a time.');
-        return false; // Ngăn không cho chuyển trang
+        return false;
       }
-
-      // Nếu đã chọn đủ thông tin, cho phép chuyển trang
       return true;
     }
-
-    // Lấy giá trị của key "checkboxQuantityValues" từ local storage
     const checkboxQuantityValues = localStorage.getItem('checkboxQuantityValues');
-
-    // Kiểm tra nếu có giá trị của key "checkboxQuantityValues" thì chuyển đổi thành mảng số
     let quantityValues = [];
     if (checkboxQuantityValues) {
       quantityValues = JSON.parse(checkboxQuantityValues);
-
-      // Chuyển đổi các giá trị thành số
       quantityValues = quantityValues.map(item => [Number(item[0]), Number(item[1]), Number(item[2])]);
     }
-
-    // Gửi giá trị đã chuyển đổi lên URL
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set('checkboxQuantityValues', JSON.stringify(quantityValues));
-
-    // Thay đổi URL với giá trị mới của key "checkboxQuantityValues"
     const newUrl = window.location.pathname + '?' + urlParams.toString();
     window.history.replaceState({}, '', newUrl);
   </script>
