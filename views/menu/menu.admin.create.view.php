@@ -1,4 +1,4 @@
-<?php require_once "/PHP_project/MarinaProject/views/partials/link.php";  ?>
+<?php require_once "views/partials/link.php";  ?>
 <div class="card mt-5">
     <div class="card-body">
         <form method="post">

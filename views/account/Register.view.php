@@ -3,7 +3,7 @@
 <?php
 session_start();
 
-require_once('/PHP_project/MarinaProject/views/css/acount/register.css.php');
+require_once('views/css/acount/register.css.php');
 ?>
 </head>
 

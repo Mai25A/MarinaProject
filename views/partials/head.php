@@ -1,8 +1,8 @@
 <?php
 session_start();
 // $userData = $_SESSION['user_data'];
-require_once('/PHP_project/MarinaProject/views/css/header.css.php');
-require_once "/PHP_project/MarinaProject/views/partials/link.php";
+require_once('views/css/header.css.php');
+require_once "views/partials/link.php";
 ?>
 
 <body>
@@ -25,7 +25,7 @@ require_once "/PHP_project/MarinaProject/views/partials/link.php";
                         </ul>
                     </li>
                     <li><a href="/contact">Contact Us</a></li>
-                    <?php require_once "/PHP_project/MarinaProject/models/login/login.model.php";
+                    <?php require_once "models/login/login.model.php";
                     if (isset($_SESSION['user'])) {
                         ?>
                         <li><a href="/profile" id="">

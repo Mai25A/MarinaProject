@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $save = saveUser($name, $phone, $email, $password);
         if ($save) {
             $_SESSION['user_id'] = $save; // Lưu trữ ID người dùng vào biến phiên
-            header("Location: /"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
+            header("Location: /"); 
             exit;
         } else {
             echo '<script>alert("Failed to create register");</script>';
@@ -21,4 +21,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Missing data";
     }
 }
-require 'views/account/profile.detail.view.php';
+require 'views/account/Register.view.php';

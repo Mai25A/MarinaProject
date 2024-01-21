@@ -42,7 +42,7 @@ require_once "views/partials/link.php";
                 </div>
             </div>
             <div class="col-md-8 info_box mb-4 mt-3">
-                <form action="../../controllers/account/update.info.detail.controller.php" method="post">
+                <form action="/profile/update" method="post">
                 <input type="hidden" name="id" value="<?= $user['id'] ?>">
                     <div class="row col-11 info-user">
                         <div class="col-md-12">

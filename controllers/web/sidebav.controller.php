@@ -1,2 +1,2 @@
 <?php 
-require_once "/PHP_project/MarinaProject/views/partials/sidebav.php";
+require_once "views/partials/sidebav.php";

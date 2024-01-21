@@ -28,11 +28,12 @@ $routes = [
     '/user/delete' => 'controllers/user/post.delete.controller.php',
     '/user/update' => 'controllers/user/post.update.controller.php',
 
-
     '/register' => 'controllers/account/register.controller.php',
     '/login' => 'controllers/login/login.controller.php',
     '/logout' => 'controllers/login/logout.controller.php',
+    
     '/profile' => 'controllers/account/profile.detail.controller.php',
+    '/profile/update' => 'controllers/account/update.info.detail.controller.php',
 
     '/bookings' => 'controllers/bookings/booking.admin.controller.php',
     '/bookings/detail' => 'controllers/booking/bookings.admin.detail.controller.php',

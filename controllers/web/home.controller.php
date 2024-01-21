@@ -1,2 +1,2 @@
 <?php 
-require_once('/PHP_project/MarinaProject/views/home/Body-Home.view.php');
+require_once('views/home/Body-Home.view.php');

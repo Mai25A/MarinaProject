@@ -1,6 +1,6 @@
 
-<?php require_once "/PHP_project/MarinaProject/views/css/sidebav.css.php";
-require_once "/PHP_project/MarinaProject/views/partials/link.php";
+<?php require_once "views/css/sidebav.css.php";
+require_once "views/partials/link.php";
 ?>
 
 <div class="left-side-menu">
@@ -67,4 +67,4 @@ require_once "/PHP_project/MarinaProject/views/partials/link.php";
         </div>
     </div>
 </div>
-<?php require_once "/PHP_project/MarinaProject/views/js/sidebav.js.php"; ?>
+<?php require_once "views/js/sidebav.js.php"; ?>
