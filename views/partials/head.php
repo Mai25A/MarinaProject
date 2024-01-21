@@ -33,22 +33,6 @@
                         </ul>
                     </li>
                     <li><a href="../../views/home/Contact.view.php">Contact Us</a></li>
-<<<<<<< HEAD
-                    <?php require '../../models/login/login.model.php';
-
-                    if (isset($_COOKIE['User'])) {
-                        $name = $_COOKIE['User'];
-                        $users = get_user_by_name($name);
-
-                        ?>
-                        <li><a href="../../views/account/profile.detail.view.php" id="">
-                                <?= $users['name'] ?>
-                            </a><img style="z-index : 29" src="<?= $users['image'] ?>" alt=""></li>
-
-
-
-                    <?php } else { ?>
-=======
                     <?php require '../../models/login/login.model.php'; ?>
                     <?php
                      if (isset($_SESSION['user_id'])) {
@@ -59,7 +43,6 @@
                     <?php
                     } else {
                     ?>
->>>>>>> deb34708a29ba5957cd34f93695ac6e4e98664e8
                         <li><a href="../account/Login.view.php" id="loginLink">Login</a></li>
                     <?php
                     }
