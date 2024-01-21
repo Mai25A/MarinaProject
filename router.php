@@ -1,5 +1,7 @@
 <?php
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
 
 $routes = [
     '/' => 'controllers/web/home.controller.php',
@@ -12,7 +14,7 @@ $routes = [
     '/tables/create' => 'controllers/tables/table.create.controller.php',
     '/tables/delete' => 'controllers/tables/table.delete.controller.php',
     '/tables/update' => 'controllers/tables/table.update.controller.php',
-    '/tables/detail' => 'controllers/menu/menu.detail.controller.php',
+    '/tables/detail' => 'controllers/tables/table.detail.controller.php',
 
     '/menu' => 'controllers/menu/menu.admin.controller.php',
     '/menu/web' => 'controllers/menu/menu.controller.php',
@@ -32,8 +34,11 @@ $routes = [
     '/logout' => 'controllers/login/logout.controller.php',
     '/profile' => 'controllers/account/profile.detail.controller.php',
 
-    '/bookings' => 'controllers/bookings/bookings.admin.controller.php',
-    '/bookingsdetail' => 'controllers/bookings/bookings.admin.detail.controller.php'
+    '/bookings' => 'controllers/bookings/booking.admin.controller.php',
+    '/bookings/detail' => 'controllers/booking/bookings.admin.detail.controller.php',
+    '/bookings/web' => 'controllers/bookings/booking.controller.php',
+
+
 
 ];
 if (array_key_exists($uri, $routes)) {

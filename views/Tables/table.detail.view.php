@@ -34,18 +34,18 @@ require_once('views/partials/link.php');
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p>Dishes Deposit Amount:</p>
+                        <p>Total price of dishes:</p>
                     </div>
                     <div class="col-6">
-                        <p class="dispoint">50000 VND</p>
+                        <p style="color:red;" class="dispoint"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p>Total Deposit Amount:</p>
+                        <p>Total deposit amount:</p>
                     </div>
                     <div class="col-6">
-                        <p class="total_dispoint">200000 VND</p>
+                        <p style="color:red;" class="total_dispoint"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -60,7 +60,9 @@ require_once('views/partials/link.php');
         </div>
         <div class="row d-flex justify-content-center btn_chosen mt-4">
             <div class="col-3">
-                <button type="submit" class="btn btn-danger">Booking now</button>
+                <a
+                    href="/bookings/web?table_id=<?= htmlspecialchars($table['id']); ?>"><button
+                        type="submit" id="bookingButton" class="btn btn-danger">Booking now</button></a>
             </div>
             <div class="col-3">
                 <button class="btn btn_menu" onclick="showMenu()">Choose Dishes</button>
@@ -79,30 +81,32 @@ require_once('views/partials/link.php');
                 <?php foreach ($products as $product): ?>
                     <div class="card-item-dish col-3 mt-4">
                         <div class="menu_image">
-                            <img src="<?php echo $product['image']; ?>" class="card-img-top mt-3" alt="...">
+                            <img src="<?= $product['image']; ?>" class="card-img-top mt-3" alt="...">
                         </div>
                         <div class="row mt-4">
                             <div class="col-7">
                                 <h5 class="card-title">
-                                    <?php $name = $product['name'];
+                                    <?php
+                                    $name = $product['name'];
                                     $maxLength = 10;
-                                    if (strlen($name) > $maxLength) {
-                                        $name = substr($name, 0, $maxLength) . '...';
-                                    }
-                                    echo $name; ?>
+                                    echo strlen($name) > $maxLength ? substr($name, 0, $maxLength) . '...' : $name;
+                                    ?>
                                 </h5>
-                                <p class="card-text">
-                                    <?php echo $product['price']; ?> VND
+                                <p class="card-text price_dish_<?= $product['id']; ?>" id="dish"
+                                    data-price="<?= $product['price']; ?>">
+                                    <?= $product['price']; ?> VND
                                 </p>
                             </div>
                             <div class="col-5 check_qty">
                                 <div class="form-check">
                                     <input class="form-check-input" name="chosen_dish[]" type="checkbox" value=""
-                                        id="checked">
+                                        id="dish_<?= $product['id']; ?>" data-id="<?= $product['id']; ?>"
+                                        onchange="saveToLocalStorage(this)">
                                 </div>
                                 <div class="d-flex quantity_bx">
                                     <button class="col-2 minus-btn">-</button>
-                                    <input class="col-4" name="quantity" id="qty" type="number" value="1" />
+                                    <input class="form-control col-4" name="quantity[]" id="quantity_<?= $product['id']; ?>"
+                                        type="number" value="1" size="4" />
                                     <button class="col-2 plus-btn">+</button>
                                 </div>
                             </div>
@@ -111,9 +115,117 @@ require_once('views/partials/link.php');
                 <?php endforeach; ?>
             </div>
         </div>
-
         <script>
-            var currentType = "Seafood"; // Giá trị mặc định là "Seafood"
+            function isSelected(productId) {
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+                return selectedItems.includes(productId.toString());
+            }
+            function saveToLocalStorage(checkbox) {
+                const checkboxId = checkbox.dataset.id;
+                const quantityInput = document.getElementById("quantity_" + checkboxId);
+                const priceElement = document.querySelector(('.price_dish_') + checkboxId);
+                const price = priceElement.dataset.price;
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+                let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
+                if (checkbox.checked && !selectedItems.includes(checkboxId)) {
+                    selectedItems.push(checkboxId);
+                } else if (!checkbox.checked) {
+                    const index = selectedItems.indexOf(checkboxId);
+                    if (index > -1) {
+                        selectedItems.splice(index, 1);
+                        // Xóa thông tin số lượng khi checkbox bị giải chọn
+                        deleteQuantityValue(quantityValues, checkboxId);
+                    }
+                }
+                const valueIndex = quantityValues.findIndex(item => item[0] === checkboxId);
+                if (checkbox.checked) {
+                    if (valueIndex !== -1) {
+                        quantityValues[valueIndex][1] = quantityInput.value;
+                        quantityValues[valueIndex][2] = price;
+
+                    } else {
+                        quantityValues.push([checkboxId, quantityInput.value, price]);
+                    }
+                }
+                localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                localStorage.setItem('checkboxQuantityValues', JSON.stringify(quantityValues));
+                const totalPriceElement = document.querySelector('.dispoint');
+                const total = calculateTotalPrice();
+                totalPriceElement.textContent = total.toFixed(0) + ' VND';
+            }
+
+            function deleteQuantityValue(array, checkboxId) {
+                const index = array.findIndex(item => item[0] === checkboxId);
+                if (index !== -1) {
+                    array.splice(index, 1);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+                updateTotalDispoint();
+                const total = calculateTotalPrice();
+                const totalPriceElement = document.querySelector('.dispoint');
+                totalPriceElement.textContent = total.toFixed(0) + ' VND';
+
+                let checkboxes = document.querySelectorAll('.form-check-input');
+                let savedArray = localStorage.getItem('selectedItems');
+                let selectedItems = savedArray ? JSON.parse(savedArray) : [];
+
+                checkboxes.forEach(function (checkbox) {
+                    const checkboxId = checkbox.dataset.id;
+                    const quantityInput = document.getElementById("quantity_" + checkboxId);
+
+                    if (selectedItems.includes(checkboxId)) {
+                        checkbox.checked = true;
+
+                        // Khôi phục giá trị quantity từ local storage và cập nhật cho mỗi checkbox đã được chọn
+                        let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
+                        const valueIndex = quantityValues.findIndex(item => item[0] === checkboxId);
+
+                        if (valueIndex !== -1) {
+                            quantityInput.value = quantityValues[valueIndex][1];
+                        }
+                    }
+                });
+            });
+            function calculateTotalPrice() {
+                let total = 0;
+                let quantityValues = JSON.parse(localStorage.getItem('checkboxQuantityValues')) || [];
+
+                quantityValues.forEach(function (item) {
+                    const quantity = parseFloat(item[1]);
+                    const price = parseFloat(item[2]);
+                    const subtotal = quantity * price;
+                    total += subtotal;
+                });
+
+                const dispoint = total * 0.3;
+                localStorage.setItem('dispoint', dispoint);
+                updateTotalDispoint();
+                return total;
+            };
+
+            function updateTotalDispoint() {
+                const dispointAmount = parseFloat(localStorage.getItem('dispoint'));
+                const priceElement = document.querySelector('.price');
+                const priceAmount = parseFloat(priceElement.textContent);
+                const totalDispoint = dispointAmount + priceAmount;
+                const totalDispointElement = document.querySelector('.total_dispoint');
+                localStorage.setItem("total_dispoint", totalDispoint.toFixed(0));
+                totalDispointElement.textContent = totalDispoint.toFixed(0) + ' VND';
+            }
+
+            // Load total_dispoint from localStorage on page load
+            window.onload = function () {
+                const totalDispointElement = document.querySelector('.total_dispoint');
+                const storedTotalDispoint = localStorage.getItem("total_dispoint");
+                if (storedTotalDispoint) {
+                    totalDispointElement.textContent = storedTotalDispoint + ' VND';
+                }
+            };
+            calculateTotalPrice();
+            var currentType = "Seafood";
             function showMenu() {
                 var menu = document.getElementById('menu');
                 var seafoodButton = document.getElementById('seafoodButton');
@@ -125,31 +237,23 @@ require_once('views/partials/link.php');
                     menu.style.display = 'none';
                     seafoodButton.classList.remove('active');
                 }
-                // Gọi hàm redirectToURL khi chọn menu để cập nhật giá trị và gửi lên URL
                 redirectToURL(currentType);
             }
             function redirectToURL(type) {
                 var currentURL = new URL(window.location.href);
                 var searchParams = currentURL.searchParams;
-                // Đặt giá trị mới cho type_menu
                 searchParams.set('type_menu', type);
-                // Xóa các tham số type_menu cũ khỏi URL
                 searchParams.delete('type_menu');
-                // Thêm tham số type_menu mới vào URL
                 searchParams.append('type_menu', type);
-                // Cập nhật URL với các tham số mới
                 window.location.href = currentURL.toString();
             }
-            // Cập nhật trạng thái active của các nút
             function updateActiveButton() {
                 var seafoodButton = document.getElementById('seafoodButton');
                 var fruitsButton = document.getElementById('fruitsButton');
                 var drinksButton = document.getElementById('drinksButton');
-                // Xóa lớp active khỏi tất cả các nút
                 seafoodButton.classList.remove('active');
                 fruitsButton.classList.remove('active');
                 drinksButton.classList.remove('active');
-                // Thêm lớp active vào nút hiện tại
                 if (currentType === "Seafood") {
                     seafoodButton.classList.add('active');
                 } else if (currentType === "Fruits") {
@@ -158,7 +262,6 @@ require_once('views/partials/link.php');
                     drinksButton.classList.add('active');
                 }
             }
-            // Kiểm tra URL hiện tại để cập nhật giá trị hiện tại của type_menu
             function checkCurrentType() {
                 var currentURL = new URL(window.location.href);
                 var typeParam = currentURL.searchParams.get('type_menu');
@@ -167,7 +270,6 @@ require_once('views/partials/link.php');
                     currentType = typeParam;
                 }
             }
-            // Gọi các hàm để cập nhật trạng thái ban đầu
             checkCurrentType();
             updateActiveButton();
             document.addEventListener("DOMContentLoaded", function () {
@@ -184,7 +286,7 @@ require_once('views/partials/link.php');
             document.addEventListener("DOMContentLoaded", function () {
                 var minusBtns = document.querySelectorAll(".minus-btn");
                 var plusBtns = document.querySelectorAll(".plus-btn");
-                var inputs = document.querySelectorAll("input[name='quantity']");
+                var inputs = document.querySelectorAll("input[name='quantity[]");
 
                 minusBtns.forEach(function (minusBtn, index) {
                     minusBtn.addEventListener("click", function () {
@@ -195,7 +297,6 @@ require_once('views/partials/link.php');
                         }
                     });
                 });
-
                 plusBtns.forEach(function (plusBtn, index) {
                     plusBtn.addEventListener("click", function () {
                         var input = inputs[index];
@@ -206,3 +307,4 @@ require_once('views/partials/link.php');
         </script>
     </div>
 </body>
+<?php require_once('views/partials/footer.php');?>

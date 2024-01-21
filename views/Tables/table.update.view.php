@@ -3,7 +3,6 @@ $id = $_GET['id'];
 include_once("models/tables.model.php");
 require_once "views/partials/link.php";
 $table = get_one_table($id);
-// print_r($table);
 ?>
 <form action="/tables/update" method="POST" id="tableForm">
   <input type="hidden" name='id_update' value="<?= $id ?>">

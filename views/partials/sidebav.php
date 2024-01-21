@@ -49,7 +49,7 @@ require_once "/PHP_project/MarinaProject/views/partials/link.php";
                 </li>
 
                 <li>
-                    <a href="#"><i class="mdi mdi-pencil-box-multiple"></i>BOOKINGS </a>
+                    <a href="/bookings"><i class="mdi mdi-pencil-box-multiple"></i>BOOKINGS </a>
                 </li>
 
                 <li>

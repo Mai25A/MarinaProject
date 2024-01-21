@@ -1,3 +1,5 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php
 require_once 'views/css/acount/profile.detail.css.php';
 require 'models/login/login.model.php';
@@ -38,8 +40,10 @@ require_once "views/partials/link.php";
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 info_box mb-4 mt-3">
-                    <!-- <div class="info-user"> -->
+            </div>
+            <div class="col-md-8 info_box mb-4 mt-3">
+                <form action="../../controllers/account/update.info.detail.controller.php" method="post">
+                <input type="hidden" name="id" value="<?= $user['id'] ?>">
                     <div class="row col-11 info-user">
                         <div class="col-md-12">
                             <label for="inputEmail" class="form-label">Email</label>
@@ -48,35 +52,30 @@ require_once "views/partials/link.php";
                         </div>
                         <div class="col-md-12">
                             <label for="inputname" class="form-label">Full name</label>
-                            <input type="text" class="form-control light-gray" id="inputname" name="name"
-                                value="<?= isset($user['name']) ? $user['name'] : '' ?>">
+                            <input type="text" class="form-control bg-light" id="inputname" name="name" value="<?= isset($user['name']) ? $user['name'] : '' ?>">
                         </div>
                         <div class="col-md-12">
                             <label for="inputnumber" class="form-label">Phone number</label>
-                            <input type="text" class="form-control light-gray" id="inputnumber" name="phone"
-                                value="<?= isset($user['phone']) ? $user['phone'] : '' ?>">
+                            <input type="text" class="form-control bg-light" id="inputnumber" name="phone" value="<?= isset($user['phone']) ? $user['phone'] : '' ?>">
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary mt-4 w-25">Save</button>
                         </div>
                     </div>
-                    <!-- </div> -->
-                </div>
+                </form>
             </div>
         </div>
     </div>
-    <script>
-        const listGroupItems = document.querySelectorAll('.list-group-item');
-        listGroupItems.forEach(item => {
-            item.addEventListener('click', function () {
-                listGroupItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
+</div>
+<script>
+    const listGroupItems = document.querySelectorAll('.list-group-item');
+    listGroupItems.forEach(item => {
+        item.addEventListener('click', function() {
+            listGroupItems.forEach(item => {
+                item.classList.remove('active');
             });
+            this.classList.add('active');
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

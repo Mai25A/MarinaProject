@@ -2,7 +2,7 @@
 require_once 'views/partials/head.php';
 require_once 'views/partials/link.php';
 require_once 'views/css/menu/menu.css.php';
-require_once 'controllers/menu/menu.controller.php';
+// require_once 'controllers/menu/menu.controller.php';
 ?>
 <div class="container-fluid">
     <div class="title">
@@ -10,7 +10,7 @@ require_once 'controllers/menu/menu.controller.php';
         <button class="underline button" onclick="redirectToURL(2)">Fruits</button>
         <button class="underline button" onclick="redirectToURL(3)">Drinks</button>
     </div>
-    <div class="row">
+    <div class="row card_menu">
         <?php $counter = 0; ?>
         <?php foreach ($menuByCategory as $value) { ?>
             <div class="col-md-4">
@@ -37,6 +37,6 @@ require_once 'controllers/menu/menu.controller.php';
 <?php require_once 'views/partials/footer.php'; ?>
 <script>
     function redirectToURL(categoryId) {
-        window.location.href = 'menu.view.php?type=' + categoryId;
+        window.location.href = '/menu/web?type=' + categoryId;
     }
 </script>

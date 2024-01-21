@@ -77,4 +77,41 @@ function get_dishes_by_type($type_menu)
     return $products;
 }
 
+function get_dish_by_id($id)
+{
+    global $connection;
+    $st = $connection->prepare("SELECT pd.id,pd.name,pd.image,pd.category_id,pd.price,pd.description,pd.quantity, mc.id AS type_menu_id, mc.name AS type_name
+    from products pd join menu_categories mc on pd.category_id = mc.id where pd.id = :dish_id;");
+    $st->bindParam(":dish_id",$id);
+    $st->execute();
+    $products = $st->fetch(PDO::FETCH_ASSOC);
+    return $products;
+}
+function get_one_user($id)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
+}
+function updateInfoProfile($id, $email, $name, $phone){
+    global $connection;
+    if ($id) {
+        $statement = $connection->prepare('UPDATE users SET email = :email, name = :name, phone = :phone WHERE id = :id');
+        $statement->bindParam(":email", $email);
+        $statement->bindParam(":name", $name);
+        $statement->bindParam(":phone", $phone);
+        $statement->bindParam(":id", $id);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            $errorInfo = $statement->errorInfo();
+            echo "Lỗi khi cập nhật: " . $errorInfo[2];
+            return false;
+        }
+    }
+    return false;
+}
 ?>
