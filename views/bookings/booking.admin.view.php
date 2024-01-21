@@ -1,5 +1,5 @@
 <?php
-include_once("views/partials/head.php");
+require_once "views/partials/sidebav.php";
 include("views/css/bookings/booking.admin.css.php");
 ?>
 <div class="container">
@@ -44,10 +44,10 @@ include("views/css/bookings/booking.admin.css.php");
                                     <?= $booking['datetime'] ?>
                                 </td>
                                 <td>
-                                    <?= $booking['bp_total_amount'] ?>
+                                    <?= $booking['booking_total'] ?>
                                 </td>
                                 <td>
-                                    <a href="/bookings?booking_id=<?= $booking['booking_id'] ?>">Detail</a>
+                                    <a href="/bookings/detail?booking_id=<?= $booking['booking_id'] ?>">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

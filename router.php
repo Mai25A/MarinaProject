@@ -8,6 +8,7 @@ $routes = [
     '/admin' => 'controllers/web/sidebav.controller.php',
     '/about' => 'controllers/web/about.controller.php',
     '/contact' => 'controllers/web/contact.controller.php',
+    '/home' => 'controllers/home/home.controller.php',
 
     '/table' => 'controllers/tables/table.admin.controller.php',
     '/tables/web' => 'controllers/tables/tables.controller.php',
@@ -36,7 +37,7 @@ $routes = [
     '/profile/update' => 'controllers/account/update.info.detail.controller.php',
 
     '/bookings' => 'controllers/bookings/booking.admin.controller.php',
-    '/bookings/detail' => 'controllers/booking/bookings.admin.detail.controller.php',
+    '/bookings/detail' => 'controllers/bookings/booking.admin.detail.controller.php',
     '/bookings/web' => 'controllers/bookings/booking.controller.php',
 
 

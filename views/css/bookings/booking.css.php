@@ -81,7 +81,7 @@
         height: 250px;
     }
     .img_bx {
-        width: 250px;
+        width: 150px;
         height: 100px;
     }
 

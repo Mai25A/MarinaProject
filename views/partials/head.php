@@ -26,10 +26,12 @@ require_once "views/partials/link.php";
                     </li>
                     <li><a href="/contact">Contact Us</a></li>
                     <?php require_once "models/login/login.model.php";
-                    if (isset($_SESSION['user'])) {
+                    if (isset($_SESSION['user_id'])) {
+                        $id = $_SESSION['user_id'];
+                        $user = get_user_by_id($id) ;
                         ?>
                         <li><a href="/profile" id="">
-                                <?= $_SESSION['user']['name'] ?>
+                                <?php echo($user['name']) ?>
                             </a>
                         </li>
                         <?php

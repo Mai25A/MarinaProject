@@ -79,7 +79,7 @@ function add_to_booking($user_id, $datetime, $total, $table_id) {
 
 function add_to_bookings_product($bookingId, $product_id, $quantity) {
   global $connection;
-  $sttm = $connection->prepare("INSERT INTO booking_products (booking_id, product_id, quantitY) VALUES (:booking_id, :product_id, :quantity)");
+  $sttm = $connection->prepare("INSERT INTO booking_products (booking_id, product_id, quantity) VALUES (:booking_id, :product_id, :quantity)");
   $sttm->bindParam(':booking_id', $bookingId);
   $sttm->bindParam(':product_id', $product_id);
   $sttm->bindParam(':quantity', $quantity);

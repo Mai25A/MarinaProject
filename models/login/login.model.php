@@ -1,5 +1,5 @@
 <?php
-require_once '/PHP_project/MarinaProject/database/database.php';
+require_once 'database/database.php';
 function getUser($email)
 {
     global $connection;

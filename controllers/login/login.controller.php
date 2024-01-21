@@ -10,9 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $loggedIn = loginUser($email, $password);
               
         if ($loggedIn) {
-            $user = getUser($email);
-            $_SESSION['user']= $user[0];
-            if ( $_SESSION['user']['role_id']==1) {
+            $user1 = getUser($email);
+            // echo($user[0]['id']);
+            
+            $_SESSION['user_id'] = $user1[0]['id'];
+            if ( $user1[0]['role_id']== 1) {
                 header("Location: /admin");
                 exit();
             } else {

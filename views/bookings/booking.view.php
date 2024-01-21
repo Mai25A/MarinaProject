@@ -1,6 +1,6 @@
 <body>
   <div class="container mt-4">
-    <form action="controllers/bookings/atm/atm_momo.php" method="get">
+    <form action="../../controllers/bookings/atm/atm_momo.php" method="get">
       <div class="row message">
         <h1>For bookings of 16 or more guests please give us a call directly on <b>+84(0) 33982406</b></h1>
       </div>

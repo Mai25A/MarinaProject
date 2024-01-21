@@ -9,9 +9,12 @@ if (isset($_GET['partnerCode'])) {
     $total_dispoint = isset($_SESSION['total_dispoint_session']) ? $_SESSION['total_dispoint_session'] : '';
     $checkbox_quantities = $_SESSION['checkbox_quantities'];
     $booking_id = get_id_booking();
+    // echo $booking_id;
     foreach ($checkbox_quantities as $prodduct) {
         $id_product = $prodduct[0];
-        $quantity = $prodduct[2];
+        $quantity = $prodduct[1];
+        // echo $id_product;
+        // echo $quantity;  
         add_to_bookings_product($booking_id, $id_product, $quantity);
     };
     $new_time = $time . ":00:00";
@@ -19,10 +22,11 @@ if (isset($_GET['partnerCode'])) {
     $formatted_datetime = $datetime->format('Y-m-d H:i:s');
     $result = add_to_booking($user_id, $formatted_datetime, $total_dispoint, $table_id);
     if ($result) {
+        echo "heheheh";
         echo '<script>
-        window.location.href = "http://localhost:3000/controllers/home/home.controller.php";
+        window.location.href = "/";
     </script>';
 
     }
 }
-require_once "/";
+header("location: /");

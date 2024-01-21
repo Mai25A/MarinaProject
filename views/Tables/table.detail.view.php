@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include("views/css/tables/table.detail.php");
 require_once('views/partials/head.php');
 require_once('views/partials/link.php');
@@ -60,9 +61,14 @@ require_once('views/partials/link.php');
         </div>
         <div class="row d-flex justify-content-center btn_chosen mt-4">
             <div class="col-3">
-                <a
-                    href="/bookings/web?table_id=<?= htmlspecialchars($table['id']); ?>"><button
-                        type="submit" id="bookingButton" class="btn btn-danger">Booking now</button></a>
+                <a <?php
+                if (isset($_SESSION['user_id'])) {
+                    $url = "/bookings/web?table_id=" . htmlspecialchars($table['id']);
+                } else {
+                    $url = "/login";
+                } ?>
+                    href="<?php echo $url ?>"><button type="submit" id="bookingButton" class="btn btn-danger">Booking
+                        now</button></a>
             </div>
             <div class="col-3">
                 <button class="btn btn_menu" onclick="showMenu()">Choose Dishes</button>
@@ -307,4 +313,4 @@ require_once('views/partials/link.php');
         </script>
     </div>
 </body>
-<?php require_once('views/partials/footer.php');?>
+<?php require_once('views/partials/footer.php'); ?>
