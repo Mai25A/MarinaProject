@@ -87,3 +87,12 @@ function getUserById($id)
         return $users;
 
 }
+function get_usser_by_name($name)
+{
+  global $connection;
+  $statement = $connection->prepare("SELECT * FROM users where name = :name");
+  $statement->bindParam(":name", $name);
+  $statement->execute();
+  $result = $statement->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}

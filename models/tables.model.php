@@ -138,6 +138,3 @@ function get_tables_by_quantity($number_of_seat)
     return $tables;
 }
 //tesst usser
-function get_usser_by_id ($id){
-    
-}
