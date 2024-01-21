@@ -48,4 +48,7 @@
         background-color: white;
         cursor: pointer;
     }
+    .card_menu a{
+        text-decoration: none;
+    }
 </style>

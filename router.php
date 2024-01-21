@@ -7,7 +7,7 @@ include 'controllers/admin/ReviewController.php';
 include 'controllers/admin/BookingController.php';
 
 
-//$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+// $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'dashboard';
 // Kiểm tra trên URL, nếu cos param controller thì sẽ lấy giả trị của param controller, còn không thi se bang dashboard
