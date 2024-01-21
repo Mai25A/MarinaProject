@@ -13,20 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = getUser($email);
             $_SESSION['user']= $user[0];
             if ( $_SESSION['user']['role_id']==1) {
-                header("Location: controllers/web/sidebav.controller.php");
+                header("Location: /admin");
                 exit();
             } else {
-                header("Location: controllers/web/home.controller.php");
+                header("Location: /");
                 exit();
             }
         } else {
             // Hiển thị thông báo lỗi và chuyển hướng trở lại trang đăng nhập
-            echo "<script>alert('please login again'); window.location.href = 'controllers/login/login.controller.php';</script>";
+            echo "<script>alert('please login again'); window.location.href = '/login';</script>";
             exit();
         }
     } else {
         // Chuyển hướng trở lại trang đăng nhập nếu thông tin đăng nhập không hợp lệ
-        header("Location: controllers/login/login.controller.php");
+        header("Location: /login");
         exit();
     }
 }

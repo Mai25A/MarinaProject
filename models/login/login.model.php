@@ -54,4 +54,5 @@ function get_user_by_id($id) {
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     return $user;
 }
+
 ?>

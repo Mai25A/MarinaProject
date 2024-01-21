@@ -76,12 +76,5 @@ function get_dishes_by_type($type_menu)
     $products = $st->fetchAll(PDO::FETCH_ASSOC);
     return $products;
 }
-function get_one_user($id)
-{
-    global $connection;
-    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
-    $statement->execute([':id' => $id]);
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-    return $user;
-}
+
 ?>

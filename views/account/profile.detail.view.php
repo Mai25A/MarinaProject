@@ -3,10 +3,6 @@ require_once 'views/css/acount/profile.detail.css.php';
 require 'models/login/login.model.php';
 require_once "views/partials/link.php";
 
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-    $user = get_one_user($id);
-}
 ?>
 
 <body>
