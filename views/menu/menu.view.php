@@ -32,9 +32,11 @@ require_once 'views/css/menu/menu.css.php';
             <?php $counter++; ?>
             <?php if ($counter % 3 == 0) { ?>
             </div>
-            <div class="row">
-            <?php } ?>
-        <?php } ?>
+            <?php if ($counter < count($menuByCategory)) { ?>
+                <div class="row card_menu">
+                <?php }
+            }
+        } ?>
     </div>
 </div>
 <?php require_once 'views/partials/footer.php'; ?>

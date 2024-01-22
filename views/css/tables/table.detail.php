@@ -87,6 +87,7 @@
     }
 
     .quantity_bx input {
+        border-radius: 0px;
         border: 1px solid #26577C;
         border-left: none;
         border-right: none;
