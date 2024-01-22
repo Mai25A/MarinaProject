@@ -4,10 +4,10 @@ require_once "views/partials/sidebav.php";
 require_once "controllers/tables/table.admin.controller.php";
 ?>
 <div class="container p-4 mr-4">
-    <div class="d-flex justify-content-start p-2">
+    <div class="d-flex justify-content-start ms-5 p-2">
         <a href="/tables/create" class="btn btn-primary">Add</a>
     </div>
-    <table class="table table-striped">
+    <table class="table ms-5 table-striped">
         <thead>
             <tr style="text-align:center;">
                 <th>Id</th>
@@ -51,21 +51,15 @@ require_once "controllers/tables/table.admin.controller.php";
                         ?>
                     </td>
                     <td>
-                        <div class="action">
-
-                            <a href="/tables/update?id=<?= $table['id'] ?>" 
-                                class="btn btn-success"><i class="fa fa-pencil"></i></a>
-
-                            <a href="/tables/delete?id_delete=<?= $table['id'] ?>"
-                                class="btn btn-danger" id="deleteLink"><i class="fa fa-trash"></i></a>
-                        </div>
-
+                        <a href="/tables/update?id=<?= $table['id'] ?>" class="btn mt-2 btn-success"><i
+                                class="fa fa-pencil"></i></a>
+                        <a href="/tables/delete?id_delete=<?= $table['id'] ?>" class="btn mt-2 btn-danger" id="deleteLink"><i
+                                class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 <?php
             endforeach;
             ?>
-            <!-- Add more rows for additional tables -->
         </tbody>
     </table>
 </div>

@@ -64,7 +64,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        background-color:darkgray;
+        background-color:#86B6F6;
         overflow-x: hidden;
         overflow-y: auto;
         z-index: 999;

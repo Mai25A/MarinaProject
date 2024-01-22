@@ -39,6 +39,7 @@ $routes = [
     '/bookings' => 'controllers/bookings/booking.admin.controller.php',
     '/bookings/detail' => 'controllers/bookings/booking.admin.detail.controller.php',
     '/bookings/web' => 'controllers/bookings/booking.controller.php',
+    '/bookedtable' => 'controllers/account/bookintable.controller.php'
 
 
 

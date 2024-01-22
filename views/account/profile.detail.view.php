@@ -2,19 +2,17 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php
-
 require_once 'views/css/acount/profile.detail.css.php';
-// require 'models/login/login.model.php';
 require_once "views/partials/link.php";
-
 ?>
+
 <body>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="card mt-4 mb-4">
             <div class="row bg-behind">
                 <div class="image-user text-center mt-4">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.puMo9ITfruXP8iQx9cYcqwHaGJ&pid=Api&P=0&h=180" alt="avatar">
-                    <i class="bi bi-pencil-square"></i>
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.puMo9ITfruXP8iQx9cYcqwHaGJ&pid=Api&P=0&h=180"
+                        alt="avatar">
                     <h1>
                         <?= isset($user['name']) ? $user['name'] : '' ?>
                     </h1>
@@ -24,14 +22,16 @@ require_once "views/partials/link.php";
                 <div class="col-md-4 mt-5">
                     <div class="info">
                         <div class="list-group col-10">
-                            <a href="/profile" class="list-group-item list-group-item-action active" aria-current="true">
+                            <a href="/profile" class="list-group-item list-group-item-action active"
+                                aria-current="true">
                                 <i class="bi bi-house-fill"></i><span class="ms-2">Account Details</span>
                             </a>
                             <!-- sửa lại đường dẫn -->
-                            <a href="../controllers/account/bookintable.controller.php" class="list-group-item list-group-item-action">
-                                <i class="bi bi-journal-text"></i><span class="ms-2">Booked tables</span>
+                            <a href="/bookedtable"
+                                class="list-group-item list-group-item-action">
+                                <i class="bi bi-journal-text"></i><span class="ms-2">Booking history</span>
                             </a>
-                           
+
                             <a href="/logout" class="list-group-item list-group-item-action">
                                 <i class="bi bi-box-arrow-left"></i><span class="ms-2">Logout</span>
                             </a>

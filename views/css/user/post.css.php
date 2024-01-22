@@ -1,14 +1,4 @@
-<style>
-    .img_menu{
-        width: 200px;
-        height: 150px;
-
-    }
-    .img_menu img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+<Style>
     .container {
         padding: 4px;
     }
@@ -44,8 +34,18 @@
         font-size: 24px;
         margin-bottom: 10px;
     }
+
+    .action {
+        margin-top: 10px;
+        justify-content: flex-end;
+    }
+
+    .action a {
+        margin-right: 5px;
+    }
+
     .btn-sm {
         padding: 5px 10px;
         font-size: 12px;
     }
-</style>
+</Style>

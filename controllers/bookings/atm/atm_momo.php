@@ -53,7 +53,6 @@ $redirectUrl = "http://localhost:3000/home";
 $ipnUrl = "http://localhost:3000/";
 $extraData = "";
 
-
 if (!empty($_POST)) {
     $partnerCode = $_POST["partnerCode"];
     $accessKey = $_POST["accessKey"];

@@ -2,7 +2,6 @@
 require_once 'views/partials/head.php';
 require_once 'views/partials/link.php';
 require_once 'views/css/menu/menu.css.php';
-// require_once 'controllers/menu/menu.controller.php';
 ?>
 <div class="container-fluid">
     <div class="title">
@@ -20,16 +19,20 @@ require_once 'views/css/menu/menu.css.php';
                             <img src="<?= $value['image'] ?>" alt="Product Image">
                         </div>
                         <div class="card-body">
-                            <h5><?= $value['name'] ?></h5>
-                            <p class="price"><?= $value['price'] ?></p>
+                            <h5>
+                                <?= $value['name'] ?>
+                            </h5>
+                            <p class="price">
+                                <?= $value['price'] ?>
+                            </p>
                         </div>
                     </div>
                 </a>
             </div>
             <?php $counter++; ?>
             <?php if ($counter % 3 == 0) { ?>
-                </div>
-                <div class="row">
+            </div>
+            <div class="row">
             <?php } ?>
         <?php } ?>
     </div>

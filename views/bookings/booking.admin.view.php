@@ -4,12 +4,12 @@ include("views/css/bookings/booking.admin.css.php");
 ?>
 <div class="container">
     <form action="#" method="post">
-        <div class="container booking_form">
+        <div class="container ms-5 booking_form">
             <div class="title">
                 <h4>BOOKINGS MANAGEMENT</h4>
             </div>
             <div class="table_booking">
-                <table class="table table-striped">
+                <table class="table ms-5 table-striped">
                     <thead>
                         <tr style="text-align:center;">
                             <th>STT</th>

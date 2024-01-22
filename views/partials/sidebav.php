@@ -1,4 +1,3 @@
-
 <?php require_once "views/css/sidebav.css.php";
 require_once "views/partials/link.php";
 ?>
@@ -16,49 +15,27 @@ require_once "views/partials/link.php";
                 <li>
                     <a href="/user">
                         <i class="mdi mdi-account-multiple"></i>
-                        <span> CUSTOMERS  </span>
+                        <span> CUSTOMERS </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/user/reate">Create</a></li>
-                        <li><a href="/user">List</a></li>
-                    </ul>
                 </li>
 
                 <li>
                     <a href="/table">
                         <i class="mdi mdi-hotel"></i>
-                        <span> TABLES  </span>
+                        <span> TABLES </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/tables/create'">Create</a></li>
-                        <li><a href="/tables">List</a></li>
-                    </ul>
                 </li>
                 <li>
                     <a href="/menu">
                         <i class="mdi mdi-comment"></i>
-                        <span> MENU  </span>
+                        <span> MENU </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/menu/create">Create</a></li>
-                        <li><a href="/menu">List</a></li>
-                    </ul>
                 </li>
-
                 <li>
                     <a href="/bookings"><i class="mdi mdi-pencil-box-multiple"></i>BOOKINGS </a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="mdi mdi-paypal"></i>REVENUE </a>
-                </li>
-
-
-                <li>
-                    <a href="#"><i class="mdi mdi-heart"></i>CHECK IN</a>
                 </li>
                 <li>
                     <a href="/logout"><i class="mdi mdi-heart"></i>LOGOUT</a>
