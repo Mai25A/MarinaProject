@@ -227,4 +227,4 @@
     window.history.replaceState({}, '', newUrl);
   </script>
 </body>
-<?php include('../../views/partials/footer.php'); ?>
+<?php include('views/partials/footer.php'); ?>

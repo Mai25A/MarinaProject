@@ -1,5 +1,5 @@
 <?php
-require_once "../../models/menu.model.php";
+require_once "models/menu.model.php";
 $menu = get_all_menu();
 if (isset($_GET['type'])) {
     $categoryId = $_GET['type'];
@@ -7,5 +7,5 @@ if (isset($_GET['type'])) {
 } else {
     $menuByCategory = $menu;
 }
-require_once "../../views/menu/menu.view.php";
+require_once "views/menu/menu.view.php";
 ?>

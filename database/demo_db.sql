@@ -22,7 +22,7 @@ CREATE TABLE users (
 INSERT INTO users (role_id, name,phone,email,password,image)
 VALUES
 	(1, 'admin','0333982406','mai.ho25@student.passerellesnumeriques.org','123@admin','https://images.wallpapersden.com/image/download/avatar-2-movie-4k_a21qamyUmZqaraWkpJRnZWltrWdlaW0.jpg'),
-  (2, 'Ho Thi Mai','0333982406','nguyenmaioc0@gmail.com','mai123','https://images.wallpapersden.com/image/download/avatar-2-movie-4k_a21qamyUmZqaraWkpJRnZWltrWdlaW0.jpg'),
+  (2, 'Ho Thi Mai','0333982406','nguyenmaioc0@gmail.com','mai123','https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRAvckpZil2v-hYNMAPBnyIaBru-PG3bYrNxLyvO4F7l9Z1Oo4l'),
   (2, 'Pham Gia Bao','0388724502','bao.pham25@student.passerellesnumeriques.org','bao123','https://images.wallpapersden.com/image/download/avatar-2-movie-4k_a21qamyUmZqaraWkpJRnZWltrWdlaW0.jpg'),
   (2, 'A Bon','0388723492','bon.a25@student.passerellesnumeriques.org','bon123','https://images.wallpapersden.com/image/download/avatar-2-movie-4k_a21qamyUmZqaraWkpJRnZWltrWdlaW0.jpg'),
   (2, 'Ksor Rina','0388724561','rina.ksor25@student.passerellesnumeriques.org','rina123','https://images.wallpapersden.com/image/download/avatar-2-movie-4k_a21qamyUmZqaraWkpJRnZWltrWdlaW0.jpg'),

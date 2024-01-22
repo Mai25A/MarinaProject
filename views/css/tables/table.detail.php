@@ -87,6 +87,7 @@
     }
 
     .quantity_bx input {
+        border-radius: 0px;
         border: 1px solid #26577C;
         border-left: none;
         border-right: none;
@@ -107,11 +108,13 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
     }
-    .quantity_bx{
+
+    .quantity_bx {
         display: flex;
-        justify-content:flex-end;
-        align-items:center;
+        justify-content: flex-end;
+        align-items: center;
     }
+
     .menu_image {
         width: 100%;
         height: 200px;

@@ -1,10 +1,14 @@
 <?php
-require_once ('../../views/partials/head.php');
-require_once ('../../views/css/body.css.php');
+require_once ('views/partials/head.php');
+require_once ('views/css/body.css.php');
 ?>
-
-
-    
+<style>
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+</style>
+<body>
     <div class="body container">
         <div class="row List_body">
             <div class="tittle_body1 row mt-5">
@@ -105,7 +109,6 @@ require_once ('../../views/css/body.css.php');
                 </div>
             </div>
         </div>
-
         <div class="List_body_drinks row">
             <div class="tittle_body2 row">
                 <div class="tittle_paragrap4">
@@ -130,10 +133,7 @@ require_once ('../../views/css/body.css.php');
                 </div>
             </div>
         </div>
-
-
     </div>
-
 </body>
 
-<?php require "../../views/partials/footer.php"; ?>
+<?php require "views/partials/footer.php"; ?>

@@ -1,14 +1,9 @@
 <?php
-session_start();
-
-// Xóa tất cả các biến session
-$_SESSION = array();
-
+session_start(); 
 // Hủy session
 session_destroy();
 
-// Chuyển hướng người dùng đến trang đăng nhập
-
-header("Location: ../../views/home/Body-Home.view.php");
+// Chuyển hướng hoặc thực hiện các hành động khác sau khi hủy session
+header("Location: /");
 exit();
 ?>

@@ -49,10 +49,9 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $amount = "10000";
 $orderId = time() ."";
-$redirectUrl = "http://localhost:3000/controllers/home/home.controller.php";
+$redirectUrl = "http://localhost:3000/home";
 $ipnUrl = "http://localhost:3000/";
 $extraData = "";
-
 
 if (!empty($_POST)) {
     $partnerCode = $_POST["partnerCode"];

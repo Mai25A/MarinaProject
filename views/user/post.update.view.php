@@ -1,13 +1,13 @@
 <?php 
 $id = $_GET['id'];
-require_once(dirname(__DIR__).'/partials/head.php'); 
-require_once('../../database/database.php');
-require_once dirname(__DIR__)."./css/user/update.css.php";
+include_once("models/post.user.model.php");
+require_once('database/database.php');
+require_once "views/css/user/update.css.php";
 $users = getUserById($id);
 ?>
 
 <div class="container p-4">
-    <form action="../../controllers/user/post.update.controller.php" method="POST">
+    <form action="/user/update" method="POST">
         <input type="hidden" name="id" value="<?=$id?>">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Name" name="name" value="<?= $users['name'] ?>">
@@ -29,5 +29,3 @@ $users = getUserById($id);
         </div>
     </form>
 </div>
-
-<?php require_once(dirname(__DIR__).'/partials/footer.php');  ?>

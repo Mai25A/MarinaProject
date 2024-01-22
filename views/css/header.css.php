@@ -1,7 +1,8 @@
 <style>
-    header{
+    header {
         position: relative;
     }
+
     .img {
         width: 99vw;
         height: 70vh;
@@ -16,51 +17,80 @@
         background-color: #26577C;
         padding: 10px;
     }
-    #loginModal{
+
+    #loginModal {
         position: absolute;
         width: 500px;
-        top:50%;
+        top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
-    #loginModal{
+
+    #loginModal {
         display: none;
         pointer-events: none;
         opacity: 0;
     }
-    .show{
+
+    .show {
         display: block !important;
         pointer-events: all !important;
         opacity: 1 !important;
+    }
+
+    @font-face {
+        font-family: 'Pacifico';
+        src: url('path/to/pacifico.ttf') format('truetype');
     }
 
     .img h3 {
         display: flex;
         justify-content: center;
         padding-top: 140px;
-        font-size: 60px;
+        font-size: 100px;
+        font-family: 'Pacifico', cursive;
     }
 
-    .img h3 {  
-        color: red;
+    .img h3 {
+        color: #26577C;
         animation: myAnimation 5s infinite;
     }
 
     @keyframes myAnimation {
         0% {
-            color: red;
+            color: #e4c1f9;
+        }
+
+        12.5% {
+            color: #a9def9;
         }
 
         25% {
-            color: yellow;
+            color: #d0f4de;
+        }
+
+        37.5% {
+            color: #fcf6bd;
         }
 
         50% {
-            color: blue;
+            color: #ff99c8;
+        }
+
+        62.5% {
+            color: #e4c1f9;
+        }
+
+        75% {
+            color: #a9def9;
+        }
+
+        87.5% {
+            color: #d0f4de;
         }
 
         100% {
-            color: green;
+            color: #fcf6bd;
         }
     }
 
@@ -82,7 +112,7 @@
         display: flex;
         padding: 0;
         padding-right: 200px;
-        size: 20px;
+        size: 25px;
     }
 
     .mainMenu li {
@@ -107,8 +137,15 @@
         left: 0;
     }
 
+    .mainMenu li a:hover {
+        color: red;
+        text-decoration: none;
+    }
+
+
     .mainMenu li:hover .childMenu {
         display: block;
+        color: brown;
     }
 
     .childMenu a {

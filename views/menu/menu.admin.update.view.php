@@ -1,10 +1,9 @@
 <?php 
 $id = $_GET['id'];
-include'../../views/partials/head.php';
-include '../../models/menu.model.php';
+require_once "views/partials/link.php";  
 $product = getProductById($id);
 ?>
-<form action="../../controllers/menu/menu.update.controller.php" method="post">
+<form action="/menu/update" method="post">
 <input type="hidden" name="id" value="<?=$id?>">
     <div class="form-group">
         <label for="name">Name:</label>
@@ -32,4 +31,54 @@ $product = getProductById($id);
         </div>
     </div>
 </form>
-<?php include '../../views/partials/footer.php';?>
+
+<style>
+    form {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem; /* Adjusted margin for spacing */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px; /* Adjusted margin for spacing */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center; /* Center the text in the button */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Additional styling for labels and spacing */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+</style>

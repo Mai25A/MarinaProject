@@ -1,10 +1,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <?php
-// session_start();
-require '../../views/css/acount/register.css.php';
+session_start();
+
+require_once('views/css/acount/register.css.php');
 ?>
-  <form action="../../controllers/account/register.controller.php" method="POST" onsubmit="return validateFormRegister()">
+</head>
+
+<body>
+  <form action="/register" method="POST">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-2">
@@ -28,12 +32,10 @@ require '../../views/css/acount/register.css.php';
           <small class="form-text text-danger" id="passwordError"></small>
         </div>
         <div class="mb-2">
-          <button type="submit" class="btn custom-button">Singup</button>
-          <div>
-            <div class="haveAcount">
-              <a href="login.view.php" class="color">Already have an account?</a>
-            </div>
-          </div>
+        <button type="submit" class="btn custom-button">Sing up</button>
+        <div>
+        <div class="haveAcount">
+          <a href="" class="color">Already have an account?</a>
         </div>
   </form>
 

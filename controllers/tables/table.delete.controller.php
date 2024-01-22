@@ -1,10 +1,13 @@
 <?php
-include_once("../../models/tables.model.php");
+include_once("models/tables.model.php");
 
-if (isset($_GET['id_delete'])) {
-    $id =$_GET['id_delete'];
-    delete_table($id);
-    header("Location: table.admin.controller.php");
-    exit;
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['id_delete'])) {
+        $id =urldecode( $_GET['id_delete']);
+        delete_table($id);
+
+        header("Location: /table");
+        exit;
+    }
 }
 ?>
