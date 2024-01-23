@@ -9,11 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = htmlspecialchars(trim($_POST['email']));
         $password = htmlspecialchars($_POST['password']);
 
-        $save = saveUser($name, $phone, $email, $password);
-        if ($save) {
-            $_SESSION['user_id'] = $save; // Lưu trữ ID người dùng vào biến phiên
-            header("Location: /"); 
-            exit;
+        if (validateAccount($email, $phone)) {
+            $save = saveUser($name, $phone, $email, $password);
+            if ($save) {
+                $_SESSION['user_id'] = $save; // Lưu trữ ID người dùng vào biến phiên
+                header("Location: /home"); // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký thành công
+                exit;
+            } else {
+                echo "Failed to create register";
+            }
         } else {
             echo '<script>alert("Failed to create register");</script>';
         }
