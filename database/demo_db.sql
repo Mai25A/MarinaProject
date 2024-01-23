@@ -30,7 +30,7 @@ VALUES
   
 CREATE TABLE IF NOT EXISTS table_types  (
     id INT primary key auto_increment not null,
-    type VARCHAR(5),
+    type VARCHAR(10),
     number_of_seat int
 );
 INSERT INTO table_types (type, number_of_seat)
@@ -41,7 +41,7 @@ CREATE TABLE tables (
   name VARCHAR(255),
   image VARCHAR(255),
   table_type_id int,
-  price DECIMAL(10, 2),
+  price int,
   description TEXT,
   FOREIGN KEY (table_type_id) REFERENCES table_types(id)
 );
@@ -98,7 +98,7 @@ CREATE TABLE products (
   name VARCHAR(255),
   image VARCHAR(255),
   category_id int,
-  price DECIMAL(10, 2),
+  price int,
   description TEXT,
   quantity int,
   FOREIGN KEY (category_id) REFERENCES menu_categories(id)
@@ -144,7 +144,7 @@ VALUES	('Lobster Thermidor','https://tse2.mm.bing.net/th?id=OIP.zDSnloHHh1LyCX8Z
   id INT PRIMARY KEY auto_increment not null,
   user_id int,
   datetime datetime,
-  total DECIMAL(10, 2),
+  total int,
   table_id int,
   FOREIGN KEY (table_id) REFERENCES tables (id),
   foreign key(user_id) references users (id)
@@ -168,17 +168,18 @@ CREATE TABLE booking_products(
 	id int primary key auto_increment not null,
 	booking_id int not null,
 	product_id int,
+  quantity INT,
 	FOREIGN KEY (booking_id) REFERENCES bookings (id),
 	foreign key (product_id) references products (id)
 );
-insert into booking_products (booking_id,product_id)
-values 	(1,2),
-		(2,4),
-        (3,5),
-        (4,6),
-        (4,8),
-        (2,3),
-		(1,4);
+insert into booking_products (booking_id,product_id,quantity)
+values 	(1,2,2),
+		(2,4,3),
+        (3,5,1),
+        (4,6,2),
+        (4,8,2),
+        (2,3,2),
+		(1,4,2);
 select * from table_types;
 select * from bookings;
 select * from users;
