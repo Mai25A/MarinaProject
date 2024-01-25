@@ -8,7 +8,7 @@ require_once('views/css/acount/register.css.php');
 </head>
 
 <body>
-  <form action="/register" method="POST">
+  <form action="/register" method="POST" onsubmit="return validateFormRegister()">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="mb-2">
